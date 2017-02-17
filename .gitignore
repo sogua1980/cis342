@@ -5,7 +5,6 @@
 *.dvi
 *.blg
 *.bbl
-*.pdf
 latex.ps
 *.gz
 *.bak
