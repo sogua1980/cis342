@@ -1,5 +1,3 @@
-aw
-'lsasakdnasl
 File management
 ---
 
@@ -12,7 +10,7 @@ Shell programming
 
 - Passing arguments
 - Exit values: 
-    - demo: `echo alice; echo $?`; rm filenamedttt; echo $?`
+    - demo: `echo alice; echo $?; rm filenamedttt; echo $?`
     - exercise: 
         1. `touch file111; rm touch file111; echo $?` what is the output? 
         2. what do you need to do to make `echo $?` printout 1
