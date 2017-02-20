@@ -39,21 +39,24 @@ Introduction
 - Script: tie shell commands in a file 
 - Execute script `script.sh`:
     - `./script.sh`
-    - `source ./script.sh`
+    - `source script.sh`
 
-Basics: Shell programming language
+Basics: Shell language
 ---
 
 - `#!` sha-bang is a two-byte magic number that designates a file type
-    - basically says it's an executable shell script (type `man magic`).
+    - basically says it's an executable shell script 
 - Language syntax: if/else, variable
 - demo:
     1. `#!/bin/bash echo 'hello world';`
     2. `#!/bin/bash a=1;b=2;a=$a+$b;echo $a;`
     2. `#!/bin/bash a=1;b=2;let a=$((a+b));echo $a;`
-    3. `if [ $a -gt $b ];then echo 'a is greater than b';fi`
+    3. `if [ $a -gt $b ];then echo 'a larger than b';fi`
+
+---
+
 - exercise:
-    1. try `a=1;b=2;c=$a;a=$b;b=$c;echo $a,$b;`, and tell what it does.
+    1. \* try `a=1;b=2;c=$a;a=$b;b=$c;echo $a,$b;`, and put the output to the **blackboard**.
     2. write a script to initialize variables `a`, `b`, `c` and print their sum.
     3. write a script to swaps the names of two files, file1 and file2. For example if input file1 contains Alice and file2 conains Bob at the beginning, after the execution, file1 should contain Bob and file2 should contain Alice.
 
@@ -65,7 +68,7 @@ Passing arguments
 - exercise:
     1. `#!/bin/bash a=$1; b=$2; echo $((a*b));`; try this script and tell what it does?
     1. write a script to get 3 integers from the commandline and prints their product.
-        1. what happens if you do not pass the 3 required integers when executing the bash script?
+        - what happens if you do not pass the 3 required integers when executing the bash script?
 
 Exit values 
 ---
@@ -75,7 +78,7 @@ Exit values
 - demo: 
     - `echo alice; echo $?; rm filenamedttt; echo $?`
 - exercise: 
-    1. \* `touch file111; rm file111; echo $?` what is the output? 
+    1. `touch file111; rm file111; echo $?` what is the output? 
     2. how do you modify the above script so that it prints 1
     3. write a script by using `touch` and exit value to test if a file (with name `AAA`) exist?
 
@@ -142,6 +145,7 @@ Command execution model
 - a process access "files"
     - file: stdout/stdin, stderr, on-disk files
 - processes contend the "frontend" display
+- source vs `./`
 
 Redirection
 ---
