@@ -30,37 +30,45 @@ Write down commands to do the following:
 Shell programming
 ===
 
-
-Basics: #!, if, variables 
+Introduction
 ---
 
-- intro:
-    - Script: save commands in a file 
-    - `#!` sha-bang is a two-byte magic number that designates a file type
-        - basically says it's an executable shell script (type `man magic`).
+- Why learn shell programming?
+    - automate administrative tasks, save your efforts!
+    - e.g. automatic software update, file backup, resource monitoring
+- Script: tie shell commands in a file 
+
+Basics: Shell programming language
+---
+
+- `#!` sha-bang is a two-byte magic number that designates a file type
+    - basically says it's an executable shell script (type `man magic`).
+- Language syntax: if/else, variable
 - demo:
     1. `#!/bin/bash echo 'hello world';`
-    2. `#!/bin/bash a=1; b=2; a=$a+$b; echo $a;`
-    3. `if [ $a -gt $b ]; then echo 'a is greater than b'; fi`
+    2. `#!/bin/bash a=1;b=2;a=$a+$b;echo $a;`
+    2. `#!/bin/bash a=1;b=2;a=$((a+b));echo $a;`
+    3. `if [ $a -gt $b ];then echo 'a is greater than b';fi`
 - exercise:
-    1. write a script to initialize variables `a` and `b` and then swap the values of them
-    2. write a script to initialize three variables `a` and `b` and `c` and then print the sum of them.
+    1. try `a=1;b=2;c=$a;a=$b;b=$c;echo $a,$b;`, and tell what it does.
+    2. write a script to initialize variables `a`, `b`, `c` and print their sum.
+    3. write a script to swaps the names of two files, file1 and file2. For example if input file1 contains Alice and file2 conains Bob at the beginning, after the execution, file1 should contain Bob and file2 should contain Alice.
 
 Passing arguments
 ---
 
-- demo: `#!/bin/bash echo $1; echo $2; echo $#;`
+- demo: 
+    - `#!/bin/bash echo $1; echo $2; echo $#;`
 - exercise:
-    1. write a script to get 3 integers from the shell command and prints the sum of them.
+    1. `#!/bin/bash echo $1; echo $2; echo $((1*2));`; try this script and tell what it does?
+    1. write a script to get 3 integers from the commandline and prints their product.
         1. what happens if you do not pass the 3 required integers when executing the bash script?
-    2. write a script to take two numbers as argments and create a file with the name of the larger number. For example if `a` equals 3 and `b` equals 4, it should create a file named 4.
-    3. write a script to gets two file names and swaps the filenames. For example if we input file1 which contains Alice and file2 which conains Bob, after the execution, file1 should contain Bob and file2 should contain Alice.
 
 Exit values: 
 ---
 
 - demo: 
-    - `echo alice; echo $?`; rm filenamedttt; echo $?`
+    - `echo alice; echo $?; rm filenamedttt; echo $?`
 - exercise: 
     1. `touch file111; rm file111; echo $?` what is the output? 
     2. what do you need to do so that `echo $?` prints 1
