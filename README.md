@@ -2,6 +2,10 @@ File management
 ---
 
 - touch, mv, rm
+	- homework:
+		- can you use "rm" instead of "rmdir" to remove an empty directory? what parameters do you need to make it work?
+		- read the man page for "touch" and describe what it does if the file we want to create already exists?
+		- suppose we want to create a directory named dir1. and another directory in it named dir2. and another directory in dir 2 named dir3. so we can cd into the lowest level directory with "cd ./dir1/dir2/dir3". how we can use mkdir to create all these directories with one command?
 - chmod: permission bits
 	- homework:
 		1. read the man page for "umask". briefly describe what is this command in your words.
