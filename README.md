@@ -3,8 +3,11 @@ File management
 
 - touch, mv, rm
 - chmod: permission bits
+	- homework:
+		1. read the man page for "umask". briefly describe what is this command in your words.
+		2. write a command to recursively change the permissions of all files and directories under a directory named "test" to 123. Describe what 123 means?
+		3. what permissions are needed for a user to be able to change the name of a directory?
 - ln: symbolic/hard link
-
 	- homework:
 		1. create a new directory
 		2. write a single command to copy all the files in the current directory that are c programs (their name ends with .c) to the directory you created
