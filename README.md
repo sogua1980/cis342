@@ -37,6 +37,9 @@ Introduction
     - automate administrative tasks, save your efforts!
     - e.g. automatic software update, file backup, resource monitoring
 - Script: tie shell commands in a file 
+- Execute script `script.sh`:
+    - `./script.sh`
+    - `source ./script.sh`
 
 Basics: Shell programming language
 ---
@@ -47,7 +50,7 @@ Basics: Shell programming language
 - demo:
     1. `#!/bin/bash echo 'hello world';`
     2. `#!/bin/bash a=1;b=2;a=$a+$b;echo $a;`
-    2. `#!/bin/bash a=1;b=2;a=$((a+b));echo $a;`
+    2. `#!/bin/bash a=1;b=2;let a=$((a+b));echo $a;`
     3. `if [ $a -gt $b ];then echo 'a is greater than b';fi`
 - exercise:
     1. try `a=1;b=2;c=$a;a=$b;b=$c;echo $a,$b;`, and tell what it does.
@@ -60,18 +63,20 @@ Passing arguments
 - demo: 
     - `#!/bin/bash echo $1; echo $2; echo $#;`
 - exercise:
-    1. `#!/bin/bash echo $1; echo $2; echo $((1*2));`; try this script and tell what it does?
+    1. `#!/bin/bash a=$1; b=$2; echo $((a*b));`; try this script and tell what it does?
     1. write a script to get 3 integers from the commandline and prints their product.
         1. what happens if you do not pass the 3 required integers when executing the bash script?
 
-Exit values: 
+Exit values 
 ---
 
+- intro:
+    - executing every command has a "result" or exit value.
 - demo: 
     - `echo alice; echo $?; rm filenamedttt; echo $?`
 - exercise: 
-    1. `touch file111; rm file111; echo $?` what is the output? 
-    2. what do you need to do so that `echo $?` prints 1
+    1. \* `touch file111; rm file111; echo $?` what is the output? 
+    2. how do you modify the above script so that it prints 1
     3. write a script by using `touch` and exit value to test if a file (with name `AAA`) exist?
 
 Commenting
@@ -86,7 +91,6 @@ Homework 3
 2. can exit code have any other value that 0 and 1? read the man page for "exit". 
     - write a program that gets 3 integers and prints the sum of them. Test the exit code when the number of arguments provided are not valid (<>3).
 3. we want to use the rm command but we don't want to get errors. Write a script to get a file name as a parameter and removes it. If the file does not exist, it should not give an error.
-
 
 <!--
 
