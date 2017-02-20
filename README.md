@@ -30,14 +30,14 @@ Write down commands to do the following:
 Shell programming
 ===
 
-Introducton 
----
-
-- Script: save commands in a file 
 
 Basics: #!, if, variables 
 ---
 
+- intro:
+    - Script: save commands in a file 
+    - `#!` sha-bang is a two-byte magic number that designates a file type
+        - basically says it's an executable shell script (type `man magic`).
 - demo:
     1. `#!/bin/bash echo 'hello world';`
     2. `#!/bin/bash a=1; b=2; a=$a+$b; echo $a;`
