@@ -58,7 +58,7 @@ Basics: Shell language
 - exercise:
     1. \* try `a=1;b=2;c=$a;a=$b;b=$c;echo $a,$b;`, and put the output to the **blackboard**.
     2. write a script to initialize variables `a`, `b`, `c` and print their sum.
-    3. write a script to swaps the names of two files, file1 and file2. For example if input file1 contains Alice and file2 conains Bob at the beginning, after the execution, file1 should contain Bob and file2 should contain Alice.
+    3. write a script to swap the names of two files, file1 and file2. For example if input file1 contains Alice and file2 conains Bob at the beginning, after the execution, file1 should contain Bob and file2 should contain Alice.
 
 Passing arguments
 ---
