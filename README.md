@@ -50,7 +50,7 @@ Basics: Shell language
 - demo:
     1. `#!/bin/bash echo 'hello world';`
     2. `#!/bin/bash a=1;b=2;a=$a+$b;echo $a;`
-    2. `#!/bin/bash a=1;b=2;let a=$((a+b));echo $a;`
+    2. `#!/bin/bash a=1;b=2; a=$((a+b));echo $a;`
     3. `if [ $a -gt $b ];then echo 'a larger than b';fi`
 
 ---
