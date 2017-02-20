@@ -5,15 +5,19 @@ File management
 
 - touch, mv, rm
 - chmod: permission bits
+    - umask
 - ln: symbolic/hard link
- 
+
 Homework 2
 ---
 
-- write down commands to do the following: 
-    1. create directory with name 'dir_cis342'
-    2. copy all the files in the current directory that are c programs (their name ends with .c) to 'dir_cis342'
-    3. create symbolic links to 'dir_cis342'? (verify your link is working, by `cd` your link).
+Write down commands to do the following: 
+
+1. can you use "rm" instead of "rmdir" to remove an empty directory? what parameters do you need to make it work?
+2. what permissions are needed for a user to be able to change the name of a directory?
+3. create directory with name 'dir_cis342'
+4. copy all the files in the current directory that are c programs (their name ends with .c) to 'dir_cis342'
+5. create symbolic links to 'dir_cis342'? (verify your link is working, by `cd` your link).
 
 Shell programming
 ===
@@ -54,6 +58,11 @@ Exit values:
     2. what do you need to do so that `echo $?` prints 1
     3. write a script by using `touch` and exit value to test if a file (with name `AAA`) exist?
 
+Commenting
+---
+
+- `#` is used to comment in bash
+
 Homework 3
 ---
 
@@ -63,10 +72,7 @@ Homework 3
 3. we want to use the rm command but we don't want to get errors. Write a script to get a file name as a parameter and removes it. If the file does not exist, it should not give an error.
 
 
-Commenting
----
-
-- `#` is used to comment in bash
+<!--
 
 Redirection/Piping
 ===
@@ -95,7 +101,10 @@ Pipe
 - exercise:
     2. can you pipe and redirect more than one time? `ls /etc | more > output`
     3. can you write the error to a file? like `rm nonexistingfile1 > output`.
-- homework:
+
+Homework 4
+---
+
     1. read the man page for `head` and `tail` commands. write a bash script to get name of a file and writes the 3 first and 3 last lines of the file to another file named `output`.
     2. read the man page for `wc` command. write a bash script to get name of a file and removes it if it contains less that 3 words.
     3. using `ls` and `wc` commands, write a single command to print out the number of files in the current directory.
@@ -149,3 +158,5 @@ Background processes
     1. run `top`. now use ctrl+c to terminate it. run in another time and this time use ctrl+z. what is the difference?
     2. run top in the background. also run vim in the background. try switching between them in one terminal.
     3. copy a big file that takes a long time in the background and observe when it finishes with top.
+
+-->
