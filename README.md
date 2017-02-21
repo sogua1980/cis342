@@ -1,4 +1,4 @@
-Note: In case you are not comfortable using vim for editing your files, you can use gedit which is a simple graphical editor, instead. Just run "gedit somefile".
+Note: In case you are not comfortable using vim for editing your files, you can use gedit which is a simple graphical editor. Just run "gedit somefile".
 
 A. Bash
 ===
