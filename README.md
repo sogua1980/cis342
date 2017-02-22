@@ -18,6 +18,8 @@ File management
     - umask
 - ln: symbolic/hard link
 
+<!--
+
 Homework 2
 ---
 
@@ -28,6 +30,8 @@ Write down commands to do the following:
 3. create directory with name 'dir_cis342'
 4. copy all the files in the current directory that are c programs (their name ends with .c) to 'dir_cis342'
 5. create symbolic links to 'dir_cis342'? (verify your link is working, by `cd` your link).
+
+-->
 
 Shell programming
 ===
@@ -89,6 +93,8 @@ Commenting
 
 - `#` is used to comment in bash
 
+<!--
+
 Homework 3
 ---
 
@@ -96,6 +102,8 @@ Homework 3
 2. can exit code have any other value that 0 and 1? read the man page for "exit". 
     - write a program that gets 3 integers and prints the sum of them. Test the exit code when the number of arguments provided are not valid (<>3).
 3. we want to use the rm command but we don't want to get errors. Write a script to get a file name as a parameter and removes it. If the file does not exist, it should not give an error.
+
+-->
 
 <!--
 
