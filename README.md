@@ -76,6 +76,12 @@ Passing arguments
     1. write a script to get 3 integers from the commandline and prints their product.
         - what happens if you do not pass the 3 required integers when executing the bash script?
 
+Commenting
+---
+
+- `#` is used to comment in bash
+
+
 Exit values 
 ---
 
@@ -87,11 +93,6 @@ Exit values
     1. `touch file111; rm file111; echo $?` what is the output? 
     2. how do you modify the above script so that it prints 1
     3. write a script by using `touch` and exit value to test if a file (with name `AAA`) exist?
-
-Commenting
----
-
-- `#` is used to comment in bash
 
 <!--
 
