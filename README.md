@@ -147,7 +147,6 @@ Find
     6. What option of the find command do you use for finding all files with a certain permission?
     7. Use -type option of find command to find all "directories" in the home directory of a user named "foo" recursively.
     8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
-===
 <!--
 top
 ---
