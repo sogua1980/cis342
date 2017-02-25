@@ -124,7 +124,7 @@ Grep
         - hello$
         - t[wo]o
         - ^[A-Z]
-    3. Write a regular expression to find all lines of all files under current directory recursively that only contai a single "hello" word.
+    3. Write a regular expression to find all lines of all files under current directory recursively that only contain a single "hello" word.
 
 Find
 ---
@@ -135,9 +135,9 @@ Find
 - exercise:
     1. try `find / -type d -maxdepth 1` and tell what it does?
     2. try `find / -size +1M` and tell what it does?
-    3. use find to search for all the files under current directory with are smaller than 1 megabytes.
+    3. use find to search for all the files under current directory which are smaller than 1 megabyte.
     4. use find to list all the directories under current directory recursively.
-    5. use find to search for all .c files which are smaller than 1 kilobytes.
+    5. use find to search for all .c files which are smaller than 1 kilobyte.
 - homework:
     1. There are a couple of other commands like "find". Test these and describe the difference: "which", "whereis", "locate".
     2. Search the internet for "grep regular expression for US phone numbers" and find a regular expression for finding all file lines that contain a valid US phone number. Test it on a sample file and write the command. Examples of valid US phone number formats: (315)1234567, 680-123-4567, 7161234567, (585) 1234567, (800)123-4567
@@ -146,7 +146,6 @@ Find
     5. Modify the regular expression you used in the previous question to only match syr.edu emails.
     6. What option of the find command do you use for finding all files with a certain permission?
     7. Use -type option of find command to find all "directories" in the home directory of a user named "foo" recursively.
-Process and commands
     8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
 ===
 <!--
