@@ -104,7 +104,7 @@ Homework 3
     - write a program that gets 3 integers and prints the sum of them. Test the exit code when the number of arguments provided are not valid (<>3).
 3. we want to use the rm command but we don't want to get errors. Write a script to get a file name as a parameter and removes it. If the file does not exist, it should not give an error.
 
--->
+
 
 
 
@@ -147,7 +147,7 @@ Find
     6. What option of the find command do you use for finding all files with a certain permission?
     7. Use -type option of find command to find all "directories" in the home directory of a user named "foo" recursively.
     8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
-<!--
+
 Processes
 ===
 
