@@ -1,5 +1,3 @@
-Note: In case you are not comfortable using vim for editing your files, you can use gedit which is a simple graphical editor. Just run "gedit somefile".
-
 A. Bash
 ===
 
@@ -7,6 +5,12 @@ References
 ---
 
 - "Advanced Bash-Scripting Guide" [[web](http://www.tldp.org/LDP/abs/html/)]
+
+Editor
+---
+
+- For Unbuntu/Linux novice, recommend `gedit`. You can type `gedit filename` in Ubuntu Linux shell to launch the editor.
+- For advanced user, recommend `vim`
 
 File management
 ===
@@ -185,6 +189,8 @@ Homework
 8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
 
 -->
+
+<!---
 
 Processes
 ===
