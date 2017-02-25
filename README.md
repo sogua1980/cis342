@@ -64,7 +64,7 @@ Basics: Shell language
 - exercise:
     1. \* try `a=1;b=2;c=$a;a=$b;b=$c;echo $a,$b;`, and put the output to the **blackboard**.
     2. write a script to initialize variables `a`, `b`, `c` and print their sum.
-    3. write a script to swap the names of two files, file1 and file2. For example if input file1 contains Alice and file2 conains Bob at the beginning, after the execution, file1 should contain Bob and file2 should contain Alice.
+    3. write a script to swap the names of two files, file1 and file2. For example if input file1 contains Alice and file2 contains Bob at the beginning, after the execution, file1 should contain Bob and file2 should contain Alice.
 
 Passing arguments
 ---
@@ -73,7 +73,7 @@ Passing arguments
     - `#!/bin/bash echo $1; echo $2; echo $#;`
 - exercise:
     1. `#!/bin/bash a=$1; b=$2; echo $((a*b));`; try this script and tell what it does?
-    1. write a script to get 3 integers from the commandline and prints their product.
+    1. write a script to get 3 integers from the command-line and prints their product.
         - what happens if you do not pass the 3 required integers when executing the bash script?
 
 Commenting
@@ -104,6 +104,7 @@ Homework 3
     - write a program that gets 3 integers and prints the sum of them. Test the exit code when the number of arguments provided are not valid (<>3).
 3. we want to use the rm command but we don't want to get errors. Write a script to get a file name as a parameter and removes it. If the file does not exist, it should not give an error.
 
+-->
 
 
 
@@ -111,42 +112,79 @@ Homework 3
 Grep & Find
 ===
 
+Introduction
+---
+
+- A classic matching problem: 
+    - takes as input a string and "pattern", outputs a binary decision.
+    - `substring_match(al*ce,"alice bob")=1`
+- Format of the pattern: **regular expression**.
+- Relevance to Linux shell: `grep`, `find`, search in `vim`
+
+Regular expression & grep
+---
+
+1. asterisk `*`
+    - `match(1133*,113)=1`
+    - demo: `echo 113 | grep 1133*`
+2. dot `.`
+    - `match(13.,13)=0`
+    - `match(13.,134)=1`
+5. Brackets `[...]`: -- enclose a set of characters 
+    - `match(1[345],13)=1`, `match(1[345],15)=1`, `match(1[345],18)=0`
+    - `match(1[3-5],14)=1`
+    - `match(1[^3-5],14)=0`,`match(1[^3-5],18)=1`
+
+---
+
+3. caret `^`: beginning of a line
+4. dollar sign `$`: end of a line
+    - `^$` matches blank lines.
+    - backslash `\`: `\$`
+
 Grep
 ---
 
-- demo: 
+- Demos
     1. `grep hello hello.c`
     2. `grep -r hello .`
-- exercise:
-    1. Are grep patterns case sensitive by default? How can you use grep to ignore the case?
-    2. Test following regular expressions on a sample text file:
-        - ^hello
-        - hello$
-        - t[wo]o
-        - ^[A-Z]
-    3. Write a regular expression to find all lines of all files under current directory recursively that only contain a single "hello" word.
+    3. `grep -i HELLO hello.c`
+
+---
+
+- Exercise:
+    2. Given a file `file1` with `hello too`, try following commands, and report the result
+        - `grep ^hello file1`
+        - `grep hello$ file1`
+        - `grep t[wo]o file1`
+        - `grep ^[A-Z] file1`
+    3. Write a regular expression to find all lines of all files under current directory recursively that contain a single word "hello".
 
 Find
 ---
 
 - demo:
-    1. find
-    2. find . -name "*.c"
+    1. `find`
+    2. `find . -name "*.c"`
+    1. `find / -type d -maxdepth 1`
 - exercise:
-    1. try `find / -type d -maxdepth 1` and tell what it does?
-    2. try `find / -size +1M` and tell what it does?
-    3. use find to search for all the files under current directory which are smaller than 1 megabyte.
-    4. use find to list all the directories under current directory recursively.
-    5. use find to search for all .c files which are smaller than 1 kilobyte.
-- homework:
-    1. There are a couple of other commands like "find". Test these and describe the difference: "which", "whereis", "locate".
-    2. Search the internet for "grep regular expression for US phone numbers" and find a regular expression for finding all file lines that contain a valid US phone number. Test it on a sample file and write the command. Examples of valid US phone number formats: (315)1234567, 680-123-4567, 7161234567, (585) 1234567, (800)123-4567
-    3. Modify the regular expression you used in the previous question to only match Syrause area codes (315 and 680)
-    4. Write a regular expression to match all lines of a file which contain an email address. You can search the internet for this. But make sure that it works!
-    5. Modify the regular expression you used in the previous question to only match syr.edu emails.
-    6. What option of the find command do you use for finding all files with a certain permission?
-    7. Use -type option of find command to find all "directories" in the home directory of a user named "foo" recursively.
-    8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
+    4. write a command to find all the files with name starting with `fil` under the current directory.
+
+<!--
+
+Homework
+---
+
+1. There are a couple of other commands like "find". Test these and describe the difference: "which", "whereis", "locate".
+2. Search the internet for "grep regular expression for US phone numbers" and find a regular expression for finding all file lines that contain a valid US phone number. Test it on a sample file and write the command. Examples of valid US phone number formats: (315)1234567, 680-123-4567, 7161234567, (585) 1234567, (800)123-4567
+3. Modify the regular expression you used in the previous question to only match Syrause area codes (315 and 680)
+4. Write a regular expression to match all lines of a file which contain an email address. You can search the internet for this. But make sure that it works!
+5. Modify the regular expression you used in the previous question to only match syr.edu emails.
+6. What option of the find command do you use for finding all files with a certain permission?
+7. Use -type option of find command to find all "directories" in the home directory of a user named "foo" recursively.
+8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
+
+-->
 
 Processes
 ===
