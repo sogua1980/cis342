@@ -106,7 +106,7 @@ Homework 3
 
 -->
 
-<!--
+
 
 Grep & Find
 ===
@@ -149,7 +149,7 @@ Find
 Process and commands
     8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
 ===
-
+<!--
 top
 ---
 
