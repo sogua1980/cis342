@@ -37,7 +37,7 @@ Write down commands to do the following:
 
 -->
 
-Shell programming
+Shell programming (Feb. w3)
 ===
 
 Introduction
@@ -111,9 +111,7 @@ Homework 3
 -->
 
 
-
-
-Grep & Find
+Grep & Find (Feb. w4)
 ===
 
 Introduction
