@@ -142,7 +142,7 @@ Regular expression & grep
 3. caret `^`: beginning of a line
 4. dollar sign `$`: end of a line
     - `^$` matches blank lines.
-    - backslash `\`: `\$`
+    - backslash `\\`: `\$`
 
 Grep
 ---
@@ -160,7 +160,7 @@ Grep
         - `grep hello$ file1`
         - `grep t[wo]o file1`
         - `grep ^[A-Z] file1`
-    3. Write a regular expression to find all lines of all files under current directory recursively that contain a single word "hello".
+    3. Write a command to find all lines of all files under current directory recursively that contain a single word "hello".
 
 Find
 ---
