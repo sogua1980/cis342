@@ -85,7 +85,7 @@ Commenting
 
 - `#` is used to comment in bash
 
-
+<!--
 Exit values 
 ---
 
@@ -97,7 +97,7 @@ Exit values
     1. `touch file111; rm file111; echo $?` what is the output? 
     2. how do you modify the above script so that it prints 1
     3. write a script by using `touch` and exit value to test if a file (with name `AAA`) exist?
-
+-->
 <!--
 
 Homework 3
