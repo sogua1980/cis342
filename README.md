@@ -132,7 +132,7 @@ Regular expression & grep
 2. dot `.`
     - `match(13.,13)=0`
     - `match(13.,134)=1`
-5. Brackets `[...]`: -- enclose a set of characters 
+5. Brackets `[...]`: enclose a set of characters 
     - `match(1[345],13)=1`, `match(1[345],15)=1`, `match(1[345],18)=0`
     - `match(1[3-5],14)=1`
     - `match(1[^3-5],14)=0`,`match(1[^3-5],18)=1`
