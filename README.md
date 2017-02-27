@@ -168,7 +168,7 @@ Find
 - demo:
     1. `find`
     2. `find . -name "*.c"`
-    1. `find / -type d -maxdepth 1`
+    3. `find / -maxdepth 1 -type d`
 - exercise:
     4. write a command to find all the files with name starting with `fil` under the current directory.
 
