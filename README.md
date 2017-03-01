@@ -157,12 +157,12 @@ Grep
 ---
 
 - Exercise:
-    2. Given a file `file1` with `hello too`, try following commands, and report the result
+    1. Given a file `file1` with `hello too`, try following commands, and report the result
         - `grep ^hello file1`
         - `grep hello$ file1`
         - `grep t[wo]o file1`
         - `grep ^[A-Z] file1`
-    3. Write a command to find all lines of all files under current directory recursively that contain a single word "hello".
+    2. Write a command to find all lines of all files under current directory recursively that contain a single word "hello".
 
 Find
 ---
