@@ -111,7 +111,7 @@ Homework 3
 -->
 
 
-Grep (Feb. w4)
+Grep & Find (Feb. w4)
 ===
 
 Introduction
@@ -129,6 +129,7 @@ Regular expression & grep
 1. asterisk `*`
     - `match(1133*,113)=1`
     - demo: `echo 113 | grep 1133*`
+    - `grep(p,s)` tries to find *all* the substrings in `s` that matches pattern `p`
 2. dot `.`
     - `match(13.,13)=0`
     - `match(13.,134)=1`
@@ -169,6 +170,7 @@ Find
     1. `find`
     2. `find . -name "*.c"`
     3. `find / -maxdepth 1 -type d`
+    - note: `find` is not based on regex.
 - exercise:
     4. write a command to find all the files with name starting with `fil` under the current directory.
 
