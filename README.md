@@ -142,7 +142,7 @@ Regular expression & grep
 3. caret `^`: beginning of a line
 4. dollar sign `$`: end of a line
     - `^$` matches blank lines.
-    - backslash `\\`: `\$`
+<!--    - backslash `\\`: `\$`-->
 
 Grep
 ---
