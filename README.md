@@ -9,7 +9,8 @@ References
 Editor
 ---
 
-- For Unbuntu/Linux novice, recommend `gedit`. You can type `gedit filename` in Ubuntu Linux shell to launch the editor.
+- For Unbuntu/Linux novice, recommend `gedit`. To launch the editor:
+    - `gedit filename &`
 - For advanced user, recommend `vim`
 
 File management
@@ -120,7 +121,7 @@ Introduction
 - A classic matching problem: 
     - takes as input a string and "pattern", outputs a binary decision.
     - `match(al.*ce,alice)=1`
-- Format of the pattern: **regular expression**.
+- Format of the pattern: **regular expression** (regex).
 - Relevance to Linux shell: `grep`, search in `vim`
 
 Regular expression & grep
@@ -129,7 +130,7 @@ Regular expression & grep
 1. asterisk `*`
     - `match(1133*,113)=1`
     - demo: `echo 113 | grep 1133*`
-    - `grep(p,s)` tries to find *all* the substrings in `s` that matches pattern `p`
+    - `grep(p,s)` finds *all* substrings in `s` that match pattern `p`
 2. dot `.`
     - `match(13.,13)=0`
     - `match(13.,134)=1`
@@ -166,11 +167,12 @@ Grep
 Find
 ---
 
+- Intro
+    - `find` searches files, while `grep` searches text
+    - note: `find` name matching is *parameter expansion*, not regex.
 - demo:
-    1. `find`
-    2. `find . -name "*.c"`
-    3. `find / -maxdepth 1 -type d`
-    - note: `find` is not based on regex.
+    1. `find . -name "*.c"` #
+    2. `find / -maxdepth 1 -type d`
 - exercise:
     4. write a command to find all the files with name starting with `fil` under the current directory.
 
