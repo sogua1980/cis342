@@ -111,7 +111,7 @@ Homework 3
 -->
 
 
-Grep & Find (Feb. w4)
+Grep (Feb. w4)
 ===
 
 Introduction
@@ -119,9 +119,9 @@ Introduction
 
 - A classic matching problem: 
     - takes as input a string and "pattern", outputs a binary decision.
-    - `substring_match(al*ce,"alice bob")=1`
+    - `match(al.*ce,alice)=1`
 - Format of the pattern: **regular expression**.
-- Relevance to Linux shell: `grep`, `find`, search in `vim`
+- Relevance to Linux shell: `grep`, search in `vim`
 
 Regular expression & grep
 ---
