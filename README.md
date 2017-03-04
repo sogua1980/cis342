@@ -245,6 +245,7 @@ Redirection
 - exercise:
     1. try `pwd > ZZZ`; explain what this command does?
     2. write a command to store the list of files in current directory to a file named 'YYY'
+    3. can you write the error to a file? like `rm nonexistingfile1 2> output`.
 
 Pipe
 ---
@@ -257,10 +258,9 @@ Pipe
 - demo:
     1. `ls /etc | more`
     2. `pwd | ls`
-    3. use grep to find all the processes running as root
 - exercise:
     1. can you pipe and redirect more than one time? `ls /etc | more > output`
-    2. can you write the error to a file? like `rm nonexistingfile1 2> output`.
+    2. use grep to find all the processes running as root
 
 background processes
 ---
