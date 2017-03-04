@@ -192,7 +192,7 @@ Homework
 
 -->
 
-<!---
+
 
 Processes
 ===
@@ -213,9 +213,8 @@ ps and kill
     2. `kill -15 1234`
     3. `kill -l`
 - exercise:
-    1. use grep to find all the processes running as root
-    2. open firefox web browser and find its pid
-    3. terminate firefox using the kill command. Suppose firefox is crashed and you can't close it using graphical interface. What you need to do to close it?
+    1. open firefox web browser and find its pid
+    2. terminate firefox using the kill command. Suppose firefox is crashed and you can't close it using graphical interface. What you need to do to close it?
 
 
 Advanced commands
@@ -240,12 +239,12 @@ Redirection
     - `>`, `>>`
 - demo:
     1. `echo 'hello Alice' > somefile`
-    3. `echo 'hello Alice' >> somefile`
-    4. `rm XXX>somefile`, `rm XXX &>somefile`, 
-    5. `rm XXX 1>somefile`, `rm XXX 2>somefile`, 
+    2. `echo 'hello Alice' >> somefile`
+    3. `rm XXX>somefile`, `rm XXX &>somefile`, 
+    4. `rm XXX 1>somefile`, `rm XXX 2>somefile`, 
 - exercise:
     1. try `pwd > ZZZ`; explain what this command does?
-    1. write a command to store the list of files in current directory to a file named 'YYY'
+    2. write a command to store the list of files in current directory to a file named 'YYY'
 
 Pipe
 ---
@@ -257,10 +256,11 @@ Pipe
     - `|`, `&&`
 - demo:
     1. `ls /etc | more`
-    2. `echo pwd | ls`
+    2. `pwd | ls`
+    3. use grep to find all the processes running as root
 - exercise:
-    2. can you pipe and redirect more than one time? `ls /etc | more > output`
-    3. can you write the error to a file? like `rm nonexistingfile1 > output`.
+    1. can you pipe and redirect more than one time? `ls /etc | more > output`
+    2. can you write the error to a file? like `rm nonexistingfile1 2> output`.
 
 background processes
 ---
@@ -273,7 +273,7 @@ background processes
     1. run `top`. now use ctrl+c to terminate it. run in another time and this time use ctrl+z. what is the difference?
     2. run top in the background. also run vim in the background. try switching between them in one terminal.
     3. copy a big file that takes a long time in the background and observe when it finishes with top.
-
+<!--
 Homework 4
 ---
 
