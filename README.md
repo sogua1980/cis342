@@ -1,4 +1,75 @@
-A. Bash
+Ubuntu Basics
+===
+
+Introduction
+---
+
+- Installing Ubuntu in VirtualBox
+    - Manual available at blackboard website
+    - Login password: Syracuse123
+- Graphical Interface
+    - Dash, Shortcuts, Top menu bars
+    - Shutting Down
+    - Desktop Cusomization
+    - Screen size adjustment
+    - Create shortcuts to Terminal and Xterm
+        - xterm
+        - gnome-terminal
+    - Exercise:
+        - Open three terminal windows side by side
+        - Try Ctrl+Alt+T
+- Command line Interface
+    - Demo
+        - Root directory structure
+            - /bin and /sbin
+            - /etc
+            - /home
+            - /lib
+            - /media
+            - /root
+            - /usr
+            - /var/lib
+        - Hidden file names start with a dot ``.``
+        - ``cd and ``ls`` commands
+        - Command parameters: ``gcc -h`` and ``gcc --help``
+        - Reading man pages: ``man ls``
+    - Exercise
+        - Try ``pwd`` command. What do you see?
+        - Type ``cd /``
+        - Type ``ls``
+        - Home directory is ``~``
+        - Do ``cd ~``. Use the proper parameter for ls to display all files in the directory (including hidden files).
+        - Use the proper parameter for ls to display the long format and in the order of modification time, newest first.
+        - Try ``ls -F``. Read the man page for ``ls``. What ``-F`` option does?
+- Other commands for getting help
+    - Demo
+        - Interact with ``man`` output
+            - ``SPACE`` goes to next page
+            - ``q`` for quitting
+        - ``whatis``
+        - ``appropos``
+- Special Characters
+    - Demo
+        - ``/`` is the path separator
+        - ``.`` and ``..``
+        - ``\`` character escaping
+        - Wildcard characters
+            - asterisk ``*``
+            - question mark ``?``
+            - brackets ``[]``
+        - Command separator ``;``
+            - ``ls -F; cd Documents``
+        - More later...
+            - ``|`` pipe
+            - ``<``, ``>``, ``>>`` redirections
+            - ``()`` command group  
+        
+- Execute script `script.sh`:
+    - `./script.sh`
+    - `source script.sh`
+
+
+Bash
 ===
 
 References
