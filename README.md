@@ -1,4 +1,4 @@
-Ubuntu Basics
+Basics and Essentials
 ===
 
 Introduction
@@ -64,10 +64,12 @@ Introduction
             - ``<``, ``>``, ``>>`` redirections
             - ``()`` command group  
         
-- Execute script `script.sh`:
-    - `./script.sh`
-    - `source script.sh`
 
+History
+---
+    - The term Unix refers to any Unix-like systems such as Linux, Solaris, Mac OS, BSD, etc.
+
+-
 
 Bash
 ===
