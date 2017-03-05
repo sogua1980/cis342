@@ -67,9 +67,10 @@ Introduction
 
 History
 ---
+
     - The term Unix refers to any Unix-like systems such as Linux, Solaris, Mac OS, BSD, etc.
 
--
+
 
 Bash
 ===
