@@ -30,7 +30,7 @@ Introduction
             - /usr
             - /var/lib
         - Hidden file names start with a dot ``.``
-        - ``cd and ``ls`` commands
+        - ``cd`` and ``ls`` commands
         - Command parameters: ``gcc -h`` and ``gcc --help``
         - Reading man pages: ``man ls``
     - Exercise
