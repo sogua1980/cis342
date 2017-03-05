@@ -143,6 +143,36 @@ Shell Programs
         - Try ``more foo`` this time. What is the difference?
         - Show two files ``foo`` and ``bar`` with ``cat`` command.
 
+File and Permissions
+===
+- The ``ln`` command
+    - Demo
+        - ``ln -s foo foolink``
+        - ``ln foo foolink``
+        - Hard vs soft links
+    - Exercise
+        - Can you create a hard link to a directory? Try!
+        - Can you create a hard link to a file in another partition? Try!
+        - Create a text file and create a symbolic to it. Observe the sizes of the two files you created.
+        - Try ``ls -l``. What is the difference between the link and the main file?
+- The ``chmod`` command
+    - Demo
+        - ``chmod +x foo``
+        - user and group
+        - ``chmod`` options: u, g, o, a, x, w, r, +, -, =
+    - Exercise
+        - Create a file and give write permissions to it for all users.
+        - Revoke all the permissions from the file you created. Can you still access it? Why?
+- Permission Bits
+    - Demo
+        - rwxrwxrwx bits
+        - Decimal representation
+    - Exercise
+        - Create a file ``foo`` and do ``chmod 000 foo``. Then use ``ls -l`` to observe its permission bits.
+        - What if you want the:
+            - User to read, write, and execute
+            - group to read and execute but not write
+            - others to have no permission
 Bash
 ===
 
