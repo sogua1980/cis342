@@ -29,10 +29,10 @@ Introduction
             - /root
             - /usr
             - /var/lib
-        - Hidden file names start with a dot ``.``
-        - ``cd`` and ``ls`` commands
-        - Command parameters: ``gcc -h`` and ``gcc --help``
-        - Reading man pages: ``man ls``
+        - Hidden file names start with a dot `.`
+        - `cd` and `ls` commands
+        - Command parameters: `gcc -h` and `gcc --help`
+        - Reading man pages: `man ls`
     - Exercise
         - Try ``pwd`` command. What do you see?
         - Type ``cd /``
@@ -62,12 +62,12 @@ Introduction
         - More later...
             - ``|`` pipe
             - ``<``, ``>``, ``>>`` redirections
-            - ``()`` command group  
-        
+            - ``()`` command group 
 
 History
 ---
 
+    - asj
     - The term Unix refers to any Unix-like systems such as Linux, Solaris, Mac OS, BSD, etc.
 
 
