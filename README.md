@@ -6,18 +6,18 @@ Introduction
 
 - Installing Ubuntu in VirtualBox
     - Manual available at blackboard website
-    - Login password: Syracuse123
+    - Login password: ``Syracuse123``
 - Graphical Interface
     - Dash, Shortcuts, Top menu bars
     - Shutting Down
     - Desktop Cusomization
     - Screen size adjustment
     - Create shortcuts to Terminal and Xterm
-        - xterm
-        - gnome-terminal
+        - ``xterm``
+        - ``gnome-terminal``
     - Exercise:
         - Open three terminal windows side by side
-        - Try Ctrl+Alt+T
+        - Try ``Ctrl+Alt+T``
 - Command line Interface
     - Demo
         - Root directory structure
@@ -66,11 +66,82 @@ Introduction
 
 History
 ---
-
-    - asj
+- Unix
     - The term Unix refers to any Unix-like systems such as Linux, Solaris, Mac OS, BSD, etc.
+    - 1969: UNiplexed Information and Computing Service
+    - 1971: V1 (60 commands)
+    - 1973: V3 (Pipe, C language)
+    - 1976: V6 (rewritten in C, base for BSD)
+    - 1979: V7 (Licensed, portable)
+- Linux
+    - Written in 1991 by Linus Torvalds
+    - 2001: Linux Kernel v. 2.4
+    - Most popular Unix variant
+    - Free with GNU license
+    - Ported to many different hardware platforms
+- FreeBSD
+    - 1993: FreeBSD (focuses on PCs)
+    - 1993: NetBSD (focuses on portability)
+    - 1996: OpenBSD (focuses on security)
+    - Free with BSD license
+- Mac OS X
+    - Based on 4.4 BSD-Lite
+    - Built its own GUI on top of BSD base
+    - You know the rest!
+- Unix Philosophy
+    - Small is beautiful
+        - Easy to understand
+        - Easy to maintain
+        - Efficient
+        - Reuse
+    - Make each program (commands) simple and do one thing well
+    - Complex functionality can be achieved by combining commands.
+    - Etc. read more on your own.
+- A Brief Overview of OS
+    - Shell: interpreter between the kernel and user
+    - Utilities: compilers, commands, others
+    - System calls (read, write, etc.)
 
-
+Shell Programs
+---
+- What is a shell program?
+    - That’s the one which prints out the prompt and wait for a user input in terminal
+    - A command interpreter that translates the user’s commands for the Kernel to carry out the user’s commands.
+    - There are varieties of shell programs.
+        - C shell (csh)
+            - Developed by BSD Unix
+        - Bourne shell (sh)
+            - Developed by Unix System V; compact and simple
+        - Korn shell (ksh)
+            - Developed by David Korn; extended Bourne shell
+        - Turbo shell (tsh)
+            - Enhanced csh
+        - GNU shell (bash)
+            - Most advanced and default for Ubuntu users
+        - And more…..
+    - How do I know which shell I am using?
+        - Type ``echo $SHELL`` on terminal
+- The ``echo`` command
+    - Demo
+        - ``x=1``
+        - ``echo x``
+        - ``echo $x``
+        - ``echo hello world``
+        - ``echo $HOME``
+        - ``echo $PATH``
+        - ``echo $PWD``
+        - ``echo $HOSTNAME``
+        - Environment variables configure the system and program behavior
+        - They also help programs to find necessary files at invocation and during runtime.
+    - Exercise
+        - Use ``printenv`` command to see all the environment variables defined.
+- The ``cat`` command
+    - Demo
+        - ``cat somefile``
+    - Exercise
+        - Download file ``foo`` from blackboard. Do ``cat foo``. What do you see?
+        - Try ``more foo`` this time. What is the difference?
+        - Show two files ``foo`` and ``bar`` with ``cat`` command.
 
 Bash
 ===
