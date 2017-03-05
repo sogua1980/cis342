@@ -1,4 +1,4 @@
-Basics and Essentials
+<!--Basics and Essentials
 ===
 
 Introduction
@@ -172,7 +172,7 @@ File and Permissions
         - What if you want the:
             - User to read, write, and execute
             - group to read and execute but not write
-            - others to have no permission
+            - others to have no permission-->
             
 Bash
 ===
