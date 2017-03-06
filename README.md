@@ -1,4 +1,185 @@
-A. Bash
+<!--
+
+Basics and Essentials
+===
+
+Introduction
+---
+
+- Installing Ubuntu in VirtualBox
+    - Manual available at blackboard website
+    - Login password: ``Syracuse123``
+- Graphical Interface
+    - Dash, Shortcuts, Top menu bars
+    - Shutting Down
+    - Desktop Cusomization
+    - Screen size adjustment
+    - Create shortcuts to Terminal and Xterm
+        - ``xterm``
+        - ``gnome-terminal``
+    - Exercise:
+        - Open three terminal windows side by side
+        - Try ``Ctrl+Alt+T``
+- Command line Interface
+    - Demo
+        - Root directory structure
+            - /bin and /sbin
+            - /etc
+            - /home
+            - /lib
+            - /media
+            - /root
+            - /usr
+            - /var/lib
+        - Hidden file names start with a dot `.`
+        - `cd` and `ls` commands
+        - Command parameters: `gcc -h` and `gcc --help`
+        - Reading man pages: `man ls`
+    - Exercise
+        - Try ``pwd`` command. What do you see?
+        - Type ``cd /``
+        - Type ``ls``
+        - Home directory is ``~``
+        - Do ``cd ~``. Use the proper parameter for ls to display all files in the directory (including hidden files).
+        - Use the proper parameter for ls to display the long format and in the order of modification time, newest first.
+        - Try ``ls -F``. Read the man page for ``ls``. What ``-F`` option does?
+- Other commands for getting help
+    - Demo
+        - Interact with ``man`` output
+            - ``SPACE`` goes to next page
+            - ``q`` for quitting
+        - ``whatis``
+        - ``appropos``
+- Special Characters
+    - Demo
+        - ``/`` is the path separator
+        - ``.`` and ``..``
+        - ``\`` character escaping
+        - Wildcard characters
+            - asterisk ``*``
+            - question mark ``?``
+            - brackets ``[]``
+        - Command separator ``;``
+            - ``ls -F; cd Documents``
+        - More later...
+            - ``|`` pipe
+            - ``<``, ``>``, ``>>`` redirections
+            - ``()`` command group 
+
+History
+---
+
+- Unix
+    - The term Unix refers to any Unix-like systems such as Linux, Solaris, Mac OS, BSD, etc.
+    - 1969: UNiplexed Information and Computing Service
+    - 1971: V1 (60 commands)
+    - 1973: V3 (Pipe, C language)
+    - 1976: V6 (rewritten in C, base for BSD)
+    - 1979: V7 (Licensed, portable)
+- Linux
+    - Written in 1991 by Linus Torvalds
+    - 2001: Linux Kernel v. 2.4
+    - Most popular Unix variant
+    - Free with GNU license
+    - Ported to many different hardware platforms
+- FreeBSD
+    - 1993: FreeBSD (focuses on PCs)
+    - 1993: NetBSD (focuses on portability)
+    - 1996: OpenBSD (focuses on security)
+    - Free with BSD license
+- Mac OS X
+    - Based on 4.4 BSD-Lite
+    - Built its own GUI on top of BSD base
+    - You know the rest!
+- Unix Philosophy
+    - Small is beautiful
+        - Easy to understand
+        - Easy to maintain
+        - Efficient
+        - Reuse
+    - Make each program (commands) simple and do one thing well
+    - Complex functionality can be achieved by combining commands.
+    - Etc. read more on your own.
+- A Brief Overview of OS
+    - Shell: interpreter between the kernel and user
+    - Utilities: compilers, commands, others
+    - System calls (read, write, etc.)
+
+Shell Programs
+---
+- What is a shell program?
+    - That’s the one which prints out the prompt and wait for a user input in terminal
+    - A command interpreter that translates the user’s commands for the Kernel to carry out the user’s commands.
+    - There are varieties of shell programs.
+        - C shell (csh)
+            - Developed by BSD Unix
+        - Bourne shell (sh)
+            - Developed by Unix System V; compact and simple
+        - Korn shell (ksh)
+            - Developed by David Korn; extended Bourne shell
+        - Turbo shell (tsh)
+            - Enhanced csh
+        - GNU shell (bash)
+            - Most advanced and default for Ubuntu users
+        - And more…..
+    - How do I know which shell I am using?
+        - Type ``echo $SHELL`` on terminal
+- The ``echo`` command
+    - Demo
+        - ``x=1``
+        - ``echo x``
+        - ``echo $x``
+        - ``echo hello world``
+        - ``echo $HOME``
+        - ``echo $PATH``
+        - ``echo $PWD``
+        - ``echo $HOSTNAME``
+        - Environment variables configure the system and program behavior
+        - They also help programs to find necessary files at invocation and during runtime.
+    - Exercise
+        - Use ``printenv`` command to see all the environment variables defined.
+- The ``cat`` command
+    - Demo
+        - ``cat somefile``
+    - Exercise
+        - Download file ``foo`` from blackboard. Do ``cat foo``. What do you see?
+        - Try ``more foo`` this time. What is the difference?
+        - Show two files ``foo`` and ``bar`` with ``cat`` command.
+
+File and Permissions
+===
+- The ``ln`` command
+    - Demo
+        - ``ln -s foo foolink``
+        - ``ln foo foolink``
+        - Hard vs soft links
+    - Exercise
+        - Can you create a hard link to a directory? Try!
+        - Can you create a hard link to a file in another partition? Try!
+        - Create a text file and create a symbolic to it. Observe the sizes of the two files you created.
+        - Try ``ls -l``. What is the difference between the link and the main file?
+- The ``chmod`` command
+    - Demo
+        - ``chmod +x foo``
+        - user and group
+        - ``chmod`` options: u, g, o, a, x, w, r, +, -, =
+    - Exercise
+        - Create a file and give write permissions to it for all users.
+        - Revoke all the permissions from the file you created. Can you still access it? Why?
+- Permission Bits
+    - Demo
+        - rwxrwxrwx bits
+        - Decimal representation
+    - Exercise
+        - Create a file ``foo`` and do ``chmod 000 foo``. Then use ``ls -l`` to observe its permission bits.
+        - What if you want the:
+            - User to read, write, and execute
+            - group to read and execute but not write
+            - others to have no permission
+            
+            -->
+            
+Bash
 ===
 
 References
@@ -192,65 +373,76 @@ Homework
 
 -->
 
-<!---
-
-Advanced commands
+Command execution and processes (Mar. w1)
 ===
 
 Redirection
 ---
 
-- Intro: 
-    - redirect from one file to another
-        - standard printout is a file, 
-        - error printout is another file
-    - `>`, `>>`
+- Intro: redirect from one file to another
+    - standard printout `stdout` is a file, 
+    - `stderr` is another file
+    - ampersand `&`: both `stderr` and `stdout`
 - demo:
     1. `echo 'hello Alice' > somefile`
-    3. `echo 'hello Alice' >> somefile`
-    4. `rm XXX>somefile`, `rm XXX &>somefile`, 
-    5. `rm XXX 1>somefile`, `rm XXX 2>somefile`, 
+    2. `echo 'hello Alice' >> somefile`
+    3. `rm nonexistfile > somefile`
+    4. `rm nonexistfile 1>somefile`, `rm nonexistfile 2>somefile`, `rm nonexistfile &>somefile`
+
+---
+
 - exercise:
     1. try `pwd > ZZZ`; explain what this command does?
-    1. write a command to store the list of files in current directory to a file named 'YYY'
+    2. write a command to store the list of files in current directory to a file named 'YYY'
+
+Pipe
+---
+
+- Intro: chaining multiple commands by their `stdin` and `stdout`
+    - pass output (`stdout`) of a previous command to input (`stdin`) of the next one.
+    - A pipe is a classic method of interprocess communication
+    - `|`, `&&`
+- demo:
+    1. `ls /etc | more`
+    2. `pwd | ls`
+
+---
+
+- exercise:
+    1. can you pipe and redirect more than one time? `ls /etc | more > output`
+    2. use grep to find all the processes running as root
 
 Background processes
 ---
 
 - demo:
-    1. `vim &`
-    2. `jobs`
-    3. `fg`
+    1. run in foreground: `gedit`, `vim`
+    2. run in background: `gedit &`, `vim &`
+    3. `<CTRL+C>`
+    4. `<CTRL+Z>`, `fg`
 - exercise:
-    1. run `top`. now use ctrl+c to terminate it. run in another time and this time use ctrl+z. what is the difference?
-    2. run top in the background. also run vim in the background. try switching between them in one terminal.
+    1. run `top`. now use ctrl+c to terminate it. run in another time and this time use `<ctrl+z>`. what is the difference?
+    2. run `top` in the background. also run vim in the background. try switching between them in one terminal.
     3. copy a big file that takes a long time in the background and observe when it finishes with top.
 
-Pipe
----
-
-- intro:
-    - chaining multiple commands
-    - pass output (stdout) of a previous command to input (stdin) of the next one.
-    - A pipe is a classic method of interprocess communication
-    - `|`, `&&`
-- demo:
-    1. `ls /etc | more`
-    2. `echo pwd | ls`
-- exercise:
-    2. can you pipe and redirect more than one time? `ls /etc | more > output`
-    3. can you write the error to a file? like `rm nonexistingfile1 > output`.
+<!--
 
 Command execution model
 ---
 
-- a command is run in a process
+- executing a command in a process
 - a process access "files"
-    - file: stdout/stdin, stderr, on-disk files
+     - stdout/stdin, stderr
+     - file: devices(keyboard, display), on-disk files
+- a process maintains states
+    - source vs `./`
 - processes contend the "frontend" display
-- source vs `./`
+    - `fg`
+    - `<CTRL+Z>`
+-->
 
-    
+<!--
+
 Homework 4
 ---
 
@@ -258,7 +450,6 @@ Homework 4
 2. read the man page for `wc` command. write a bash script to get name of a file and removes it if it contains less that 3 words.
 3. using `ls` and `wc` commands, write a single command to print out the number of files in the current directory.
 4. use head and tail to print out lines number 25 to 30 of a long file.
-
 
 Processes
 ===
