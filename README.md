@@ -194,6 +194,72 @@ Homework
 
 <!---
 
+Advanced commands
+===
+
+Redirection
+---
+
+- Intro: 
+    - redirect from one file to another
+        - standard printout is a file, 
+        - error printout is another file
+    - `>`, `>>`
+- demo:
+    1. `echo 'hello Alice' > somefile`
+    3. `echo 'hello Alice' >> somefile`
+    4. `rm XXX>somefile`, `rm XXX &>somefile`, 
+    5. `rm XXX 1>somefile`, `rm XXX 2>somefile`, 
+- exercise:
+    1. try `pwd > ZZZ`; explain what this command does?
+    1. write a command to store the list of files in current directory to a file named 'YYY'
+
+Background processes
+---
+
+- demo:
+    1. `vim &`
+    2. `jobs`
+    3. `fg`
+- exercise:
+    1. run `top`. now use ctrl+c to terminate it. run in another time and this time use ctrl+z. what is the difference?
+    2. run top in the background. also run vim in the background. try switching between them in one terminal.
+    3. copy a big file that takes a long time in the background and observe when it finishes with top.
+
+Pipe
+---
+
+- intro:
+    - chaining multiple commands
+    - pass output (stdout) of a previous command to input (stdin) of the next one.
+    - A pipe is a classic method of interprocess communication
+    - `|`, `&&`
+- demo:
+    1. `ls /etc | more`
+    2. `echo pwd | ls`
+- exercise:
+    2. can you pipe and redirect more than one time? `ls /etc | more > output`
+    3. can you write the error to a file? like `rm nonexistingfile1 > output`.
+
+Command execution model
+---
+
+- a command is run in a process
+- a process access "files"
+    - file: stdout/stdin, stderr, on-disk files
+- processes contend the "frontend" display
+- source vs `./`
+
+    
+Homework 4
+---
+
+1. read the man page for `head` and `tail` commands. write a bash script to get name of a file and writes the 3 first and 3 last lines of the file to another file named `output`.
+2. read the man page for `wc` command. write a bash script to get name of a file and removes it if it contains less that 3 words.
+3. using `ls` and `wc` commands, write a single command to print out the number of files in the current directory.
+4. use head and tail to print out lines number 25 to 30 of a long file.
+
+
 Processes
 ===
 
@@ -216,70 +282,5 @@ ps and kill
     1. use grep to find all the processes running as root
     2. open firefox web browser and find its pid
     3. terminate firefox using the kill command. Suppose firefox is crashed and you can't close it using graphical interface. What you need to do to close it?
-
-
-Advanced commands
-===
-
-Command execution model
----
-
-- a command is run in a process
-- a process access "files"
-    - file: stdout/stdin, stderr, on-disk files
-- processes contend the "frontend" display
-- source vs `./`
-
-Redirection
----
-
-- intro: 
-    - redirect from one file to another
-        - standard printout is a file, 
-        - error printout is another file
-    - `>`, `>>`
-- demo:
-    1. `echo 'hello Alice' > somefile`
-    3. `echo 'hello Alice' >> somefile`
-    4. `rm XXX>somefile`, `rm XXX &>somefile`, 
-    5. `rm XXX 1>somefile`, `rm XXX 2>somefile`, 
-- exercise:
-    1. try `pwd > ZZZ`; explain what this command does?
-    1. write a command to store the list of files in current directory to a file named 'YYY'
-
-Pipe
----
-
-- intro:
-    - chaining multiple commands
-    - pass output (stdout) of a previous command to input (stdin) of the next one.
-    - A pipe is a classic method of interprocess communication
-    - `|`, `&&`
-- demo:
-    1. `ls /etc | more`
-    2. `echo pwd | ls`
-- exercise:
-    2. can you pipe and redirect more than one time? `ls /etc | more > output`
-    3. can you write the error to a file? like `rm nonexistingfile1 > output`.
-
-background processes
----
-
-- demo:
-    1. `vim &`
-    2. `jobs`
-    3. `fg`
-- exercise:
-    1. run `top`. now use ctrl+c to terminate it. run in another time and this time use ctrl+z. what is the difference?
-    2. run top in the background. also run vim in the background. try switching between them in one terminal.
-    3. copy a big file that takes a long time in the background and observe when it finishes with top.
-
-Homework 4
----
-
-1. read the man page for `head` and `tail` commands. write a bash script to get name of a file and writes the 3 first and 3 last lines of the file to another file named `output`.
-2. read the man page for `wc` command. write a bash script to get name of a file and removes it if it contains less that 3 words.
-3. using `ls` and `wc` commands, write a single command to print out the number of files in the current directory.
-4. use head and tail to print out lines number 25 to 30 of a long file.
 
 -->
