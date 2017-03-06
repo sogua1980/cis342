@@ -394,7 +394,7 @@ Redirection
 
 - exercise:
     1. try `pwd > ZZZ`; explain what this command does?
-    2. write a command to store the list of files in current directory to a file named 'YYY'
+    2. write a command to store the list of files in current directory to a file named by 'f'
 
 Pipe
 ---
@@ -402,16 +402,18 @@ Pipe
 - Intro: chaining multiple commands by their `stdin` and `stdout`
     - pass output (`stdout`) of a previous command to input (`stdin`) of the next one.
     - A pipe is a classic method of interprocess communication
-    - `|`, `&&`
+    - `|`
 - demo:
     1. `ls /etc | more`
-    2. `pwd | ls`
+    2. `ls /etc | vim -`
+    3. `pwd | ls`
 
 ---
 
 - exercise:
-    1. can you pipe and redirect more than one time? `ls /etc | more > output`
-    2. create two text files "foo" and "bar". use cat and grep together to extract all occurances of the word "hello" from the two files in one command. Note: "cat" can print the contents of multiple files, but grep only searches a single file.
+    1. run command `ls /etc | more > output`; explain what it does.
+    2. design a command to output all files with `cis` in their name, using pipe. Note you can't use `find`.
+        - hint: use `ls` and `grep`
 
 Background processes
 ---
