@@ -411,7 +411,7 @@ Pipe
 ---
 
 - exercise:
-    1. run command `ls /etc | more > output`; explain what it does.
+    1. run command `ls /etc | grep conf$ > output`; explain what it does.
     2. design a command to output all files with `cis` in their name, using pipe. Note you can't use `find`.
         - hint: use `ls` and `grep`
 
@@ -421,12 +421,12 @@ Background processes
 - demo:
     1. run in foreground: `gedit`, `vim`
     2. run in background: `gedit &`, `vim &`
-    3. `<CTRL+C>`
-    4. `<CTRL+Z>`, `fg`
+    3. `<CTRL+C>`, `<CTRL+Z>`, `fg`
+    4. `jobs`, `fg 1`: switch between multiple background processes
+    5. `top` (global), `jobs` (children processes)
 - exercise:
-    1. run `top`. now use ctrl+c to terminate it. run in another time and this time use `<ctrl+z>`. what is the difference?
-    2. run `top` in the background. also run vim in the background. try switching between them in one terminal.
-    3. copy a big file that takes a long time in the background and observe when it finishes with top.
+    1. run `top`. now use `<ctrl+c>` to terminate it. run in another time and this time use `<ctrl+z>`. what is the difference?
+    2. run `vim f1` in the background. also run `vim f2` in the background. try switching between them in one terminal.
 
 <!--
 
