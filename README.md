@@ -176,9 +176,10 @@ File and Permissions
             - User to read, write, and execute
             - group to read and execute but not write
             - others to have no permission
-            
-            -->
-            
+
+-->
+
+       
 Bash
 ===
 
