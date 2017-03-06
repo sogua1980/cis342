@@ -410,7 +410,7 @@ Pipe
 
 - exercise:
     1. can you pipe and redirect more than one time? `ls /etc | more > output`
-    2. use grep to find all the processes running as root
+    2. create two text files "foo" and "bar". use cat and grep together to extract all occurances of the word "hello" from the two files in one command. Note: "cat" can print the contents of multiple files, but grep only searches a single file.
 
 Background processes
 ---
