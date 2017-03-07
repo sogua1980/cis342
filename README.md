@@ -254,7 +254,7 @@ Pipe
     2. design a command to output all files with `cis` in their name, using pipe. Note you can't use `find`.
         - hint: use `ls` and `grep`
 
-Process management
+Process management [opt]
 ---
 
 - `top` (global), `jobs` (children processes)
@@ -272,7 +272,7 @@ Background processes
     1. run `top`. now use `<ctrl+c>` to terminate it. run in another time and this time use `<ctrl+z>`. what is the difference?
     2. run `vim f1` in the background. also run `vim f2` in the background. try switching between them in one terminal.
 
-Execution mode
+Execution mode [opt]
 ---
 
 - launch a new process: `./script script.sh`, `command`
