@@ -415,6 +415,12 @@ Pipe
     2. design a command to output all files with `cis` in their name, using pipe. Note you can't use `find`.
         - hint: use `ls` and `grep`
 
+Process management
+---
+
+- `top` (global), `jobs` (children processes)
+- `ps`: all processes that have controlling terminals
+
 Background processes
 ---
 
@@ -423,10 +429,15 @@ Background processes
     2. run in background: `gedit &`, `vim &`
     3. `<CTRL+C>`, `<CTRL+Z>`, `fg`
     4. `jobs`, `fg 1`: switch between multiple background processes
-    5. `top` (global), `jobs` (children processes)
 - exercise:
     1. run `top`. now use `<ctrl+c>` to terminate it. run in another time and this time use `<ctrl+z>`. what is the difference?
     2. run `vim f1` in the background. also run `vim f2` in the background. try switching between them in one terminal.
+
+Execution mode
+---
+
+- launch a new process: `./script script.sh`, `command`
+- run in current process: `source script.sh`, `. script.sh`
 
 <!--
 
@@ -434,14 +445,14 @@ Command execution model
 ---
 
 - executing a command in a process
-- a process access "files"
-     - stdout/stdin, stderr
-     - file: devices(keyboard, display), on-disk files
-- a process maintains states
-    - source vs `./`
-- processes contend the "frontend" display
-    - `fg`
-    - `<CTRL+Z>`
+- a process has "file references"
+     - `stdout`, `stderr`
+     - `stdin`
+     - each refers to a "file"
+         - file: devices (keyboard, display), on-disk files
+- a process runs in background/foreground
+    - `fg`, `<CTRL+Z>`, `jobs`
+
 -->
 
 <!--
