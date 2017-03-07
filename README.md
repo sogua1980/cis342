@@ -1,3 +1,7 @@
+% Lecture notes in CIS342 
+% Yuzhe Tang, Amin Fallahi
+% Spring, 2017
+
 Section 1: Bash
 ===
 
