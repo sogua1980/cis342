@@ -120,6 +120,7 @@ Exit values
     2. how do you modify the above script so that it prints 1
     3. write a script by using `touch` and exit value to test if a file (with name `AAA`) exist?
 -->
+
 <!--
 
 Homework 3
@@ -238,10 +239,9 @@ Redirection
 Pipe
 ---
 
-- Intro: chaining multiple commands by their `stdin` and `stdout`
-    - pass output (`stdout`) of a previous command to input (`stdin`) of the next one.
-    - A pipe is a classic method of interprocess communication
-    - `|`
+- Chaining multiple commands 
+    - connect the `stdout` of a previous command to the `stdin` of the current command. (like a pipe)
+    - A pipe is a method of interprocess communication (IPC)
 - demo:
     1. `ls /etc | more`
     2. `ls /etc | vim -`
@@ -253,6 +253,7 @@ Pipe
     1. run command `ls /etc | grep conf$ > output`; explain what it does.
     2. design a command to output all files with `cis` in their name, using pipe. Note you can't use `find`.
         - hint: use `ls` and `grep`
+
 
 Process management [opt]
 ---
@@ -299,10 +300,14 @@ Command execution model
 Homework 4
 ---
 
-1. read the man page for `head` and `tail` commands. write a bash script to get name of a file and writes the 3 first and 3 last lines of the file to another file named `output`.
-2. read the man page for `wc` command. write a bash script to get name of a file and removes it if it contains less that 3 words.
-3. using `ls` and `wc` commands, write a single command to print out the number of files in the current directory.
-4. use head and tail to print out lines number 25 to 30 of a long file.
+1. Redirect *all* the printout of command `(echo t; rm ttt)` to a file of name `f`. Hint `(A; B)` means executing two commands `A` and `B` in sequence (without piping). 
+2. Print all the processes in the system with name `bash`; hint: `ps aux` is the command to print all the processes in the system.
+3. When running two commands `top &`, `vim f &` in the background, how will you bring the `vim` command to the screen. Describe the command you will use and the command-line argument.
+4. `wc f` is a command that prints the word count in file `f`. In particular, `wc -l f` prints the number of lines in file `f`. Using `ls` and `wc` commands, write a piped command to print out the number of files in the current directory.
+
+-->
+
+<!--
 
 Processes
 ===
