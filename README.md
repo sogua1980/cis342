@@ -234,13 +234,20 @@ Redirection
     1. try `pwd > ZZZ`; explain what this command does?
     2. write a command to store the list of files in current directory to a file named by 'f'
 
-Pipe
+Process management [opt]
+---
+
+- `top` (global), `jobs` (children processes)
+- `ps`: (default) all processes that have controlling terminals
+    - `ps aux`: global
+    
+Pipe (IPC1)
 ---
 
 - Chaining multiple commands 
-    - connect the `stdout` of a previous command to the `stdin` of the current command. (like a pipe)
+    - commands run in processes; a process has descriptors or channels to files
+    - connect the `stdout` descriptor of a previous command to the `stdin` of the current command. (like a pipe)
     - A pipe is a method of interprocess communication (IPC)
-        - another IPC is through signals
 - demo:
     1. `ls /etc | more`
     2. `ls /etc | vim -`
@@ -252,26 +259,23 @@ Pipe
     1. run command `ls /etc | grep conf$ > output`; explain what it does.
     2. design a command to output all files with `cis` in their name, using pipe. Note you can't use `find`.
         - hint: use `ls` and `grep`
-
-
-Process management [opt]
+    
+Signals & background processes (IPC2)
 ---
 
-- `top` (global), `jobs` (children processes)
-- `ps`: (default) all processes that have controlling terminals
-    - `ps aux`: global
+- foreground/background: 
+    - multiple processes contend for a file
+    - a process runs in background/foreground
+    1. demo: run in foreground: `gedit`, `vim`
+    2. demo: run in background: `gedit &`, `vim &`
 - signals:
     - `<CTRL+Z>`: (keyboard) sends pause signal to the process in foreground
     - `<CTRL+C>`: (keyboard) sends quit signal to the process in foreground
-    
-Background processes
----
-
-- demo:
-    1. run in foreground: `gedit`, `vim`
-    2. run in background: `gedit &`, `vim &`
     3. `<CTRL+C>`, `<CTRL+Z>`, `fg`
-    4. `jobs`, `fg 1`: switch between multiple background processes
+    4. demo: `jobs`, `fg 1`: switch between multiple background processes
+
+----
+
 - exercise:
     1. run `top`. now use `<ctrl+c>` to terminate it. run in another time and this time use `<ctrl+z>`. what is the difference?
     2. run `vim f1` in the background. also run `vim f2` in the background. try switching between them in one terminal.
@@ -288,14 +292,14 @@ Command execution model
 ---
 
 - executing a command in a process
-- a process has "file references"
+- a process has "channels" or "file descriptors" that binds to "files"
      - `stdout`, `stderr`
      - `stdin`
-     - each refers to a "file"
-         - file: devices (keyboard, display), on-disk files
-- a process runs in background/foreground
+     - files: devices (keyboard, display), on-disk files
+- multiple processes contend for a file
+    - a process runs in background/foreground
     - `fg`, `<CTRL+Z>`, `jobs`
-
+    
 -->
 
 <!--
