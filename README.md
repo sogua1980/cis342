@@ -30,8 +30,6 @@ Basic commands
     - `export`
 
 File management
-===
-
 ---
 
 - basic commands
@@ -242,6 +240,7 @@ Pipe
 - Chaining multiple commands 
     - connect the `stdout` of a previous command to the `stdin` of the current command. (like a pipe)
     - A pipe is a method of interprocess communication (IPC)
+        - another IPC is through signals
 - demo:
     1. `ls /etc | more`
     2. `ls /etc | vim -`
@@ -259,8 +258,12 @@ Process management [opt]
 ---
 
 - `top` (global), `jobs` (children processes)
-- `ps`: all processes that have controlling terminals
-
+- `ps`: (default) all processes that have controlling terminals
+    - `ps aux`: global
+- signals:
+    - `<CTRL+Z>`: (keyboard) sends pause signal to the process in foreground
+    - `<CTRL+C>`: (keyboard) sends quit signal to the process in foreground
+    
 Background processes
 ---
 
