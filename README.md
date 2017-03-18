@@ -354,6 +354,46 @@ int main()
 }
 ```
 
+```
+#include <stdio.h>
+
+int main()
+{ 
+  int i = 0;
+  while ( i < 10 ) {
+      printf( "%d\n", x );
+      x++;
+  }
+  return 0;
+}
+```
+
+- Exercise:
+    - Write a program that gets an integer from user and checks if it is a prime number or not
+    - Write a progeam that prints all the prime numbers between 2 to 10000
+
+Functions
+---
+
+- Demo:
+```c
+#include <stdio.h>
+
+int power ( int x, int y );
+
+int main()
+{
+    printf("%d",power(2,11));
+}
+
+int power (int x, int y)
+{
+  int i,out=1;
+  for (i=0; i&lt;y; i++)
+    out*=x;
+  return out;
+}
+```
 <!--
 
 Command execution model
