@@ -286,6 +286,22 @@ Execution mode [opt]
 - launch a new process: `./script script.sh`, `command`
 - run in current process: `source script.sh`, `. script.sh`
 
+C Programming Language
+===
+
+Program structure
+---
+
+- Demo:
+    - ``#include <stdio.h>
+int main()
+{
+    printf( "I am alive!  Beware.\n" );
+    getchar();
+    return 0;
+}``
+    
+
 <!--
 
 Command execution model
