@@ -314,7 +314,7 @@ Conditional Statements
 ---
 
 - Demo:
-    - ```c
+    - ``c
 #include <stdio.h>	
 
 int main()
@@ -323,7 +323,7 @@ int main()
     printf( "Please enter your age" );
     scanf( "%d", &age );
     if ( age &lt; 100 ) {
-```
+``
 
 <!--
 
