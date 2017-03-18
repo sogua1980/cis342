@@ -322,7 +322,7 @@ int main()
     int age;
     printf( "Please enter your age" );
     scanf( "%d", &age );
-    if ( age \< 100 ) {
+    if ( age &lt; 100 ) {
 ```
 
 <!--
