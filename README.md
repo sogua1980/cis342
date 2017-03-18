@@ -314,7 +314,8 @@ int main()
 ---
 
 - Demo:
-    - ```#include <stdio.h>	
+    - ```c
+#include <stdio.h>	
 
 int main()
 {
@@ -331,7 +332,7 @@ int main()
         printf( "You are really old\n" );
     }
   return 0;
-}```
+} ```
 
 <!--
 
