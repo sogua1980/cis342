@@ -296,11 +296,13 @@ Program structure
     - ``#include <stdio.h>
 int main()
 {
-    printf( "I am alive!  Beware.\n" );
-    getchar();
+    printf( "Hello World!\n" );
     return 0;
 }``
-    
+    - Compiling using GCC: ``gcc hello.c``
+    - Using variables: ``int a;``
+    - Printing an integer variable: ``printf("%d",a);``
+    - Getting integer input from user: ``scanf("%d",&a);`` 
 
 <!--
 
