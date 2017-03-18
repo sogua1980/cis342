@@ -334,6 +334,25 @@ int main()
   return 0;
 }
 ```
+- Exercise:
+    - Write a program that gets an integer from user and prints "odd" or "even" based on the input.
+
+Loops
+---
+
+- Demo:
+```c
+#include <stdio.h>
+
+int main()
+{
+    int i;
+    for ( i = 0; i &lt; 10; i++ ) {
+        printf( "%d\n", i );
+    }
+    return 0;
+}
+```
 
 <!--
 
