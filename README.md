@@ -303,6 +303,35 @@ int main()
     - Using variables: ``int a;``
     - Printing an integer variable: ``printf("%d",a);``
     - Getting integer input from user: ``scanf("%d",&a);`` 
+    - Assigning value to a variable: ``a=2017;``
+- Exercise:
+    - Write a program to get 2 integers from the user and print the sum of them
+    - Try printing integers and text together: ``int a; a=2017; printf("March %d",a);``
+    - Try ``a++;``, ``a*=5;``
+    - Write a program to swap the value of two integer variables
+    
+- Conditional Statements
+---
+
+- Demo:
+    - ``#include <stdio.h>	
+
+int main()
+{
+    int age;
+    printf( "Please enter your age" );
+    scanf( "%d", &age );
+    if ( age < 100 ){
+        printf ("You are pretty young!\n" );
+    }
+    else if ( age == 100 ){
+        printf( "You are old\n" );       
+    }
+    else{
+        printf( "You are really old\n" );
+    }
+  return 0;
+}``
 
 <!--
 
