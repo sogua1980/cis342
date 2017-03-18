@@ -322,7 +322,7 @@ int main()
     printf( "Please enter your age" );
     scanf( "%d", &age );
     if ( age < 100 ){
-        printf ("You are pretty young!\n" );
+        printf ("You are pretty young\n" );
     }
     else if ( age == 100 ){
         printf( "You are old\n" );       
