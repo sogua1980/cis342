@@ -198,22 +198,6 @@ Find
 - exercise:
     4. write a command to find all the files with name starting with `fil` under the current directory.
 
-<!--
-
-Homework
----
-
-1. There are a couple of other commands like "find". Test these and describe the difference: "which", "whereis", "locate".
-2. Search the internet for "grep regular expression for US phone numbers" and find a regular expression for finding all file lines that contain a valid US phone number. Test it on a sample file and write the command. Examples of valid US phone number formats: (315)1234567, 680-123-4567, 7161234567, (585) 1234567, (800)123-4567
-3. Modify the regular expression you used in the previous question to only match Syrause area codes (315 and 680)
-4. Write a regular expression to match all lines of a file which contain an email address. You can search the internet for this. But make sure that it works!
-5. Modify the regular expression you used in the previous question to only match syr.edu emails.
-6. What option of the find command do you use for finding all files with a certain permission?
-7. Use -type option of find command to find all "directories" in the home directory of a user named "foo" recursively.
-8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
-
--->
-
 Command execution and processes (Mar. w1)
 ===
 
@@ -299,6 +283,14 @@ Command execution model
 
 Homework 4
 ---
+
+1. Write a regular expression to match a valid US phone number, assuming there are two acceptable formats: (315)1234567, (800)123-4567. Test your regular expression using `grep`
+2. Modify the regular expression you used in the previous question to only match Syrause area codes (315 and 680)
+3. Write a regular expression to match email addresses.
+4. Modify the regular expression you used in the previous question to only match syr.edu emails.
+6. What option of the find command do you use for finding all files with a certain permission?
+7. Use -type option of find command to find all "directories" in the home directory of a user named "foo" recursively.
+8. Use find command with -regex option to find all files that their names starts with a lowercase letter.
 
 1. Redirect *all* the printout of command `(echo t; rm ttt)` to a file of name `f`. Hint `(A; B)` means executing two commands `A` and `B` in sequence (without piping). 
 2. Print all the processes in the system with name `bash`; hint: `ps aux` is the command to print all the processes in the system.
