@@ -3,6 +3,6 @@ all:
 	git commit -am 't' 
 	git push
 
-pull:
+p:
 	git pull origin master
 	
