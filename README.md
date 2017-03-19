@@ -285,7 +285,7 @@ Execution mode [opt]
 
 - launch a new process: `./script script.sh`, `command`
 - run in current process: `source script.sh`, `. script.sh`
-
+<!--
 C Programming Language
 ===
 
@@ -419,7 +419,7 @@ int main()
 
 - Exercise:
     - Write a program to get an array with 10 integers from user and sort the array.
-<!--
+
 
 Command execution model
 ---
