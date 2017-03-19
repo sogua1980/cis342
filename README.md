@@ -2,6 +2,55 @@
 % Yuzhe Tang, Amin Fallahi
 % Spring, 2017
 
+
+
+Section 2: Programming in C/C++ 
+===
+
+gcc & makefile
+===
+
+References
+---
+
+- "Unix Programming Tools", [[link](cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
+
+
+---
+
+- compilation consists of:
+    - compiling: text `.c` file to  reocatable `.o` (object) file
+    - linking: multiple relocatable `.o` files to one executable `.o` file
+        - symbol: references to constructs in other `.o` files
+
+Gcc: Flags
+---
+
+- `-c` for compile, `-o` for output
+- `-g` for debug 
+- `-Wall`, w for warning 
+- `-I` for `#include`
+- `-Ldir`/`-lmylib` for library to link
+    - search library for unsolved sumbols (functions, global variables) when linking
+
+Makefile: Variables
+---
+
+- variable represents strings of text
+- standard variable: `CC`, `CFLAGS`, `LDFLAGS`
+    - `LDFLAGS` library search path (`-L`)
+    - `OBJS = $(SRCS:.c=.o)`: 
+        - This incantation says that the object files  have the same name as the .c files, but with .o
+
+Makefile: Dependency rules
+---
+
+- dependency rules: tells how to make a target based on changes to a list of certain files.
+- If-this-then-that
+    - dependency line: a trigger that says when to do something
+    - command line: specifies what to do
+
+
 <!--
 
 Section 2: C Programming Language
