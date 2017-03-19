@@ -354,7 +354,7 @@ int main()
 }
 ```
 
-```
+```c
 #include <stdio.h>
 
 int main()
@@ -394,6 +394,31 @@ int power (int x, int y)
   return out;
 }
 ```
+- Exercise:
+    - Write a function that gets n as the input and calculates nth number in fibonacci sequence.
+    - Write a function that gets n as the input and returns 1 if it is a prime number and returns 0 if it is not.
+
+Arrays
+---
+
+- Demo:
+```c
+#include <stdio.h>
+
+int main()
+{
+	int i,fib[10];
+	fib[0]=1;
+	fib[1]=1;
+	for (i=2; i<10; i++)
+		fib[i]=fib[i-1]+fib[i-2];
+	for (i=0; i<10; i++)		
+		printf("%d\n",fib[i]);
+}
+```
+
+- Exercise:
+    - Write a program to get an array with 10 integers from user and sort the array.
 <!--
 
 Command execution model
