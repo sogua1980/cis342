@@ -30,8 +30,6 @@ Basic commands
     - `export`
 
 File management
-===
-
 ---
 
 - basic commands
@@ -220,11 +218,19 @@ Redirection
     1. try `pwd > ZZZ`; explain what this command does?
     2. write a command to store the list of files in current directory to a file named by 'f'
 
-Pipe
+Process management [opt]
+---
+
+- `top` (global), `jobs` (children processes)
+- `ps`: (default) all processes that have controlling terminals
+    - `ps aux`: global
+    
+Pipe (IPC1)
 ---
 
 - Chaining multiple commands 
-    - connect the `stdout` of a previous command to the `stdin` of the current command. (like a pipe)
+    - commands run in processes; a process has descriptors or channels to files
+    - connect the `stdout` descriptor of a previous command to the `stdin` of the current command. (like a pipe)
     - A pipe is a method of interprocess communication (IPC)
 - demo:
     1. `ls /etc | more`
@@ -237,22 +243,23 @@ Pipe
     1. run command `ls /etc | grep conf$ > output`; explain what it does.
     2. design a command to output all files with `cis` in their name, using pipe. Note you can't use `find`.
         - hint: use `ls` and `grep`
-
-
-Process management [opt]
+    
+Signals & background processes (IPC2)
 ---
 
-- `top` (global), `jobs` (children processes)
-- `ps`: all processes that have controlling terminals
-
-Background processes
----
-
-- demo:
-    1. run in foreground: `gedit`, `vim`
-    2. run in background: `gedit &`, `vim &`
+- foreground/background: 
+    - multiple processes contend for a file
+    - a process runs in background/foreground
+    1. demo: run in foreground: `gedit`, `vim`
+    2. demo: run in background: `gedit &`, `vim &`
+- signals:
+    - `<CTRL+Z>`: (keyboard) sends pause signal to the process in foreground
+    - `<CTRL+C>`: (keyboard) sends quit signal to the process in foreground
     3. `<CTRL+C>`, `<CTRL+Z>`, `fg`
-    4. `jobs`, `fg 1`: switch between multiple background processes
+    4. demo: `jobs`, `fg 1`: switch between multiple background processes
+
+----
+
 - exercise:
     1. run `top`. now use `<ctrl+c>` to terminate it. run in another time and this time use `<ctrl+z>`. what is the difference?
     2. run `vim f1` in the background. also run `vim f2` in the background. try switching between them in one terminal.
@@ -262,21 +269,154 @@ Execution mode [opt]
 
 - launch a new process: `./script script.sh`, `command`
 - run in current process: `source script.sh`, `. script.sh`
-
 <!--
+C Programming Language
+===
+
+Program structure
+---
+
+- Demo:
+    - ``#include <stdio.h>
+int main()
+{
+    printf( "Hello World!\n" );
+    return 0;
+}``
+    - Compiling using GCC: ``gcc hello.c``
+    - Using variables: ``int a;``
+    - Printing an integer variable: ``printf("%d",a);``
+    - Getting integer input from user: ``scanf("%d",&a);`` 
+    - Assigning value to a variable: ``a=2017;``
+- Exercise:
+    - Write a program to get 2 integers from the user and print the sum of them
+    - Try printing integers and text together: ``int a; a=2017; printf("March %d",a);``
+    - Try ``a++;``, ``a*=5;``
+    - Write a program to swap the value of two integer variables
+    
+Conditional Statements
+---
+
+- Demo:
+```c
+#include <stdio.h>	
+
+int main()
+{
+    int age;
+    printf( "Please enter your age" );
+    scanf( "%d", &age );
+    if ( age &lt; 100 ) {
+        printf ("You are pretty young!\n" );
+    }
+    else if ( age == 100 ) {
+        printf( "You are old\n" );       
+    }
+    else {
+        printf( "You are really old\n" );
+    }
+  return 0;
+}
+```
+- Exercise:
+    - Write a program that gets an integer from user and prints "odd" or "even" based on the input.
+
+Loops
+---
+
+- Demo:
+```c
+#include <stdio.h>
+
+int main()
+{
+    int i;
+    for ( i = 0; i &lt; 10; i++ ) {
+        printf( "%d\n", i );
+    }
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
+
+int main()
+{ 
+  int i = 0;
+  while ( i < 10 ) {
+      printf( "%d\n", x );
+      x++;
+  }
+  return 0;
+}
+```
+
+- Exercise:
+    - Write a program that gets an integer from user and checks if it is a prime number or not
+    - Write a progeam that prints all the prime numbers between 2 to 10000
+
+Functions
+---
+
+- Demo:
+```c
+#include <stdio.h>
+
+int power ( int x, int y );
+
+int main()
+{
+    printf("%d",power(2,11));
+}
+
+int power (int x, int y)
+{
+  int i,out=1;
+  for (i=0; i&lt;y; i++)
+    out*=x;
+  return out;
+}
+```
+- Exercise:
+    - Write a function that gets n as the input and calculates nth number in fibonacci sequence.
+    - Write a function that gets n as the input and returns 1 if it is a prime number and returns 0 if it is not.
+
+Arrays
+---
+
+- Demo:
+```c
+#include <stdio.h>
+
+int main()
+{
+	int i,fib[10];
+	fib[0]=1;
+	fib[1]=1;
+	for (i=2; i<10; i++)
+		fib[i]=fib[i-1]+fib[i-2];
+	for (i=0; i<10; i++)		
+		printf("%d\n",fib[i]);
+}
+```
+
+- Exercise:
+    - Write a program to get an array with 10 integers from user and sort the array.
+
 
 Command execution model
 ---
 
 - executing a command in a process
-- a process has "file references"
+- a process has "channels" or "file descriptors" that binds to "files"
      - `stdout`, `stderr`
      - `stdin`
-     - each refers to a "file"
-         - file: devices (keyboard, display), on-disk files
-- a process runs in background/foreground
+     - files: devices (keyboard, display), on-disk files
+- multiple processes contend for a file
+    - a process runs in background/foreground
     - `fg`, `<CTRL+Z>`, `jobs`
-
+    
 -->
 
 <!--
