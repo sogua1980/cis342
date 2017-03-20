@@ -65,15 +65,26 @@ make
 
 ```
 all: link
-	./a.out
+\t./a.out
 
 link: compile
-	gcc h1.o h2.o
+\tgcc h1.o h2.o
 
 compile: h1.c h2.c 
-	gcc -c h1.c
-	gcc -c h2.c
+\tgcc -c h1.c
+\tgcc -c h2.c
 
+```
+
+```
+SRCS = h1.c h2.c
+OBJS = $(SRCS:.c=.o)
+
+all: link
+\t./a.out
+
+link: $(OBJS)
+\tgcc $(OBJS)
 ```
 
 Makefile: Variables
