@@ -11,7 +11,7 @@ gcc & make (Mar. w4)
 References
 ---
 
-- "Unix Programming Tools", [[link](cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
+- "Unix Programming Tools", [[link](http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
 - Computer Systems: A Programmer's Perspective, Randal E. Bryant and David R. O'Hallaron, Chapter 1, [[online pdf](http://csapp.cs.cmu.edu/2e/ch1-preview.pdf)]
 
 Compilation overview
@@ -58,6 +58,7 @@ Gcc: Flags
 - `-Ldir`/`-lmylib` for library to link
     - search library for unsolved sumbols (functions, global variables) when linking
 - `-g` for debug (later)
+- ref [[link](https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html#Option-Summary)]
 
 make
 ---
@@ -91,7 +92,6 @@ Makefile: Dependency rules
 - If-this-then-that
     - dependency line: a trigger that says when to do something
     - command line: specifies what to do
-
 
 <!--
 
