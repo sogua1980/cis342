@@ -8,8 +8,7 @@
 latex.ps
 *.gz
 *.bak
-*.swp
-*.swo
+*.sw[a-z]
 .DS_Store
 *.ent
 *.tmp
