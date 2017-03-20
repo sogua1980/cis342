@@ -24,7 +24,7 @@ Compilation overview
     - *linking*: multiple relocatable `.o` files to one executable `.o` file
         - *symbol*: reference to link construct (declaration) in one `.o` file to construct (definition) in another `.o` file
 
-![linker](./images/link.png)
+![linker](/Users/tristartom/workspace/teaching/cis342/images/link.png)
 
 
 C: basics
