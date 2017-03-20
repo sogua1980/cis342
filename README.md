@@ -22,14 +22,17 @@ Compilation overview
 - Two steps of compilation:
     - *compiling*: text `.c` file to  reocatable `.o` (object) file
     - *linking*: multiple relocatable `.o` files to one executable `.o` file
-        - *symbol*: references to constructs in other `.o` files
+        - *symbol*: reference to link construct (declaration) in one `.o` file to construct (definition) in another `.o` file
+
+![linker](images/link.png)
+
 
 C: basics
 ---
 
 ```c
 #include <stdio.h> //preprocessor
-int y=3; //global var. (def. & init.)
+int y = 3; //global var. (def. & init.)
 //extern int y; //global var. (dec.)
 int main() //function (def.)
 {
@@ -39,7 +42,7 @@ int main() //function (def.)
 }
 ```
 
-- life of a programming construct
+- life of a C construct
     - declaration: `extern int x;`, `void foo();`
     - definition: `int x;`, `void foo(){}`
     - initialization: `int x = 6;`
@@ -49,9 +52,10 @@ int main() //function (def.)
 Gcc: Flags
 ---
 
-- `-c` for compile, `-o` for output
-- `-Wall`, w for warning 
-- `-I` for `#include`
+- `-c` for compile, `-o` for output; demo
+- `-Wall`, w for warning; demo 
+- `-I` for `#include`; demo
+    - header file (storing declarations)
 - `-Ldir`/`-lmylib` for library to link
     - search library for unsolved sumbols (functions, global variables) when linking
 - `-g` for debug (later)
