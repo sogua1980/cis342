@@ -7,31 +7,66 @@
 Section 2: Programming in C/C++ 
 ===
 
-gcc & makefile (Mar. w4)
+gcc & make (Mar. w4)
 ===
 
 References
 ---
 
 - "Unix Programming Tools", [[link](cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
+- Computer Systems: A Programmer's Perspective, Randal E. Bryant and David R. O'Hallaron, Chapter 1, [[online pdf](http://csapp.cs.cmu.edu/2e/ch1-preview.pdf)]
 
-
+Compilation overview
 ---
 
-- compilation consists of:
-    - compiling: text `.c` file to  reocatable `.o` (object) file
-    - linking: multiple relocatable `.o` files to one executable `.o` file
-        - symbol: references to constructs in other `.o` files
+- Two steps of compilation:
+    - *compiling*: text `.c` file to  reocatable `.o` (object) file
+    - *linking*: multiple relocatable `.o` files to one executable `.o` file
+        - *symbol*: references to constructs in other `.o` files
+
+C: basics
+---
+
+```c
+#include <stdio.h> //preprocessor
+int y=3; //global var. (def. & init.)
+//extern int y; //global var. (dec.)
+int main() //function (def.)
+{
+    int x = 0; //local var. (def. & init.), literal, 
+    printf( "y=%d\n",y); //function (invocation)
+    return 0;
+}
+```
+
+- life of a programming construct
+    - declaration: `extern int x;`, `void foo();`
+    - definition: `int x;`, `void foo(){}`
+    - initialization: `int x = 6;`
+    - assignment: `x=1;`
+    - destroy
 
 Gcc: Flags
 ---
 
 - `-c` for compile, `-o` for output
-- `-g` for debug 
 - `-Wall`, w for warning 
 - `-I` for `#include`
 - `-Ldir`/`-lmylib` for library to link
     - search library for unsolved sumbols (functions, global variables) when linking
+- `-g` for debug (later)
+
+
+make
+---
+
+```
+all:
+	gcc -c h1.c
+	gcc -c h2.c
+	gcc h1.o h2.o
+	./a.out
+```
 
 Makefile: Variables
 ---
