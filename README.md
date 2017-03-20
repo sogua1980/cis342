@@ -2,8 +2,6 @@
 % Yuzhe Tang, Amin Fallahi
 % Spring, 2017
 
-
-
 Section 2: Programming in C/C++ 
 ===
 
@@ -24,8 +22,9 @@ Compilation overview
     - *linking*: multiple relocatable `.o` files to one executable `.o` file
         - *symbol*: reference to link construct (declaration) in one `.o` file to construct (definition) in another `.o` file
 
-![linker](/Users/tristartom/workspace/teaching/cis342/cis342/images/link.png)
+---
 
+![linker](/Users/tristartom/workspace/teaching/cis342/cis342/images/link.png)
 
 C: basics
 ---
@@ -42,9 +41,9 @@ int main() //function (def.)
 }
 ```
 
-- life of a C construct
-    - declaration: `extern int x;`, `void foo();`
-    - definition: `int x;`, `void foo(){}`
+- Life of a C construct
+    - declaration: `extern int x;`,`void foo();`
+    - definition: `int x;`,`void foo(){}`
     - initialization: `int x = 6;`
     - assignment: `x=1;`
     - destroy
@@ -60,16 +59,20 @@ Gcc: Flags
     - search library for unsolved sumbols (functions, global variables) when linking
 - `-g` for debug (later)
 
-
 make
 ---
 
 ```
-all:
+all: link
+	./a.out
+
+link: compile
+	gcc h1.o h2.o
+
+compile: h1.c h2.c 
 	gcc -c h1.c
 	gcc -c h2.c
-	gcc h1.o h2.o
-	./a.out
+
 ```
 
 Makefile: Variables
