@@ -24,7 +24,7 @@ Compilation overview
 
 ---
 
-![linker](/Users/tristartom/workspace/teaching/cis342/cis342/images/link.png)
+![Linker](./images/link.png)
 
 C: basics
 ---
