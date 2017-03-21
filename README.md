@@ -67,13 +67,21 @@ make
 all: link
 \t./a.out
 
-link: compile
+linklib: compilelib
+\tgcc h1.o -L. -lx #-L. is necessary
+
+compilelib: compile
+\tmv h2.o libx.a
+
+link: compile 
 \tgcc h1.o h2.o
 
-compile: h1.c h2.c 
+compile:
 \tgcc -c h1.c
 \tgcc -c h2.c
 
+clean:
+\trm *.o *.out
 ```
 
 ```
