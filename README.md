@@ -104,7 +104,7 @@ all: link
 \t./a.out
 
 link: $(OBJS)
-\tgcc $(OBJS)
+\t$(CC) $(OBJS)
 ```
 
 Makefile: Variables
