@@ -14,6 +14,8 @@ References
 - "Unix Programming Tools", [[link](http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
 - Computer Systems: A Programmer's Perspective, Randal E. Bryant and David R. O'Hallaron, Chapter 1, [[online pdf](http://csapp.cs.cmu.edu/2e/ch1-preview.pdf)]
 
+- Source files: [[src directory](./marw4)]
+
 Compilation overview
 ---
 
