@@ -57,7 +57,7 @@ Life of a C construct
 | definition | `int x;` | `void foo(){}`
 | initialization | `int x = 6;`
 | assignment | `x = 1;`
-| reference | `y = x;`; `foo();` (invocation)
+| reference | `y = x;` | `foo();` (invocation)
 | destroy
 
 Gcc: Flags
