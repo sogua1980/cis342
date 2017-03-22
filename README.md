@@ -48,7 +48,8 @@ int main() //function (def.)
 }
 ```
 
-- Life of a C construct
+Life of a C construct
+---
 
 | | variable | function 
 | --- | --- | --- |
