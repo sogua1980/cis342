@@ -1,0 +1,13 @@
+all: link
+	./a.out
+
+link: compile
+	gcc h1.o h2.o
+
+compile: h1.c h2.c
+	gcc -c h1.c
+	gcc -c h2.c
+
+clean:
+	rm *.o *.out *.a
+

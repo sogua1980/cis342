@@ -7,3 +7,7 @@ all: link
 
 link: $(OBJS)
 	gcc $(OBJS)
+
+clean:
+	rm *.o *.out *.a
+
