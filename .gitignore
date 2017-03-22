@@ -13,6 +13,15 @@ latex.ps
 *.ent
 *.tmp
 figures/*.sh
+*.swl
+*.swm
+*.swn
+*.swo
+*.swp
+*.swq
+*.sws
+*.swt
+*.swn
 
 # Compiled source #
 ###################
