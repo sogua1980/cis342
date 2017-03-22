@@ -49,11 +49,15 @@ int main() //function (def.)
 ```
 
 - Life of a C construct
-    - declaration: `extern int x;`,`void foo();`
-    - definition: `int x;`,`void foo(){}`
-    - initialization: `int x = 6;`
-    - assignment: `x=1;`
-    - destroy
+
+| | variable | function 
+| --- | --- | --- |
+| declaration | `extern int x;` | `void foo();`
+| definition | `int x;` | `void foo(){}`
+| initialization | `int x = 6;`
+| assignment | `x = 1;`
+| reference | `y = x;`; `foo();` (invocation)
+| destroy
 
 Gcc: Flags
 ---
