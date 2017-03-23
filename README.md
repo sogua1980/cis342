@@ -72,6 +72,27 @@ Gcc: Flags
 - `-g` for debug (later)
 - ref [[link](https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html#Option-Summary)]
 
+<!-- 
+
+Advanced topics on GCC
+---
+
+Compiler process
+
+| compilation step | | main flag | secondary flags |
+| --- | --- | ---  | --- |
+| preprocessor | `.c`->`.i` | | `-I./includes` (rpath) 
+| compiling | `.i`->`.o` | `gcc -c` |
+| assembler | `.s`->`.o`(relocatable) | `gcc -s` |
+| linker | `.o`(relocatable),`.a`->`.o`(executable) | (no flag) | `-L. -lx`, `-Wl,` |
+ 
+* `-Wl,option` Pass `option` to the linker. For example, `-Wl,-Map,output.map` passes `-Map output.map` to the linker.
+- `-L`
+    - gcc flag `-L/home/lib` is equal to environment var `export LIBRARY_PATH=/home/lib`
+- `gcc A B`: it compiles B first then A.
+
+-->
+
 make
 ---
 
@@ -123,6 +144,55 @@ Makefile: Dependency rules
 - If-this-then-that
     - dependency line: a trigger that says when to do something
     - command line: specifies what to do
+
+<!-- 
+
+Advanced Makefile
+---
+
+```
+source1:
+source2:
+xxx: source1 source2
+	@echo $^ #source1 source2
+	@echo $@ #xxx
+	@echo $< #source1
+```
+
+```
+PWD = $(shell pwd) #variable assigned by shell command
+```
+
+-->
+
+
+<!--
+
+GDB
+===
+
+commands
+---
+
+```
+info proc mappings #print mem layout
+info registers #print all register values
+bt #stack frames (coarse)
+```
+
+```
+p/x var #print var in hex form
+```
+
+
+```
+# Capturing printout before crash
+./a.out > printout
+...
+call fflush(0)
+```
+-->
+
 
 <!--
 
