@@ -146,6 +146,20 @@ Makefile: Dependency rules
     - command line: specifies what to do
 
 <!-- 
+- Homework 4
+	1. Open course website (https://github.com/syracuse-fullstacksecurity/cis342) and use the green "Clone or download" button to download all the files into a .zip file. Extract the zip file and cd into "marw4" directory. Compile the program using the makefile, run it, and submit a screenshot of your terminal.
+
+	2. We use the following command to compile h2.c as a library:
+	gcc -c h2.c -o liby.a
+	Edit the makefile to compile h2.c as a library. Use it to compile the program and provide a screenshot.
+
+	3. We can compile h1.c and link it to the library we just created using:
+	gcc -o a.out h1.c -L. -ly
+	Embed this into the makefile with a new rule named liblink and provide a screenshot of making the program.
+	
+	4. some multiple choice questions:
+	http://www.sanfoundry.com/makefile-questions-answers-1/
+	http://www.sanfoundry.com/gcc-compiler-questions-answers-various-options-1/
 
 Advanced Makefile
 ---
