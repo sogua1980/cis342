@@ -146,20 +146,15 @@ Makefile: Dependency rules
     - command line: specifies what to do
 
 <!-- 
-- Homework 4
-	1. Open course website (https://github.com/syracuse-fullstacksecurity/cis342) and use the green "Clone or download" button to download all the files into a .zip file. Extract the zip file and cd into "marw4" directory. Compile the program using the makefile, run it, and submit a screenshot of your terminal.
 
-	2. We use the following command to compile h2.c as a library:
-	gcc -c h2.c -o liby.a
-	Edit the makefile to compile h2.c as a library. Use it to compile the program and provide a screenshot.
+Homework 4 - 2
+---
 
-	3. We can compile h1.c and link it to the library we just created using:
-	gcc -o a.out h1.c -L. -ly
-	Embed this into the makefile with a new rule named liblink and provide a screenshot of making the program.
-	
-	4. some multiple choice questions:
-	http://www.sanfoundry.com/makefile-questions-answers-1/
-	http://www.sanfoundry.com/gcc-compiler-questions-answers-various-options-1/
+1. In your ubuntu, open course website (https://github.com/syracuse-fullstacksecurity/cis342) (e.g. using Firefox) and hit the green "Clone or download" button to download all the files into a .zip file. Extract the zip file and cd into "marw4" directory. Type command "make"  to build and execute binary "a.out". Type command "ls" to list all files. Then type command "make clean" and command "ls" to show object files (with extension ".o") are gone. Submit a screenshot of your terminal.
+
+2. We use the following command to compile `h2.c` as a library: `gcc -c h2.c -o liby.a`. Edit the file named "makefile" and add a new rule about the command. You may use `compilelib` as its label. And then type "make compilelib" to compile `h2.c` as a library. Sumit the screenshot.
+
+3. We can compile `h1.c` and link it to the library we just created using command `gcc -o a.out h1.c -L. -ly`. Add this command to the makefile with a new rule named `liblink`. What argument do you provide to "make" so that it can link the library liby. Provide a screenshot of making the program.
 
 Advanced Makefile
 ---
