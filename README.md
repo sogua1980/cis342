@@ -149,6 +149,16 @@ gdb
 ---
 
 - Demo:
+	- Enable debugging: `gcc -Wall -Werror -ansi -pedantic-errors -g fact.c -o a.out`
+	- Run gdb: `gdb a.out`
+	- Set a breakpoint at specific line: `break fact.c:11`
+	- Run the debugger: `run`
+	- Continue executing: `continue`
+	- Print a varible: `print i`
+	- Set a breakpoint when a function is called: `break fact`
+	- Execute one instruction: `step` and `next` (What's the difference?)
+	- Watch a variable: `watch i`
+
 ```c
 #include<stdio.h>
 int fact(int x){
@@ -165,18 +175,11 @@ int main(){
 }
 ```
 
-	- Enable debugging: `gcc -Wall -Werror -ansi -pedantic-errors -g fact.c -o a.out`
-	- Run gdb: `gdb a.out`
-	- Set a breakpoint at specific line: `break fact.c:11`
-	- Run the debugger: `run`
-	- Continue executing: `continue`
-	- Print a varible: `print i`
-	- Set a breakpoint when a function is called: `break fact`
-	- Execute one instruction: `step` and `next` (What's the difference?)
-	- Watch a variable: `watch i`
-
 - Exercise:
-	- Now we modify our program a little bit:
+	- Now we modify our program a little bit.
+	- What error do you see when you run this program?
+	- What do expect to be the cause of the error?
+	- Debug the program using gdb. What breakpoints do you set to get useful information about the fault?
 
 ```c
 #include<stdio.h>
@@ -196,9 +199,6 @@ int main(){
 }
 ```
 
-	- What error do you see when you run this program?
-	- What do expect to be the cause of the error?
-	- Debug the program using gdb. What breakpoints do you set to get useful information about the fault?
 
 <!-- 
 
