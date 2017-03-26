@@ -145,6 +145,7 @@ Makefile: Dependency rules
     - dependency line: a trigger that says when to do something
     - command line: specifies what to do
     
+<!--
 gdb
 ---
 
