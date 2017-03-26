@@ -164,6 +164,7 @@ int main(){
 	return 0;
 }
 ```
+
 	- Enable debugging: `gcc -Wall -Werror -ansi -pedantic-errors -g fact.c -o a.out`
 	- Run gdb: `gdb a.out`
 	- Set a breakpoint at specific line: `break fact.c:11`
@@ -173,8 +174,10 @@ int main(){
 	- Set a breakpoint when a function is called: `break fact`
 	- Execute one instruction: `step` and `next` (What's the difference?)
 	- Watch a variable: `watch i`
+
 - Exercise:
 	- Now we modify our program a little bit:
+
 ```c
 #include<stdio.h>
 int fact(int x){
@@ -192,6 +195,7 @@ int main(){
 	return 0;
 }
 ```
+
 	- What error do you see when you run this program?
 	- What do expect to be the cause of the error?
 	- Debug the program using gdb. What breakpoints do you set to get useful information about the fault?
