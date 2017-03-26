@@ -144,6 +144,57 @@ Makefile: Dependency rules
 - If-this-then-that
     - dependency line: a trigger that says when to do something
     - command line: specifies what to do
+    
+gdb
+---
+
+- Demo:
+```c
+#include<stdio.h>
+int fact(int x){
+	int i,out=1;
+	for (i=1; i<=x; i++)
+		out*=i;
+	return out;
+}
+int main(){
+	int i;
+	for (i=1; i<=10; i++)
+		printf("%d\n",fact(i));
+	return 0;
+}
+```
+	- Enable debugging: `gcc -Wall -Werror -ansi -pedantic-errors -g fact.c -o a.out`
+	- Run gdb: `gdb a.out`
+	- Set a breakpoint at specific line: `break fact.c:11`
+	- Run the debugger: `run`
+	- Continue executing: `continue`
+	- Print a varible: `print i`
+	- Set a breakpoint when a function is called: `break fact`
+	- Execute one instruction: `step` and `next` (What's the difference?)
+	- Watch a variable: `watch i`
+- Exercise:
+	- Now we modify our program a little bit:
+```c
+#include<stdio.h>
+int fact(int x){
+	int i,out=1;
+	for (i=1; i<=x; i++)
+		out*=i;
+	return out;
+}
+int main(){
+	int i,a[1];
+	for (i=1; i<=10; i++)
+		a[i]=fact(i);
+	for (i=1; i<=10; i++)
+		printf("%d\n",a[i]);
+	return 0;
+}
+```
+	- What error do you see when you run this program?
+	- What do expect to be the cause of the error?
+	- Debug the program using gdb. What breakpoints do you set to get useful information about the fault?
 
 <!-- 
 
