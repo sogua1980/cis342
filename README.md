@@ -239,6 +239,24 @@ Gdb functionality
 | examine_stack | `bt`,`where`,`info`,`up/down`,`frame`
 | misc. | `editmode vi`, `b fn if expression`, `help`, disassembler, `shell cmd` 
 
+Demo & exercise
+---
+
+- Exercise: Debugging the following program, upload the correct program to BB.
+
+```c
+#include<stdio.h> //printf
+int main(){
+  int a1[] = {0,1,2};
+  int sum = 0;
+  for(int i=0; i<=2; i++){
+    sum += a1[i]/a1[2-i];
+  }
+  printf("sum = %d\n", sum);
+  return 0;
+}
+```
+
 Examine stack
 ---
 
