@@ -222,7 +222,7 @@ Gdb command: examine runtime
 ---
 
 - examine runtime data
-    - `print v`/`p/i v`: print as an integer
+    - `print v`/`p v`: print variable `v`
 - examine code (with `gcc -g`)
     - `list/l`
 - examine execution environment: e.g. stack (later)
@@ -249,7 +249,8 @@ Demo & exercise
 int main(){
   int a1[] = {0,1,2};
   int sum = 0;
-  for(int i=0; i<=2; i++){
+  int i;
+  for(i=0; i<=2; i++){
     sum += a1[i]/a1[2-i];
   }
   printf("sum = %d\n", sum);
@@ -295,7 +296,8 @@ int main(){
   //int * array_heap = (int *)malloc(sizeof(int)*3);
   //array_heap[0] = 1;array_heap[1] = 2;array_heap[2] = 3;
   int sum = 0;
-  for(int i=0; i<=3; i++){
+  int i;
+  for(i=0; i<=3; i++){
     sum += array_stack[i];
   }
   printf("sum = %d\n", sum);
