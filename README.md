@@ -204,6 +204,7 @@ Use gdb to find bug
 ---
 
 - Installing gdb
+- Compile: `gcc -g`
 - Run gdb: `gdb a.out`
 
 Gdb command: control execution
