@@ -20,7 +20,7 @@ Compilation overview
 ---
 
 - Two steps of compilation:
-    - *compiling*: text `.c` file to  reocatable `.o` (object) file
+    - *compiling*: text `.c` file to  relocatable `.o` (object) file
     - *linking*: multiple relocatable `.o` files to one executable `.o` file
         - *symbol*: reference to link construct (declaration) in one `.o` file to construct (definition) in another `.o` file
 
@@ -68,7 +68,7 @@ Gcc: Flags
 - `-I` for `#include`; demo
     - header file (storing declarations)
 - `-Ldir`/`-lmylib` for library to link
-    - search library for unsolved sumbols (functions, global variables) when linking
+    - search library for unsolved symbols (functions, global variables) when linking
 - `-g` for debug (later)
 - ref [[link](https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html#Option-Summary)]
 
@@ -145,62 +145,6 @@ Makefile: Dependency rules
     - dependency line: a trigger that says when to do something
     - command line: specifies what to do
     
-<!--
-gdb
----
-
-- Demo:
-	- Enable debugging: `gcc -Wall -Werror -ansi -pedantic-errors -g fact.c -o a.out`
-	- Run gdb: `gdb a.out`
-	- Set a breakpoint at specific line: `break fact.c:11`
-	- Run the debugger: `run`
-	- Continue executing: `continue`
-	- Print a varible: `print i`
-	- Set a breakpoint when a function is called: `break fact`
-	- Execute one instruction: `step` and `next` (What's the difference?)
-	- Watch a variable: `watch i`
-
-```c
-#include<stdio.h>
-int fact(int x){
-	int i,out=1;
-	for (i=1; i<=x; i++)
-		out*=i;
-	return out;
-}
-int main(){
-	int i;
-	for (i=1; i<=10; i++)
-		printf("%d\n",fact(i));
-	return 0;
-}
-```
-
-- Exercise:
-	- Now we modify our program a little bit.
-	- What error do you see when you run this program?
-	- What do expect to be the cause of the error?
-	- Debug the program using gdb. What breakpoints do you set to get useful information about the fault?
-
-```c
-#include<stdio.h>
-int fact(int x){
-	int i,out=1;
-	for (i=1; i<=x; i++)
-		out*=i;
-	return out;
-}
-int main(){
-	int i,a[1];
-	for (i=1; i<=10; i++)
-		a[i]=fact(i);
-	for (i=1; i<=10; i++)
-		printf("%d\n",a[i]);
-	return 0;
-}
-```
-
-
 <!-- 
 
 Homework 4 - 2
@@ -231,7 +175,7 @@ PWD = $(shell pwd) #variable assigned by shell command
 -->
 
 
-GDB
+GDB (Mar. W5)
 ===
 
 References
@@ -240,31 +184,88 @@ References
 - "Reviewing gcc, make, gdb, and Linux Editors", [[pdf](https://courses.cs.washington.edu/courses/cse333/11sp/sections/section01.pdf)]
 - "Unix Programming Tools", [[link](http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
 
+Where is the bug?
 ---
 
-- stack
-    - frame: push and pop
+```c
+#include<stdio.h> //printf
+int main(){
+  int array_stack[] = {1,2,3};
+  int sum = 0;
+  for(int i=0; i<=3; i++){
+    sum += array_stack[i];
+  }
+  printf("sum = %d\n", sum);
+  return 0;
+}
+```
 
-stack
+Use gdb to find bug
 ---
 
-- `backtrace`
-- `frame framenumber`
-- `info args/locals`
+- Installing gdb
+- Run gdb: `gdb a.out`
 
-Gdb functionality/commands
+Gdb command: control execution
+---
+
+- C execution model
+- breakpoints
+    - `break/b file:n|fn|file:fn`
+    - `disable/enable/delete  bkpt`: `bkpt`=`file:n|fn|file:fn`
+- stepping
+    - `run/r`: run
+    - `next/n`: next statement (step over a function call)
+    - `continue/c`: continue till breakpoint
+
+Gdb command: examine runtime
+---
+
+- examine runtime data
+    - `print v`/`p/i v`: print as an integer
+- examine code (with `gcc -g`)
+    - `list/l`
+- examine execution environment: e.g. stack (later)
+
+Gdb functionality
 ---
 
 | functionality | commands |
 | --- | --- |
-| breakpoints | `break file:n|fn|file:fn`, `disable/enable/delete breakpoint`
-| stepping | `run`,`step`,`next`,`continue`,`finish`,`return`
-| examine stack | `backtrace`/`bt`,`where`,`info variables/locals/args`,`up/down`,`frame`
-| examine data | `print v`,`display expr/undisplay`,`set v=expr`
-| examine code | `list`
-| misc. | `editmode vi`, `break fn if expression`, `help backtrace`, disassembling code, `shell cmd` 
+| breakpoints | `b`,`disable/enable/delete breakpoint`
+| stepping | `r`,`s`,`n`,`c`,`finish`,`return`
+| examine_data | `p/i v`,`display/undisplay`,`watch`,`set v=expr`
+| examine_code | `list`
+| examine_stack | `bt`,`where`,`info`,`up/down`,`frame`
+| misc. | `editmode vi`, `b fn if expression`, `help`, disassembler, `shell cmd` 
 
-Debugging: An example
+Examine stack
+---
+
+- C memory layout: stack
+    - `backtrace`/`bt`,`where`
+    - `up`,`down`,`frame #`
+    - `info args/variables/locals`
+
+C memory layout
+---
+
+```
+   +----------+---------+  
+   | kernel   |         |
+   +----------+---------+  +
+   |  .text   | binary  |  |
+   +----------+---------+  fixed size
+   |  data    | const   |  |
+   +----------+---------+  +
+   |  heap    | malloc  |  |
+   +----------+---------+  +
+   |shared lib|         |  |
+   +----------+---------+  dynamic sized
+   |user stack| local   |  |
+   +----------+---------+  +
+```
+
 ---
 
 ```c
