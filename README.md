@@ -184,7 +184,7 @@ References
 - "Reviewing gcc, make, gdb, and Linux Editors", [[pdf](https://courses.cs.washington.edu/courses/cse333/11sp/sections/section01.pdf)]
 - "Unix Programming Tools", [[link](http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
 
-Where is the bug?
+A buggy program
 ---
 
 ```c
