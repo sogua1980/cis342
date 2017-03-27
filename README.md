@@ -231,24 +231,72 @@ PWD = $(shell pwd) #variable assigned by shell command
 -->
 
 
-<!--
-
 GDB
 ===
 
-commands
+References
+---
+
+- "Reviewing gcc, make, gdb, and Linux Editors", [[pdf](https://courses.cs.washington.edu/courses/cse333/11sp/sections/section01.pdf)]
+- "Unix Programming Tools", [[link](http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf)]
+
+---
+
+- stack
+    - frame: push and pop
+
+stack
+---
+
+- `backtrace`
+- `frame framenumber`
+- `info args/locals`
+
+Gdb functionality/commands
+---
+
+| functionality | commands |
+| --- | --- |
+| breakpoints | `break file:n|fn|file:fn`, `disable/enable/delete breakpoint`
+| stepping | `run`,`step`,`next`,`continue`,`finish`,`return`
+| examine stack | `backtrace`/`bt`,`where`,`info variables/locals/args`,`up/down`,`frame`
+| examine data | `print v`,`display expr/undisplay`,`set v=expr`
+| examine code | `list`
+| misc. | `editmode vi`, `break fn if expression`, `help backtrace`, disassembling code, `shell cmd` 
+
+Debugging: An example
+---
+
+```c
+#include<stdio.h> //printf
+#include<stdlib.h> //malloc
+//int array_data[] = {1,2,3};
+int main(){
+  int array_stack[] = {1,2,3};
+  //int * array_heap = (int *)malloc(sizeof(int)*3);
+  //array_heap[0] = 1;array_heap[1] = 2;array_heap[2] = 3;
+  int sum = 0;
+  for(int i=0; i<=3; i++){
+    sum += array_stack[i];
+  }
+  printf("sum = %d\n", sum);
+  return 0;
+}
+```
+
+<!--
+
+Advanced commands
 ---
 
 ```
 info proc mappings #print mem layout
 info registers #print all register values
-bt #stack frames (coarse)
 ```
 
 ```
 p/x var #print var in hex form
 ```
-
 
 ```
 # Capturing printout before crash
@@ -256,6 +304,7 @@ p/x var #print var in hex form
 ...
 call fflush(0)
 ```
+
 -->
 
 
