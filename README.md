@@ -327,6 +327,9 @@ p/x var #print var in hex form
 call fflush(0)
 ```
 
+GDB Homework
+---
+	- Download gdbhw/pin.out from the course website. It is a compiled binary using gcc -g. In this case, using gdb, you can debug it, run it line by line, and actually see the lines of codes. This program gets a string from the user and changes it with an algorithm (simply codes it). You need to use gdb to debug the program and see what it does.
 -->
 
 
