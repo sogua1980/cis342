@@ -329,7 +329,13 @@ call fflush(0)
 
 GDB Homework
 ---
-	- Download gdbhw/pin.out from the course website. It is a compiled binary using gcc -g. In this case, using gdb, you can debug it, run it line by line, and actually see the lines of codes. This program gets a string from the user and changes it with an algorithm (simply codes it). You need to use gdb to debug the program and see what it does.
+	- Download gdbhw/pin.out from the course website. It is a compiled binary using gcc -g. In this case, using gdb, you can debug it, run it line by line, and actually see the lines of codes. This program gets a string from the user and changes it with an algorithm (simply codes it). You need to use gdb to debug the program and see what it does to the input string?
+	- If the program is not compiled with -g option of gcc, can you still debug it with gdb? What command can you use? Can you still watch a variable? Can you watch the stack?
+	- If you print an array without specifying the index, what will we printed by gdb? (For example you have declared an array "int a[10]" and you enter "print a" in gdb.
+	- Which GDB command produces a stack trace of the function calls that lead to a segmentation fault? a) trace b) backtrace c) forwardtrace d) none of the mentioned
+	- While debugging with GDB: a) variables can be print b) variables can be modify c) both (a) and (b) d) none of the mentioned
+	- Which one of the following is not true about the GDB? a) info register is used to see that what is in the processor registers b) processor registers can not be accessed by GDB c) first 32 bits of the variable can not be examined d) none of the mentioned
+	- If we have multiple functions declaring local variable "foo" and enter "watch foo", which "foo" will be watched by gdb?
 -->
 
 
