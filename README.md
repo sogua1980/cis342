@@ -267,6 +267,34 @@ Examine stack
     - `up`,`down`,`frame #`
     - `info args/variables/locals`
 
+<!--
+
+gdb
+---
+
+- context, runtime information
+    - register 
+    - memory (virtual)
+
+Advanced gdb commands
+---
+
+```
+info proc mappings #print mem layout
+info registers #print all register values
+```
+
+```
+p/x var #print var in hex form
+```
+
+```
+# Capturing printout before crash
+./a.out > printout
+...
+call fflush(0)
+```
+
 C memory layout
 ---
 
@@ -306,26 +334,7 @@ int main(){
 }
 ```
 
-<!--
 
-Advanced commands
----
-
-```
-info proc mappings #print mem layout
-info registers #print all register values
-```
-
-```
-p/x var #print var in hex form
-```
-
-```
-# Capturing printout before crash
-./a.out > printout
-...
-call fflush(0)
-```
 
 GDB Homework
 ---
