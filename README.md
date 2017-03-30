@@ -248,7 +248,7 @@ Demo & exercise
 ```c
 #include<stdio.h> //printf
 int main(){
-  int a1[] = {0,1,2};
+  int a1[] = {2,1,0};
   int sum = 0;
   int i;
   for(i=0; i<=2; i++){
@@ -329,15 +329,24 @@ call fflush(0)
 
 GDB Homework
 ---
-	- Download gdbhw/pin.out from the course website. It is a compiled binary using gcc -g. In this case, using gdb, you can debug it, run it line by line, and actually see the lines of codes. This program gets a string from the user and changes it with an algorithm (simply codes it). You need to use gdb to debug the program and see what it does to the input string?
-	- If the program is not compiled with -g option of gcc, can you still debug it with gdb? What command can you use? Can you still watch a variable? Can you watch the stack?
-	- If you print an array without specifying the index, what will we printed by gdb? (For example you have declared an array "int a[10]" and you enter "print a" in gdb.
-	- Which GDB command produces a stack trace of the function calls that lead to a segmentation fault? a) trace b) backtrace c) forwardtrace d) none of the mentioned
-	- While debugging with GDB: a) variables can be print b) variables can be modify c) both (a) and (b) d) none of the mentioned
-	- Which one of the following is not true about the GDB? a) info register is used to see that what is in the processor registers b) processor registers can not be accessed by GDB c) first 32 bits of the variable can not be examined d) none of the mentioned
-	- If we have multiple functions declaring local variable "foo" and enter "watch foo", which "foo" will be watched by gdb?
--->
 
+- This problem is about using gdb to reverse-engineer your binary. Download a binary compiled with `-g` (gdbhw/pin.out) from the course website. Do the following: 1. `gdb pin.out` to load pin.out in gdb, 2. `b main` to set breakpoints at function main(), 3. `run`, 4. at breakpoint, inspect the codeline through gdb printout, and type `next` to continue the program execution by moving just one step forward. Step 4 is repeated until the the end. Then collect all the gdb printout of codelines, to reconstruct the original C program file. Submit the reconstructed C program.
+- Which GDB command produces a stack trace of the function calls? a) trace b) backtrace c) forwardtrace d) none of the mentioned
+- While debugging with GDB: a) variables can be printed out b) variables can be modified c) both (a) and (b) d) none of the mentioned
+- In the following program, at breakpoint line 3, when you type "p x", what value will be printed out? At breakpoint line 6, when you type "p x", what value will be printed out?
+
+1   void foo1(void){
+2      int x = 1;
+3      int y = 2;}
+4   void foo2(void){
+5      int x = 3;
+6      int y = 2;}
+7   int main(){
+8       foo1();
+9       foo2();
+10      return 0;}
+
+-->
 
 <!--
 
