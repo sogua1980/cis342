@@ -346,17 +346,30 @@ GDB Homework
 
 1   void foo1(void){
 2      int x = 1;
-3      int y = 2;}
-4   void foo2(void){
-5      int x = 3;
-6      int y = 2;}
-7   int main(){
-8       foo1();
-9       foo2();
-10      return 0;}
+3      int y = 2;
+4   }
+5   void foo2(void){
+6      int x = 3;
+7      int y = 2;
+8   }
+9   int main(){
+10      foo1();
+11      foo2();
+12      return 0;
+13  }
 
--->
+- The following program contains a bug. Use gdb to identify the buggy codeline, and submit the line number. Hint: you can use the same technique in problems above (i.e. `break main` in gdb).
 
+1  #include<string.h>
+2  int main(void)
+3  {
+4      char *s = "A";
+5      int x = 5;
+6      *s = 'B';
+7  }
+
+
+->
 <!--
 
 Section 2: C Programming Language

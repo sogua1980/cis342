@@ -1,0 +1,12 @@
+#include<stdio.h> //printf
+int main(){
+  int a1[] = {3,5,2,1,10};
+  int c = 1;
+  int i;
+  for(i=0; i<5; i++){
+    c *= a1[i];
+  }
+  printf("product is %d\n", c);
+  return 0;
+}
+
