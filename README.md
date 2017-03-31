@@ -360,13 +360,37 @@ GDB Homework
 
 - The following program contains a bug. Use gdb to identify the buggy codeline, and submit the line number. Hint: you can use the same technique in problems above (i.e. `break main` in gdb).
 
-1  #include<string.h>
-2  int main(void)
-3  {
-4      char *s = "A";
-5      int x = 5;
-6      *s = 'B';
-7  }
+ 1	#include<stdio.h>
+ 2	#include<string.h>
+ 3	int main(void)
+ 4	{
+ 5	   char base_digits[16] =
+ 6		 {'0', '1', '2', '3', '4', '5', '6', '7',
+ 7		  '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+ 8	   char *lastdigit = "F";
+ 9	   int converted_number[64];
+10	   long int number_to_convert;
+11	   int next_digit, base, index=0;
+   
+12	   number_to_convert=12345;
+13	   base=5;
+   
+14	   while (number_to_convert != 0)
+15	   {
+16		 converted_number[index] = number_to_convert % base;
+17		 number_to_convert = number_to_convert / base;
+18		 ++index;
+19	     *lastdigit = 'E';
+20	   }
+   
+21	   --index;
+22	   printf("\n\nConverted Number = ");
+23	   for(  ; index>=0; index--)
+24	   {
+25		 printf("%c", base_digits[converted_number[index]]);
+26	   }
+27	}
+
 
 
 ->
