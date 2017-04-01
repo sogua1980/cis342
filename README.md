@@ -411,6 +411,19 @@ Variable types
     - heap variable: defined by `malloc`, `heap`
 - pointer: what address does the pointer points to?
 
+---
+
+```c
+#include<stdlib.h> //malloc
+nt array_data[] = {0,1,2};
+int main(){
+  int array_stack[] = {0,1,2};
+  int * array_heap = (int *)malloc(sizeof(int)*3);
+  array_heap[0] = 1;array_heap[1] = 2;array_heap[2] = 3;
+  return 0;
+}
+```
+
 Example bugs
 ---
 
@@ -429,10 +442,16 @@ int foo()
 }
 ```
 
-
 <!--
 
-XXX
+- Segmentation fault
+    - buffer overflow: stack/heap...
+    - memory protection
+    - null pointer dereferernce
+
+-->
+
+<!--
 
 - src -> binary
 - input: commandline argument
@@ -441,63 +460,6 @@ XXX
          - process context information
      - virtual memory 
          - virtual address space
-
-Virtual address space
-----
-
-pointer, stackoverflow
-
-what a pointer points to? virtual address space
-
-C memory layout
----
-
-```
-            VAddr Space
-        +--------------------+  
-        |kernel              |
-+       +--------------------+  
-|       |.text       (binary)|  
-fixed   +--------------------+  
-size    |.rodata      (const)|  
-|       |.bss  (uninit const)|  
-+       +--------------------+  
-|       |heap        (malloc)|  
-|       +--------------------+  
-|       |                    |  
-|       +--------------------+  
-dynamic |shared lib  (binary)|  
-size    +--------------------+  
-|       |                    |  
-|       +--------------------+  
-|       |user stack          |  
-|       |     (local/arg/ret)|  
-+       +--------------------+  
-```
-
----
-
-
-```c
-#include<stdio.h> //printf
-#include<stdlib.h> //malloc
-//int array_data[] = {0,1,2};
-int main(){
-  int array_stack[] = {0,1,2};
-  //int * array_heap = (int *)malloc(sizeof(int)*3);
-  //array_heap[0] = 1;array_heap[1] = 2;array_heap[2] = 3;
-  int sum = 0;
-  int i;
-  for(i=0; i<=3; i++){
-    sum += array_stack[i];
-  }
-  printf("sum = %d\n", sum);
-  return 0;
-}
-```
-
-
-
 
 -->
 
