@@ -259,14 +259,6 @@ int main(){
 }
 ```
 
-Examine stack
----
-
-- C memory layout: stack
-    - `backtrace`/`bt`,`where`
-    - `up`,`down`,`frame #`
-    - `info args/variables/locals`
-
 <!--
 
 GDB Homework
@@ -290,7 +282,7 @@ GDB Homework
 12      return 0;
 13  }
 
-- The following program contains a bug. Use gdb to identify the buggy codeline. Describe the gdb commands you use in debugging and submit the line number of the bug. 
+- The following program contains a bug. Use gdb to identify the buggy codeline, and submit the line number. 
 
  1	#include<stdio.h>
  2	#include<string.h>
@@ -329,7 +321,6 @@ Advanced gdb commands
 ---
 
 ```
-info proc mappings #print mem layout
 info registers #print all register values
 ```
 
@@ -349,27 +340,99 @@ call fflush(0)
 C pointers and virtual memory
 ===
 
+Executable file format (ELF)
+---
+
+- Information
+    - code `.text` 
+    - constant value `.rodata`
+    - symbol table
+- Commands to inspect binary (demos) 
+    - `size a.out` (sections)
+    - `nm a.out` (symbol table)
+
+```c
+#include<stdio.h> //printf
+#include<string.h> //string
+int main(){
+  // constant 5 is encoded in assembly (.text)
+  int i = 5;
+  //string literal is in .rodata
+  int * p = "hello world string";
+  return 0;
+}
+```
+
+Virtual memory space
+---
+
+1. From executable: Segments `.text,.bss,.rodata` 
+2. Runtime information: `stack`, `heap`
+    - values of symbols during execution
+
 ---
 
 ```
  VA Space               
-+------------+     
-|  kernel    |         ELF     
-+------------+     +----------+
-|  .text     |     |  .text   |
-+------------+     +----------+
-|  .data     |     | .rodata  |
-|  .bss      |     | .bss     |
-+------------+     +----------+
-|  heap      |
-+---------+--+     
-|  ^      V  |     
-+--+---------+     
-|  stack     |     
-+------------+                  
++------------+--+     
+|  kernel    |  |         ELF     
++------------+--+     +----------+
+|  .text     |EO|     |  .text   |
++------------+--+     +----------+
+|  .rodata   |RO|     | .rodata  |
+|  .bss      |RW|     | .bss     |
++------------+--+     +----------+
+|  heap      |RW|
++---------+--+--+     
+|         |  |--|     
+|  ^      V  |--|     
+|  |         |--|     
++--+---------+--+     
+|  stack     |RW|     
++------------+--+                  
 ```
 
+- Gdb demo: `info proc mappings #print mem layout`
+
+Examining Stack 
+---
+
+- stack: frames, local variables, argments, return
+    - `backtrace`/`bt`,`where`
+    - `up`,`down`,`frame #`
+        - **context**
+ 
+Variable types
+---
+
+- variables
+    - global variable: defined outside function,  `.bss`
+    - local variable: defined in funciton, `stack`
+    - heap variable: defined by `malloc`, `heap`
+- pointer: what address does the pointer points to?
+
+Example bugs
+---
+
+```
+int foo() 
+{
+     double x[1048576];
+}
+```
+
+```
+int foo() 
+{
+     void * p = "x";
+     *p = 'y';
+}
+```
+
+
 <!--
+
+XXX
 
 - src -> binary
 - input: commandline argument
