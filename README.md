@@ -269,13 +269,62 @@ Examine stack
 
 <!--
 
-gdb
+GDB Homework
 ---
 
-- context, runtime information
-    - register 
-    - memory (virtual)
+- Which GDB command produces a stack trace of the function calls? a) trace b) backtrace c) forwardtrace d) none of the mentioned
+- While debugging with GDB: a) variables can be printed out b) variables can be modified c) both (a) and (b) d) none of the mentioned
+- In the following program, at breakpoint line 3, when you type "p x", what value will be printed out? At breakpoint line 6, when you type "p x", what value will be printed out?
 
+1   void foo1(void){
+2      int x = 1;
+3      int y = 2;
+4   }
+5   void foo2(void){
+6      int x = 3;
+7      int y = 2;
+8   }
+9   int main(){
+10      foo1();
+11      foo2();
+12      return 0;
+13  }
+
+- The following program contains a bug. Use gdb to identify the buggy codeline. Describe the gdb commands you use in debugging and submit the line number of the bug. 
+
+ 1	#include<stdio.h>
+ 2	#include<string.h>
+ 3	int main(void)
+ 4	{
+ 5	   char base_digits[16] =
+ 6		 {'0', '1', '2', '3', '4', '5', '6', '7',
+ 7		  '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+ 8	   char *lastdigit = "F";
+ 9	   int converted_number[64];
+10	   long int number_to_convert;
+11	   int next_digit, base, index=0;
+12	   number_to_convert=12345;
+13	   base=5;
+14	   while (number_to_convert != 0)
+15	   {
+16		 converted_number[index] = number_to_convert % base;
+17		 number_to_convert = number_to_convert / base;
+18		 ++index;
+19	     *lastdigit = 'E';
+20	   }
+   
+21	   --index;
+22	   printf("\n\nConverted Number = ");
+23	   for(  ; index>=0; index--)
+24	   {
+25		 printf("%c", base_digits[converted_number[index]]);
+26	   }
+27	}
+
+-->
+
+
+<!--
 Advanced gdb commands
 ---
 
@@ -294,27 +343,77 @@ p/x var #print var in hex form
 ...
 call fflush(0)
 ```
+-->
+
+
+C pointers and virtual memory
+===
+
+---
+
+```
+ VA Space               
++------------+     
+|  kernel    |         ELF     
++------------+     +----------+
+|  .text     |     |  .text   |
++------------+     +----------+
+|  .data     |     | .rodata  |
+|  .bss      |     | .bss     |
++------------+     +----------+
+|  heap      |
++---------+--+     
+|  ^      V  |     
++--+---------+     
+|  stack     |     
++------------+                  
+```
+
+<!--
+
+- src -> binary
+- input: commandline argument
+- execution, runtime inforomation:
+     - register 
+         - process context information
+     - virtual memory 
+         - virtual address space
+
+Virtual address space
+----
+
+pointer, stackoverflow
+
+what a pointer points to? virtual address space
 
 C memory layout
 ---
 
 ```
-   +--------------------+  
-   |kernel              |
-   +--------------------+  +
-   |.text      (binary) |  |
-   +--------------------+  fixed size
-   |data       (const)  |  |
-   +--------------------+  +
-   |heap       (malloc) |  |
-   +--------------------+  +
-   |shared lib (binary) |  |
-   +--------------------+  dynamic sized
-   |user stack (local)  |  |
-   +--------------------+  +
+            VAddr Space
+        +--------------------+  
+        |kernel              |
++       +--------------------+  
+|       |.text       (binary)|  
+fixed   +--------------------+  
+size    |.rodata      (const)|  
+|       |.bss  (uninit const)|  
++       +--------------------+  
+|       |heap        (malloc)|  
+|       +--------------------+  
+|       |                    |  
+|       +--------------------+  
+dynamic |shared lib  (binary)|  
+size    +--------------------+  
+|       |                    |  
+|       +--------------------+  
+|       |user stack          |  
+|       |     (local/arg/ret)|  
++       +--------------------+  
 ```
 
 ---
+
 
 ```c
 #include<stdio.h> //printf
@@ -336,64 +435,13 @@ int main(){
 
 
 
-GDB Homework
----
 
-- This problem is about using gdb to reverse-engineer your binary. Download a binary compiled with `-g` (gdbhw/pin.out) from the course website. Do the following: 1. `gdb pin.out` to load pin.out in gdb, 2. `b main` to set breakpoints at function main(), 3. `run`, 4. at breakpoint, inspect the codeline through gdb printout, and type `next` to continue the program execution by moving just one step forward. Step 4 is repeated until the the end. Then collect all the gdb printout of codelines, to reconstruct the original C program file. Submit the reconstructed C program.
-- Which GDB command produces a stack trace of the function calls? a) trace b) backtrace c) forwardtrace d) none of the mentioned
-- While debugging with GDB: a) variables can be printed out b) variables can be modified c) both (a) and (b) d) none of the mentioned
-- In the following program, at breakpoint line 3, when you type "p x", what value will be printed out? At breakpoint line 6, when you type "p x", what value will be printed out?
-
-1   void foo1(void){
-2      int x = 1;
-3      int y = 2;
-4   }
-5   void foo2(void){
-6      int x = 3;
-7      int y = 2;
-8   }
-9   int main(){
-10      foo1();
-11      foo2();
-12      return 0;
-13  }
-
-- The following program contains a bug. Use gdb to identify the buggy codeline, and submit the line number. Hint: you can use the same technique in problems above (i.e. `break main` in gdb).
-
- 1	#include<stdio.h>
- 2	#include<string.h>
- 3	int main(void)
- 4	{
- 5	   char base_digits[16] =
- 6		 {'0', '1', '2', '3', '4', '5', '6', '7',
- 7		  '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
- 8	   char *lastdigit = "F";
- 9	   int converted_number[64];
-10	   long int number_to_convert;
-11	   int next_digit, base, index=0;
-   
-12	   number_to_convert=12345;
-13	   base=5;
-   
-14	   while (number_to_convert != 0)
-15	   {
-16		 converted_number[index] = number_to_convert % base;
-17		 number_to_convert = number_to_convert / base;
-18		 ++index;
-19	     *lastdigit = 'E';
-20	   }
-   
-21	   --index;
-22	   printf("\n\nConverted Number = ");
-23	   for(  ; index>=0; index--)
-24	   {
-25		 printf("%c", base_digits[converted_number[index]]);
-26	   }
-27	}
+-->
 
 
 
-->
+
+
 <!--
 
 Section 2: C Programming Language
@@ -535,8 +583,6 @@ int main()
 
 - Exercise:
     - Write a program to get an array with 10 integers from user and sort the array.
-
-
 
 
 -->
