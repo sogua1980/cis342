@@ -428,18 +428,13 @@ Example bugs
 ---
 
 ```
-int foo() 
-{
-     double x[1048576];
-}
+int main() {double x[1048576];}
 ```
 
 ```
-int foo() 
-{
+int main() {
      void * p = "x";
-     *p = 'y';
-}
+     *p = 'y';}
 ```
 
 <!--
