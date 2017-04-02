@@ -401,7 +401,8 @@ Examining Stack
     - `backtrace`/`bt`,`where`
     - `up`,`down`,`frame #`
         - **context**
- - Exercises:
+
+- Exercises:
  	- Debug the following program with gdb. Set a breakpoint at `fact` function and examine the stack using `backtrace` during the execution of the program.
 ```c
 #include <stdio.h>
@@ -415,64 +416,47 @@ void main(){
         printf("%d\n",fact(5));
 }
 ```
+
 Variable types
 ---
 
 - variables
-    - global variable: defined outside function,  `.bss`
+    - global variable: defined outside a function,  `.bss`
     - local variable: defined in funciton, `stack`
     - heap variable: defined by `malloc`, `heap`
 - pointer: what address does the pointer points to?
-- Exercises:
-	- Run the following programs. What do you expect them to print? What do you see?
-	
-```c
-#include <stdio.h>
-void main(){
-        int a=123;
-        int *b;
-        b=&a;
-        printf("%x\n",&a);
-        printf("%x\n",b);
-        printf("%d\n",*b);
-        printf("%d\n",a);
-}
-```
 
-```c
-#include <stdio.h>
-void main(){
-        int *a;
-        int i;
-        for (i=0; i<10; i++)
-                a[i]=i;
-        for (i=0; i<10; i++){
-                printf("%d",*a);
-                (*a)++;
-        }
-}
-```
-
-
-
+Demo
 ---
 
 ```c
+#include<stdio.h> //malloc
 #include<stdlib.h> //malloc
-nt array_data[] = {0,1,2};
+int array_data[] = {0,1,2};
 int main(){
-  int array_stack[] = {0,1,2};
+  int array_stack[] = {3,4,5};
+  int array_stack2[] = {6,7,8};
   int * array_heap = (int *)malloc(sizeof(int)*3);
   array_heap[0] = 1;array_heap[1] = 2;array_heap[2] = 3;
+
+  printf("stack %x, %x\n", array_stack, array_stack2);
+  printf("heap %x\n", array_heap);
+  printf(".rodata %x\n", array_data);
   return 0;
 }
 ```
+
+Exercise
+---
 
 Example bugs
 ---
 
 ```
-int main() {double x[1048576];}
+#include<stdio.h>
+int main() {
+    double x[10000000]; //vs x[1000];?
+    x[13]=1; printf("%f\n",x[13]);}
 ```
 
 ```
@@ -501,9 +485,6 @@ int main() {
          - virtual address space
 
 -->
-
-
-
 
 
 <!--
