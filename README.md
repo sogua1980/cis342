@@ -337,7 +337,7 @@ call fflush(0)
 -->
 
 
-C pointers and virtual memory
+C pointers and virtual memory (Apr. W1)
 ===
 
 Executable file format (ELF)
@@ -358,7 +358,7 @@ int main(){
   // constant 5 is encoded in assembly (.text)
   int i = 5;
   //string literal is in .rodata
-  int * p = "hello world string";
+  char * p = "hello world string";
   return 0;
 }
 ```
