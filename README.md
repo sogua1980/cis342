@@ -337,7 +337,7 @@ call fflush(0)
 -->
 
 
-C pointers and virtual memory (Apr. W1)
+C pointer and virtual memory (Apr. W1)
 ===
 
 Pointer (C syntax)
@@ -347,20 +347,6 @@ Pointer (C syntax)
 - pointer assignment: `p = & a`
     - `& a`: get **address** of a variable `a` (allocated symbol)
 - pointer dereference: `*p`
-
-Recap: Life of a C symbol
----
-
-| | variable | function | pointer
-| --- | --- | --- |
-| declaration | `extern int x;` | `void foo();` | `extern int * p`
-| definition | `int x;` | `void foo(){}` | `int * p`
-| initialization | `int x = 6;` | `int * p = &a;`
-| --- | --- | --- |
-| assignment | `x = 1;` | | `* p = &a`
-| reference | `y = x;` | `foo();` (invocation) | `*p`
-| --- | --- | --- |
-| destroy | | | delete 
 
 
 ```c
@@ -373,6 +359,33 @@ int main(){
 }
 ```
 
+Revisit: Life of a `C` symbol
+---
+
+
+| | variable | function | pointer
+| --- | --- | --- | --- |
+| declaration | `extern int x;` | `void foo();` | `extern int * p` |
+| definition | `int x;` | `void foo(){}` | `int *p` |
+| initialization | `int x = 6;` | | `int *p = &a; int*q=malloc(10);` |
+| --- | --- | --- | --- |
+| assignment | `x = 1;` | | `*p = &a` |
+| reference | `y = x;` | `foo();` | `*p`|
+| --- | --- | --- | --- |
+| destroy | | | `delete *p`|
+
+Tease: a buggy program
+---
+
+```c
+int main() {
+     void *p = "x";
+     *p = 'y';}
+```
+
+- Why there is a bug?
+
+
 Executable file format (ELF)
 ---
 
@@ -382,7 +395,7 @@ Executable file format (ELF)
     - constant value `.rodata`
     - demo: `size a.out` (sections)
 - Symbol table
-    - demo: `nm a.out` (symbol table)
+    - demo: `nm -m a.out` (symbol table)
 
 <!--
 
@@ -469,21 +482,6 @@ Examining Stack
     - `up`,`down`,`frame #`
         - **context**
 
-- Exercises:
- 	- Debug the following program with gdb. Set a breakpoint at `fact` function and examine the stack using `backtrace` during the execution of the program.
-```c
-#include <stdio.h>
-int fact(int x){
-        if (x==1)
-                return 1;
-        else
-                return x*fact(x-1);
-}
-void main(){
-        printf("%d\n",fact(5));
-}
-```
-
 Variable types
 ---
 
@@ -516,17 +514,29 @@ int main(){
 Exercise
 ---
 
+- Debug the following program with gdb. Set a breakpoint at `fact` function and examine the stack using `backtrace` during the execution of the program. Find the bug and describe it in BB.
+
+```c
+#include <stdio.h>
+int fact(int x){
+  return x*fact(x-1);
+}
+int main(){
+  printf("%d\n",fact(5));
+}
+```
+
 Example bugs
 ---
 
-```
+```c
 #include<stdio.h>
 int main() {
     double x[10000000]; //vs x[1000];?
     x[13]=1; printf("%f\n",x[13]);}
 ```
 
-```
+```c
 int main() {
      void * p = "x";
      *p = 'y';}
