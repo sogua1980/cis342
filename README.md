@@ -410,7 +410,35 @@ Variable types
     - local variable: defined in funciton, `stack`
     - heap variable: defined by `malloc`, `heap`
 - pointer: what address does the pointer points to?
+- Exercises:
+	- Run the following programs. What do you expect them to print? What do you see?
+```c
+#include <stdio.h>
+void main(){
+        int *a;
+        int i;
+        for (i=0; i<10; i++)
+                a[i]=i;
+        for (i=0; i<10; i++){
+                printf("%d",*a);
+                (*a)++;
+        }
+}
+```
 
+```c
+#include <stdio.h>
+void main(){
+        int a=123;
+        int *b;
+        b=&a;
+        printf("%x\n",&a);
+        printf("%x\n",b);
+        printf("%d\n",*b);
+        printf("%d\n",a);
+}
+```
+	- 
 ---
 
 ```c
