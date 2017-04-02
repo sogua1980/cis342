@@ -425,6 +425,20 @@ Variable types
 - pointer: what address does the pointer points to?
 - Exercises:
 	- Run the following programs. What do you expect them to print? What do you see?
+	
+```c
+#include <stdio.h>
+void main(){
+        int a=123;
+        int *b;
+        b=&a;
+        printf("%x\n",&a);
+        printf("%x\n",b);
+        printf("%d\n",*b);
+        printf("%d\n",a);
+}
+```
+
 ```c
 #include <stdio.h>
 void main(){
@@ -439,18 +453,7 @@ void main(){
 }
 ```
 
-```c
-#include <stdio.h>
-void main(){
-        int a=123;
-        int *b;
-        b=&a;
-        printf("%x\n",&a);
-        printf("%x\n",b);
-        printf("%d\n",*b);
-        printf("%d\n",a);
-}
-```
+
 
 ---
 
