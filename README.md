@@ -366,7 +366,7 @@ Revisit: Life of a `C` symbol
 | | variable | function | pointer
 | --- | --- | --- | --- |
 | declaration | `extern int x;` | `void foo();` | `extern int * p` |
-| definition | `int x;` | `void foo(){}` | `int *p` |
+| definition | `int x;` | `void foo(){}` |  |
 | initialization | `int x = 6;` | | `int *p = &a; int*q=malloc(10);` |
 | --- | --- | --- | --- |
 | assignment | `x = 1;` | | `*p = &a` |
@@ -374,7 +374,13 @@ Revisit: Life of a `C` symbol
 | --- | --- | --- | --- |
 | destroy | | | `delete *p`|
 
-Tease: a buggy program
+<!--
+
+`int *p` (behavior undefined!) 
+
+-->
+
+Teasor: a buggy program
 ---
 
 ```c
