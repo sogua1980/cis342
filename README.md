@@ -401,7 +401,20 @@ Examining Stack
     - `backtrace`/`bt`,`where`
     - `up`,`down`,`frame #`
         - **context**
- 
+ - Exercises:
+ 	- Debug the following program with gdb. Set a breakpoint at `fact` function and examine the stack using `backtrace` during the execution of the program.
+```c
+#include <stdio.h>
+int fact(int x){
+        if (x==1)
+                return 1;
+        else
+                return x*fact(x-1);
+}
+void main(){
+        printf("%d\n",fact(5));
+}
+```
 Variable types
 ---
 
@@ -438,7 +451,7 @@ void main(){
         printf("%d\n",a);
 }
 ```
-	- 
+
 ---
 
 ```c
