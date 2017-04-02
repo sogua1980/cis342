@@ -340,6 +340,11 @@ call fflush(0)
 C pointer and virtual memory (Apr. W1)
 ===
 
+References
+---
+
+- "Using GNU's GDB Debugger: Memory Layout And The Stack", by Peter Jay Salzman [[link](http://www.dirac.org/linux/gdb/02a-Memory_Layout_And_The_Stack.php)]
+
 Pointer (C syntax)
 ---
 
