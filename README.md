@@ -340,9 +340,28 @@ call fflush(0)
 C pointers and virtual memory (Apr. W1)
 ===
 
+Pointer (C syntax)
+---
+
+- pointer declaration: `int * p;` 
+- pointer assignment: `p = & a`
+    - `& a`: get **address** of a variable `a` (allocated symbol)
+- pointer dereference: `*p`
+
+```c
+#include<stdio.h>
+int main(){
+    int a = 10;
+    int * p = & a;
+    int b = *p;
+    printf("a=%d,b=%d,*p=%d,p=%p\n",a,b,*p,p);
+}
+```
+
 Executable file format (ELF)
 ---
 
+- What is the file format of `a.out`
 - Information
     - code `.text` 
     - constant value `.rodata`
