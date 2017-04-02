@@ -48,7 +48,7 @@ int main() //function (def.)
 }
 ```
 
-Life of a C construct
+Life of a C symbol
 ---
 
 | | variable | function 
@@ -348,6 +348,21 @@ Pointer (C syntax)
     - `& a`: get **address** of a variable `a` (allocated symbol)
 - pointer dereference: `*p`
 
+Recap: Life of a C symbol
+---
+
+| | variable | function | pointer
+| --- | --- | --- |
+| declaration | `extern int x;` | `void foo();` | `extern int * p`
+| definition | `int x;` | `void foo(){}` | `int * p`
+| initialization | `int x = 6;` | `int * p = &a;`
+| --- | --- | --- |
+| assignment | `x = 1;` | | `* p = &a`
+| reference | `y = x;` | `foo();` (invocation) | `*p`
+| --- | --- | --- |
+| destroy | | | delete 
+
+
 ```c
 #include<stdio.h>
 int main(){
@@ -361,14 +376,47 @@ int main(){
 Executable file format (ELF)
 ---
 
-- What is the file format of `a.out`
-- Information
+- The file format of `a.out`
+- Sections
     - code `.text` 
     - constant value `.rodata`
-    - symbol table
-- Commands to inspect binary (demos) 
-    - `size a.out` (sections)
-    - `nm a.out` (symbol table)
+    - demo: `size a.out` (sections)
+- Symbol table
+    - demo: `nm a.out` (symbol table)
+
+<!--
+
+Symbol table
+---
+
+- basic symbol table `gcc x.c`
+    - name list: addresses of symbol names and machine code
+- enhanced symbol table `gcc -g x.c`: 
+    - for each symbol (variable and function address), name
+    - for each machine codeline, its source codeline
+    - source file name 
+
+```
++------+----+----+
+|symbol|addr|name|
++------+----+----+
+|var   |    |    |
++------+----+----+
+|func  |    |    |
++------+----+----+
+|code  |    |    |
++------+----+----+
+```
+
+```bash
+gcc bug1.c; 
+gcc -g bug1.c -o b.out; 
+nm -ma a.out
+nm -ma b.out
+```
+
+-->
+
 
 ```c
 #include<stdio.h> //printf
