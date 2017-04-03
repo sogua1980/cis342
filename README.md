@@ -548,6 +548,38 @@ int main(){
   printf("%d\n",fact(5));
 }
 ```
+```c
+#include <stdio.h>
+#include <time.h>
+#include <string.h>
+#include <stdlib.h>
+
+char *randstring(unsigned int length) {
+	static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	char *randomString = NULL;
+	int n;
+	randomString = malloc(sizeof(char) * (length +1));
+
+	for (n = 0;n < length;n++) {			
+		int key = rand() % (int)(sizeof(charset) -1);
+		randomString[n] = charset[key];
+	}
+
+	randomString[length] = '\0';
+
+	return randomString;
+}
+
+void main()
+{
+	char *m;
+	srand(time(NULL));
+	while (1==1){
+		m=randstring(rand()%10-1);
+		printf("string= %s\n",m);
+	}
+}
+```
 
 Example bugs
 ---
