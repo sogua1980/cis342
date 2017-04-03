@@ -536,7 +536,7 @@ int main(){
 #include <string.h>
 #include <stdlib.h>
 
-char *randstring(size_t length) {
+char *randstring(unsigned int length) {
 	static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	char *randomString = NULL;
 	int n;
