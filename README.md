@@ -348,11 +348,9 @@ References
 Pointer (C syntax)
 ---
 
-- pointer declaration: `int * p;` 
-- pointer assignment: `p = & a`
+- pointer definition with initialization: `int *p = &a;` 
     - `& a`: get **address** of a variable `a` (allocated symbol)
 - pointer dereference: `*p`
-
 
 ```c
 #include<stdio.h>
@@ -368,16 +366,29 @@ Revisit: Life of a `C` symbol
 ---
 
 
+<!--
+
 | | variable | function | pointer
 | --- | --- | --- | --- |
-| declaration | `extern int x;` | `void foo();` | `extern int * p` |
-| definition | `int x;` | `void foo(){}` |  |
-| initialization | `int x = 6;` | | `int *p = &a; int*q=malloc(10);` |
-| --- | --- | --- | --- |
-| assignment | `x = 1;` | | `*p = &a` |
-| reference | `y = x;` | `foo();` | `*p`|
-| --- | --- | --- | --- |
+| declaration |  | | `extern int * p` |
+| definition | | | `int *p;` |
+| initialization | | | `int *p=&a;int*q=malloc(10)` |
+| assignment | | | `p=&a` |
+| reference | | | `*p`|
 | destroy | | | `delete *p`|
+
+-->
+
+
+
+|  | pointer | variable | function |
+| --- | --- | --- | --- |
+| declaration | `extern int * p` |`extern int x` | `void foo()` | 
+| definition | `int *p;` | `int x` | `void foo(){}` | 
+| initialization | `int *p=&a;int*q=malloc(7)` | `int x=6` | |
+| assignment | `p=&a` | `x=1` | |
+| reference | `*p=x;x=*p` | `y=x` | `foo()` |
+| destroy | `delete p` | | |
 
 <!--
 
@@ -464,7 +475,7 @@ Virtual memory space
 ---
 
 ```
- VA Space               
+ VAddr. Space               
 +------------+--+     
 |  kernel    |  |         ELF     
 +------------+--+     +----------+
@@ -515,9 +526,10 @@ int main(){
   int * array_heap = (int *)malloc(sizeof(int)*3);
   array_heap[0] = 1;array_heap[1] = 2;array_heap[2] = 3;
 
-  printf("stack %x, %x\n", array_stack, array_stack2);
-  printf("heap %x\n", array_heap);
-  printf(".rodata %x\n", array_data);
+  printf("stack %p\n", array_stack);
+  printf("stack2 %p\n", array_stack2);
+  printf("heap %p\n", array_heap);
+  printf(".rodata %p\n", array_data);
   return 0;
 }
 ```
