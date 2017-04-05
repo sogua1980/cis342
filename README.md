@@ -150,7 +150,7 @@ Makefile: Dependency rules
 Homework 4 - 2
 ---
 
-1. In your ubuntu, open course website (https://github.com/syracuse-fullstacksecurity/cis342) (e.g. using Firefox) and hit the green "Clone or download" button to download all the files into a .zip file. Extract the zip file and cd into "marw4" directory. Type command "make"  to build and execute binary "a.out". Type command "ls" to list all files. Then type command "make clean" and command "ls" to show object files (with extension ".o") are gone. Submit a screenshot of your terminal.
+1. In your Ubuntu, open course website (https://github.com/syracuse-fullstacksecurity/cis342) (e.g. using Firefox) and hit the green "Clone or download" button to download all the files into a .zip file. Extract the zip file and cd into "marw4" directory. Type command "make"  to build and execute binary "a.out". Type command "ls" to list all files. Then type command "make clean" and command "ls" to show object files (with extension ".o") are gone. Submit a screenshot of your terminal.
 
 2. We use the following command to compile `h2.c` as a library: `gcc -c h2.c -o liby.a`. Edit the file named "makefile" and add a new rule about the command. You may use `compilelib` as its label. And then type "make compilelib" to compile `h2.c` as a library. Submit the screenshot.
 
@@ -243,7 +243,7 @@ Gdb functionality
 Demo & exercise
 ---
 
-- Exercise: Debugging the following program, upload the correct program to BB.
+- Exercise: Debug the following program using gdb, upload the correct program to BB.
 
 ```c
 #include<stdio.h> //printf
@@ -336,21 +336,30 @@ call fflush(0)
 ```
 -->
 
-
-C pointer and virtual memory (Apr. W1)
+Pointer in C (Apr. W1)
 ===
 
 References
 ---
 
-- "Using GNU's GDB Debugger: Memory Layout And The Stack", by Peter Jay Salzman [[link](http://www.dirac.org/linux/gdb/02a-Memory_Layout_And_The_Stack.php)]
+- Pointer Basics: [[http://cslibrary.stanford.edu/106/](http://cslibrary.stanford.edu/106/)]
 
 Pointer (C syntax)
 ---
 
-- pointer definition with initialization: `int *p = &a;` 
-    - `& a`: get **address** of a variable `a` (allocated symbol)
-- pointer dereference: `*p`
+- a pointer is a variable that stores a reference to something. 
+     - "something" is called pointee
+- e.g.: a pointer variable named `x` referencing to a "pointee" variable of value `42`. 
+
+![pointer pointee](images/PointerPointee.gif)
+
+Pointer operations
+---
+
+- definition/initialization: `int *p1 = p2;` 
+- dereference: `*p`
+- get reference of: `& a` 
+    - get the *address* of variable `a` (allocated somewhere in memory)
 
 ```c
 #include<stdio.h>
@@ -362,30 +371,15 @@ int main(){
 }
 ```
 
-Revisit: Life of a `C` symbol
+Life of a `C` pointer/symbol
 ---
 
-
-<!--
-
-| | variable | function | pointer
-| --- | --- | --- | --- |
-| declaration |  | | `extern int * p` |
-| definition | | | `int *p;` |
-| initialization | | | `int *p=&a;int*q=malloc(10)` |
-| assignment | | | `p=&a` |
-| reference | | | `*p`|
-| destroy | | | `delete *p`|
-
--->
-
-
-
-|  | pointer | variable | function |
+| | pointer | variable | function |
 | --- | --- | --- | --- |
 | declaration | `extern int * p` |`extern int x` | `void foo()` | 
 | definition | `int *p;` | `int x` | `void foo(){}` | 
-| initialization | `int *p=&a;int*q=malloc(7)` | `int x=6` | |
+| initialization | `int *p=&a;` | `int x=6` | |
+| | `int*q=malloc(7)` | |
 | assignment | `p=&a` | `x=1` | |
 | reference | `*p=x;x=*p` | `y=x` | `foo()` |
 | destroy | `delete p` | | |
@@ -396,88 +390,94 @@ Revisit: Life of a `C` symbol
 
 -->
 
-Teasor: a buggy program
+Exercise
 ---
 
-```c
-int main() {
-     void *p = "x";
-     *p = 'y';}
-```
-
-- Why there is a bug?
-
-
-Executable file format (ELF)
----
-
-- The file format of `a.out`
-- Sections
-    - code `.text` 
-    - constant value `.rodata`
-    - demo: `size a.out` (sections)
-- Symbol table
-    - demo: `nm -m a.out` (symbol table)
-
-<!--
-
-Symbol table
----
-
-- basic symbol table `gcc x.c`
-    - name list: addresses of symbol names and machine code
-- enhanced symbol table `gcc -g x.c`: 
-    - for each symbol (variable and function address), name
-    - for each machine codeline, its source codeline
-    - source file name 
+- In the following incomplete program, 
+    1. define two pointers `p1` and `p2`, both pointing to variable `x`. 
+    2. Use `p1` to update `x`'s value to `5`.
+    3. Then use `p2` to read the value of variable `x` and `printf` it on terminal.
 
 ```
-+------+----+----+
-|symbol|addr|name|
-+------+----+----+
-|var   |    |    |
-+------+----+----+
-|func  |    |    |
-+------+----+----+
-|code  |    |    |
-+------+----+----+
-```
-
-```bash
-gcc bug1.c; 
-gcc -g bug1.c -o b.out; 
-nm -ma a.out
-nm -ma b.out
-```
-
--->
-
-
-```c
-#include<stdio.h> //printf
-#include<string.h> //string
+#include<stdio.h>
 int main(){
-  // constant 5 is encoded in assembly (.text)
-  int i = 5;
-  //string literal is in .rodata
-  char * p = "hello world string";
+    int x = 4;
+    // To complete the program below:
+
+
+}
+```
+
+Virtual memory in C (Apr. W1)
+===
+
+Introduction
+---
+
+- we talked about pointers
+- but **where does a pointer point to?**
+- we have to talk about the *virtual memory* model used in C/C++.
+- References
+    - "Using GNU's GDB Debugger: Memory Layout And The Stack", by Peter Jay Salzman [[link](http://www.dirac.org/linux/gdb/02a-Memory_Layout_And_The_Stack.php)]
+
+
+Different variable "types"
+---
+
+1. global variable: defined outside a function
+2. local variable: defined in function
+3. dynamically-allocated variable: allocated by `malloc`
+    - `int * p = malloc(2*sizeof(int));`
+4. static (local) variable: defined in function with keyword `static`
+    - `static int x;`, [[example](https://en.wikipedia.org/wiki/Static_variable#Scope)]
+
+---
+
+```c
+#include<stdio.h>
+// global variable x
+int x = 1;
+int main(){
+  // local variable x
+  int y = 2;
+  // dynamically-allocated variable pz
+  int * pz = malloc(2*sizeof(int));`
+  // static local variable t
+  static int t = 4;
+  printf("x at %p\ny at %p\npz to %p\nt at %p\n", &x, &y, pz, &t);
   return 0;
 }
 ```
 
-Virtual memory space
+Memory location of different variables
 ---
 
-1. From executable: Segments `.text,.bss,.rodata` 
-2. Runtime information: `stack`, `heap`
-    - values of symbols during execution
+| variable type | memory location |
+| ---- | --- |
+| global variable | `.rodata`/`.bss` |
+| static variable | `.rodata`/`.bss` |
+| local variable | `stack` |
+| dynamically-allocated var | `heap` |
 
+- The case of the demo.
+
+Virtual memory layout
+---
+
+1. Segments `.text,.bss,.rodata` 
+    - From executable `a.out`
+2. Segments `stack`, `heap`
+    - Runtime info.: values of symbols during execution
+- Each segment (or page) has its own permission. 
+
+
+Virtual memory layout
 ---
 
 ```
- VAddr. Space               
+ VirAddr Space               
 +------------+--+     
-|  kernel    |  |         ELF     
+|  kernel    |  |        a.out     
 +------------+--+     +----------+
 |  .text     |EO|     |  .text   |
 +------------+--+     +----------+
@@ -494,7 +494,52 @@ Virtual memory space
 +------------+--+                  
 ```
 
-- Gdb demo: `info proc mappings #print mem layout`
+- Demo: print memory layout in Gdb
+    - `info proc mappings #print mem layout`
+
+<!--
+
+Executable file format (ELF)
+---
+
+- The file format of `a.out`
+- Sections
+    - code `.text` 
+    - constant value `.rodata`
+    - demo: `size a.out` (sections)
+- Symbol table
+    - demo: `nm -m a.out` (symbol table)
+
+Symbol table
+---
+
+- basic symbol table `gcc x.c`
+    - name list: addresses of symbol names and machine code
+- enhanced symbol table `gcc -g x.c`: 
+    - for each symbol (variable and function address), name
+    - for each machine codeline, its source codeline
+    - source file name 
+
+```
++------+----+----+
+|symbol|addr|name|
++------+----+----+
+|var   |7ff1| x  |
++------+----+----+
+|func  |8005|foo |
++------+----+----+
+|code  |    |    |
++------+----+----+
+```
+
+```bash
+gcc bug1.c; 
+gcc -g bug1.c -o b.out; 
+nm -ma a.out
+nm -ma b.out
+```
+-->
+
 
 Examining Stack 
 ---
@@ -503,36 +548,7 @@ Examining Stack
     - `backtrace`/`bt`,`where`
     - `up`,`down`,`frame #`
         - **context**
-
-Variable types
----
-
-- variables
-    - global variable: defined outside a function,  `.bss`
-    - local variable: defined in funciton, `stack`
-    - heap variable: defined by `malloc`, `heap`
-- pointer: what address does the pointer points to?
-
-Demo
----
-
-```c
-#include<stdio.h> //malloc
-#include<stdlib.h> //malloc
-int array_data[] = {0,1,2};
-int main(){
-  int array_stack[] = {3,4,5};
-  int array_stack2[] = {6,7,8};
-  int * array_heap = (int *)malloc(sizeof(int)*3);
-  array_heap[0] = 1;array_heap[1] = 2;array_heap[2] = 3;
-
-  printf("stack %p\n", array_stack);
-  printf("stack2 %p\n", array_stack2);
-  printf("heap %p\n", array_heap);
-  printf(".rodata %p\n", array_data);
-  return 0;
-}
-```
+<!--
 
 Exercise
 ---
@@ -549,7 +565,9 @@ int main(){
 }
 ```
 
-Example bugs
+-->
+
+Exercise 1
 ---
 
 ```c
@@ -570,22 +588,21 @@ int main() {
 - Segmentation fault
     - buffer overflow: stack/heap...
     - memory protection
-    - null pointer dereferernce
+    - null pointer dereference
 
 -->
 
 <!--
 
 - src -> binary
-- input: commandline argument
-- execution, runtime inforomation:
+- input: command-line argument
+- execution, runtime information:
      - register 
          - process context information
      - virtual memory 
          - virtual address space
 
 -->
-
 
 <!--
 
@@ -679,7 +696,7 @@ int main()
 
 - Exercise:
     - Write a program that gets an integer from user and checks if it is a prime number or not
-    - Write a progeam that prints all the prime numbers between 2 to 10000
+    - Write a program that prints all the prime numbers between 2 to 10000
 
 Functions
 ---
@@ -704,7 +721,7 @@ int power (int x, int y)
 }
 ```
 - Exercise:
-    - Write a function that gets n as the input and calculates nth number in fibonacci sequence.
+    - Write a function that gets n as the input and calculates nth number in Fibonacci sequence.
     - Write a function that gets n as the input and returns 1 if it is a prime number and returns 0 if it is not.
 
 Arrays
