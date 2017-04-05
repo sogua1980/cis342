@@ -348,7 +348,7 @@ Pointer (C syntax)
 ---
 
 - a pointer is a variable that stores a reference to something. 
-     - "something" is called pointee
+     - "something", called pointee, is usually another variable.
 - e.g.: a pointer variable named `x` referencing to a "pointee" variable of value `42`. 
 
 ![pointer pointee](./images/PointerPointee.gif)
@@ -652,68 +652,6 @@ int main()
     - Try ``a++;``, ``a*=5;``
     - Write a program to swap the value of two integer variables
     
-Conditional Statements
----
-
-- Demo:
-```c
-#include <stdio.h>	
-
-int main()
-{
-    int age;
-    printf( "Please enter your age" );
-    scanf( "%d", &age );
-    if ( age &lt; 100 ) {
-        printf ("You are pretty young!\n" );
-    }
-    else if ( age == 100 ) {
-        printf( "You are old\n" );       
-    }
-    else {
-        printf( "You are really old\n" );
-    }
-  return 0;
-}
-```
-- Exercise:
-    - Write a program that gets an integer from user and prints "odd" or "even" based on the input.
-
-Loops
----
-
-- Demo:
-```c
-#include <stdio.h>
-
-int main()
-{
-    int i;
-    for ( i = 0; i &lt; 10; i++ ) {
-        printf( "%d\n", i );
-    }
-    return 0;
-}
-```
-
-```c
-#include <stdio.h>
-
-int main()
-{ 
-  int i = 0;
-  while ( i < 10 ) {
-      printf( "%d\n", x );
-      x++;
-  }
-  return 0;
-}
-```
-
-- Exercise:
-    - Write a program that gets an integer from user and checks if it is a prime number or not
-    - Write a program that prints all the prime numbers between 2 to 10000
-
 Functions
 ---
 
@@ -761,6 +699,5 @@ int main()
 
 - Exercise:
     - Write a program to get an array with 10 integers from user and sort the array.
-
 
 -->
