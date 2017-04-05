@@ -351,7 +351,7 @@ Pointer (C syntax)
      - "something", called pointee, is usually another variable.
 - e.g.: a pointer variable named `x` referencing to a "pointee" variable of value `42`. 
 
-![pointer pointee](./images/PointerPointee.gif)
+![pointer pointee](/Users/tristartom/workspace/teaching/cis342/cis342/images/PointerPointee.gif)
 
 <!--
 
@@ -423,19 +423,19 @@ Introduction
 
 - we talked about pointers
 - but **where does a pointer point to?**
-- that is related to the *virtual memory* model in C/C++.
+- this is related to the *virtual memory* model in C/C++.
 - References
     - "Using GNU's GDB Debugger: Memory Layout And The Stack", by Peter Jay Salzman [[link](http://www.dirac.org/linux/gdb/02a-Memory_Layout_And_The_Stack.php)]
 
 
-Four variable "types"
+Four variable "types" in C
 ---
 
 1. *global* variable: defined outside a function
-2. *local* variable: defined in function
-3. *dynamically-allocated* variable: allocated by `malloc`
+2. *local* variable: defined inside a function
+3. *dynamically-allocated* variable: allocated by `malloc()`
     - `int * p = malloc(2*sizeof(int));`
-4. *static (local)* variable: defined in function with keyword `static`
+4. *static (local)* variable: defined inside a function, with keyword `static`
     - `static int x;`, [[example](https://en.wikipedia.org/wiki/Static_variable#Scope)]
 
 ---
