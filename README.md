@@ -351,7 +351,14 @@ Pointer (C syntax)
      - "something" is called pointee
 - e.g.: a pointer variable named `x` referencing to a "pointee" variable of value `42`. 
 
-![pointer pointee](images/PointerPointee.gif)
+![pointer pointee](./images/PointerPointee.gif)
+
+<!--
+
+![pointer pointee](./images/PointerPointee.gif)
+![pointer pointee](/Users/tristartom/workspace/teaching/cis342/cis342/images/PointerPointee.gif)
+
+-->
 
 Pointer operations
 ---
@@ -359,7 +366,7 @@ Pointer operations
 - definition/initialization: `int *p1 = p2;` 
 - dereference: `*p`
 - get reference of: `& a` 
-    - get the *address* of variable `a` (allocated somewhere in memory)
+    - get the *address* (memory location) of variable `a` 
 
 ```c
 #include<stdio.h>
@@ -393,12 +400,12 @@ Life of a `C` pointer/symbol
 Exercise
 ---
 
-- In the following incomplete program, 
+- Do the following to complete the code snippet at the bottom. Then compile and execute your program. Submit the completed program to BB.
     1. define two pointers `p1` and `p2`, both pointing to variable `x`. 
     2. Use `p1` to update `x`'s value to `5`.
     3. Then use `p2` to read the value of variable `x` and `printf` it on terminal.
 
-```
+```c
 #include<stdio.h>
 int main(){
     int x = 4;
@@ -416,19 +423,19 @@ Introduction
 
 - we talked about pointers
 - but **where does a pointer point to?**
-- we have to talk about the *virtual memory* model used in C/C++.
+- that is related to the *virtual memory* model in C/C++.
 - References
     - "Using GNU's GDB Debugger: Memory Layout And The Stack", by Peter Jay Salzman [[link](http://www.dirac.org/linux/gdb/02a-Memory_Layout_And_The_Stack.php)]
 
 
-Different variable "types"
+Four variable "types"
 ---
 
-1. global variable: defined outside a function
-2. local variable: defined in function
-3. dynamically-allocated variable: allocated by `malloc`
+1. *global* variable: defined outside a function
+2. *local* variable: defined in function
+3. *dynamically-allocated* variable: allocated by `malloc`
     - `int * p = malloc(2*sizeof(int));`
-4. static (local) variable: defined in function with keyword `static`
+4. *static (local)* variable: defined in function with keyword `static`
     - `static int x;`, [[example](https://en.wikipedia.org/wiki/Static_variable#Scope)]
 
 ---
@@ -438,10 +445,10 @@ Different variable "types"
 // global variable x
 int x = 1;
 int main(){
-  // local variable x
+  // local variable y
   int y = 2;
   // dynamically-allocated variable pz
-  int * pz = malloc(2*sizeof(int));`
+  int * pz = malloc(2*sizeof(int));
   // static local variable t
   static int t = 4;
   printf("x at %p\ny at %p\npz to %p\nt at %p\n", &x, &y, pz, &t);
@@ -449,7 +456,7 @@ int main(){
 }
 ```
 
-Memory location of different variables
+Location of different variables
 ---
 
 | variable type | memory location |
@@ -459,7 +466,7 @@ Memory location of different variables
 | local variable | `stack` |
 | dynamically-allocated var | `heap` |
 
-- The case of the demo.
+- The case of the preceeding code.
 
 Virtual memory layout
 ---
@@ -548,12 +555,13 @@ Examining Stack
     - `backtrace`/`bt`,`where`
     - `up`,`down`,`frame #`
         - **context**
+
 <!--
 
 Exercise
 ---
 
-- Debug the following program with gdb. Set a breakpoint at `fact` function and examine the stack using `backtrace` during the execution of the program. Find the bug and describe it in BB.
+- Use gdb to debug the following program. Set a breakpoint at `fact` function and examine the stack using `backtrace` during the execution of the program. Find and describe the bug in BB.
 
 ```c
 #include <stdio.h>
@@ -570,6 +578,19 @@ int main(){
 Exercise 1
 ---
 
+- Use gdb to debug the following program. Identify the bug line.
+
+```c
+int main() {
+     void * p = "x";
+     *p = 'y';}
+```
+
+Exercise 2
+---
+
+- Use gdb to debug the following program. Identify the bug line.
+
 ```c
 #include<stdio.h>
 int main() {
@@ -577,11 +598,6 @@ int main() {
     x[13]=1; printf("%f\n",x[13]);}
 ```
 
-```c
-int main() {
-     void * p = "x";
-     *p = 'y';}
-```
 
 <!--
 
