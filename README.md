@@ -442,6 +442,7 @@ Four variable "types" in C
 
 ```c
 #include<stdio.h>
+#include<stdlib.h>
 // global variable x
 int x = 1;
 int main(){
