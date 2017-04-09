@@ -608,7 +608,29 @@ int main() {
     - null pointer dereference
 
 -->
+<!--
+Pointer Homework
+- Compile and execute the following program. Describe the difference between a pointer and an array. What is the difference if we use an array instead of a pointer in the following program?
+#include <stdio.h>
+void main(){
+        int *a;
+        int i;
+        for (i=0; i<10; i++)
+                a[i]=i;
+        for (i=0; i<10; i++){
+                printf("%d",*a);
+                (*a)++;
+        }
+}
+- In the previous question, what will happen if we assign 10000 values instead of 10 values to the pointer? Why?
+- Write code to declare a variable named "foo". Now declare a pointer named "bar". What do you do to make foo changed everytime we change bar?
+- We can find out the size of a variable using sizeof(varname) and print it using printf("%d",sizeof(varname)). Print the size of variables "a", "i", "a[0]", and "a[1]" in the program in first question. Describe your observation.
+- The _________ , also known as the address operator, returns the memory address of a variable. a.asterisk (*) b. ampersand (&) c. percent sign (%) d. exclamation point (!)
+- With pointer variables, you can __________ manipulate data stored in other variables. a. never b. seldom c. indirectly d. All of these
+- A pointer may be initialized with a. the address of an existing object b. the value of an integer variable c. the value of a floating point variable d. all of these
 
+
+-->
 <!--
 
 - src -> binary
