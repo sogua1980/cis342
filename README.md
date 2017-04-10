@@ -640,53 +640,83 @@ Architecture overview
 ---
 
 - x86 CPU registers
-    - EAX,EBX,ECX,EDX: values
-    - ESP,EBP,ESI,EDI: pointers
-    - **EIP**
+    - RAX,RBX,RCX,RDX: values
+    - RSP,RBP,RSI,RDI: pointers
+    - **RIP**
     - (EFLAG)
 - demo in gdb: 
     - `info registers #print register values`
-    - `i r eip #print register eip`
+    - `i r rip #print register rip`
 
 ---
 
 - CPU execution model
     - like "a child pointing his finger at each word as he reads"
-    - EIP, or PC, is the CPU's finger
+    - RIP, or PC, is the CPU's finger
     - words are instructions stored in section `.text` in virtual memory
         - machine instructions
         - assembly
 
-Assembly
+Assembly code: Where to find it
 ---
 
-- Demo: `gcc -S helloworld.c`
+- program life cyle
+    - preprocessor: 
+    - compiler: assembly code
+    - assembler: machine instruction (PIC)
+    - linker: machine instruction (executable)
+    - loader: loaded in virtual addr space
+
+```
+   prep     gcc -S     gcc -c          ld/gcc       exec   
+.c------>.i-------->.s-------->.o(PIC)------->a.out------>VM
+```
+
+- Three places to examine assembly code
+    - `gcc -S helloworld.c; vim helloworld.s`
+    - `objdump -M intel -D a.out | grep -A20 main`
+    - in `gdb`: `set disassembly intel; disassemble main`
+
+Assembly language
+---
+
 - ISA: 
     - ALU instruction: `add`
     - LD/ST instruction: `mov`
     - Control instruction: `jump`, `cmp; jle foo`
 - Format: AT&T and Intel
-    - AT&T: `89 e5    mov %esp,%ebp`
-    - Intel:`89 e5    mov ebp esp` 
-- Examine assembly code: Demos
-    - in `gdb`: `set dis intel; disassemble main`
-    - `objdump -M intel -D a.out | grep -A20 main`
+    - AT&T: `89 e5    mov %rsp,%rbp`
+    - Intel:`89 e5    mov rbp rsp` 
 
 Assembly in Gdb
 ---
 
 - `x`: gdb command to e`x`amine memory
-    - `x/3xb $eip`
+    - `x/3xb $rip`
     - `x/x`: `o/x/u/t`
+        - `t` binary, `u` unsigned, `o` octal
     - `x/3b`: `b/h/w/g`
+        - `b` byte, `h` halfword, `w` word, `g` giant
     - `x/4i`
+        - `i` instruction
 - `nexti`: step per instruction
 
-<!--
+Demo: CPU execution in action
+---
 
-t is binary, u is unsigned, o is octal
-b is byte, h is halfword, w is word, g is giant
-i is instruction
+```c
+#include <stdio.h>
+int j = 3;
+int main() {
+  int i = 0;
+  i = i + 2;
+  if (i == 2)
+    puts("Hello, world!\n"); // put the string to the output. 
+}
+```
+
+
+<!--
 
 - gdb setup
     - gdb -q
@@ -694,7 +724,7 @@ i is instruction
 
 0x260
 
-Point in Assembly
+Pointer in Assembly
 ---
 
 
