@@ -688,19 +688,6 @@ Assembly language
     - AT&T: `89 e5    mov %rsp,%rbp`
     - Intel:`89 e5    mov rbp rsp` 
 
-Assembly in Gdb
----
-
-- `x`: gdb command to e`x`amine memory
-    - `x/3xb $rip`
-    - `x/x`: `o/x/u/t`
-        - `t` binary, `u` unsigned, `o` octal
-    - `x/3b`: `b/h/w/g`
-        - `b` byte, `h` halfword, `w` word, `g` giant
-    - `x/4i`
-        - `i` instruction
-- `nexti`: step per instruction
-
 Demo: CPU execution in action
 ---
 
@@ -714,6 +701,20 @@ int main() {
     puts("Hello, world!\n"); // put the string to the output. 
 }
 ```
+
+Assembly in Gdb
+---
+
+- `nexti`: step per instruction
+- `x`: gdb command to e`x`amine memory
+    - `x/3xb $rip`
+    - `x/x`: `o/x/u/t`
+        - `t` binary, `u` unsigned, `o` octal
+    - `x/3b`: `b/h/w/g`
+        - `b` byte, `h` halfword, `w` word, `g` giant
+    - `x/4i`
+        - `i` instruction
+
 
 
 <!--
