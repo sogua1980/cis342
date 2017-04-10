@@ -321,10 +321,6 @@ Advanced gdb commands
 ---
 
 ```
-info registers #print all register values
-```
-
-```
 p/x var #print var in hex form
 ```
 
@@ -351,7 +347,7 @@ Pointer (C syntax)
      - "something", called pointee, is usually another variable.
 - e.g.: a pointer variable named `x` referencing to a "pointee" variable of value `42`. 
 
-![pointer pointee](./images/PointerPointee.gif)
+![pointer pointee](/Users/tristartom/workspace/teaching/cis342/cis342/images/PointerPointee.gif)
 
 <!--
 
@@ -548,7 +544,6 @@ nm -ma b.out
 ```
 -->
 
-
 Examining Stack 
 ---
 
@@ -599,7 +594,6 @@ int main() {
     x[13]=1; printf("%f\n",x[13]);}
 ```
 
-
 <!--
 
 - Segmentation fault
@@ -608,6 +602,76 @@ int main() {
     - null pointer dereference
 
 -->
+
+<!--
+
+Assembly
+===
+
+References
+---
+
+- Hacking, the art of expoitation, 2nd edition, Jon Erickson, Chapter 0x250
+
+Architecture overview
+---
+
+- x86 CPU registers
+    - EAX,EBX,ECX,EDX: values
+    - ESP,EBP,ESI,EDI: pointers
+    - **EIP**
+    - (EFLAG)
+- demo in gdb: 
+    - `info registers #print register values`
+    - `i r eip #print register eip`
+
+---
+
+- CPU execution model
+    - like "a child pointing his finger at each word as he reads"
+    - EIP, or PC, is the CPU's finger
+    - instructions are stored in `.text` section in virtual address space
+        - machine instructions
+        - assembly
+
+Assembly
+---
+
+- Demo: `gcc -S helloworld.c`
+- ISA: 
+    - ALU instruction: `add`
+    - LD/ST instruction: `mov`
+    - Control instruction: `jump`, `cmp; jle foo`
+- Format: AT&T and Intel
+    - AT&T: `89 e5    mov %esp,%ebp`
+    - Intel:`89 e5    mov ebp esp` 
+    - `gdb` demo: `set dis intel`
+    - `objdump` demo: `objdump -M intel -D a.out | grep -A20 main`
+
+Assembly in Gdb
+---
+
+- `x`: gdb command to e`x`amine memory
+    - `x/3xb $eip`
+    - `x/x`: `o/x/u/t`
+    - `x/3b`: `b/h/w/g`
+    - `x/4i`
+- `nexti`: step per instruction
+
+t is binary, u is unsigned, o is octal
+b is byte, h is halfword, w is word, g is giant
+i is instruction
+
+Function in Assembly
+---
+
+- calling convention
+- function prologue
+    - generated automatically by compiler
+    - the reason why variable type needs to be declared
+
+-->
+
 
 <!--
 

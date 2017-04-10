@@ -1,11 +1,14 @@
-//string literal is in .text
-// variable p1 is in .rodata
-char * p1 = "foo";
+#include<stdio.h>
+#include<stdlib.h>
+// global variable x
+int x = 1;
 int main(){
-  // constant 5 is encoded in assembly (.text)
-  int i = 5;
-  //string literal is in .text
-  // variable p2 is in stack
-  char * p2 = "bar";
+  // local variable y
+  int y = 2;
+  // dynamically-allocated variable pz
+  int * pz = malloc(2*sizeof(int));
+  // static local variable t
+  static int t = 4;
+  printf("x at %p\ny at %p\npz to %p\nt at %p\n", &x, &y, pz, &t);
   return 0;
 }
