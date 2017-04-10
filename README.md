@@ -347,11 +347,10 @@ Pointer (C syntax)
      - "something", called pointee, is usually another variable.
 - e.g.: a pointer variable named `x` referencing to a "pointee" variable of value `42`. 
 
-![pointer pointee](/Users/tristartom/workspace/teaching/cis342/cis342/images/PointerPointee.gif)
+![pointer pointee](./images/PointerPointee.gif)
 
 <!--
 
-![pointer pointee](./images/PointerPointee.gif)
 ![pointer pointee](/Users/tristartom/workspace/teaching/cis342/cis342/images/PointerPointee.gif)
 
 -->
