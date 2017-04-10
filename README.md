@@ -602,8 +602,11 @@ int main() {
     - null pointer dereference
 
 -->
+
 <!--
+
 Pointer Homework
+
 - Compile and execute the following program. Describe the difference between a pointer and an array. What is the difference if we use an array instead of a pointer in the following program?
 #include <stdio.h>
 void main(){
@@ -623,11 +626,9 @@ void main(){
 - With pointer variables, you can __________ manipulate data stored in other variables. a. never b. seldom c. indirectly d. All of these
 - A pointer may be initialized with a. the address of an existing object b. the value of an integer variable c. the value of a floating point variable d. all of these
 
-
 -->
-<!--
 
-Assembly
+Assembly language (Apr.w2)
 ===
 
 References
@@ -652,7 +653,7 @@ Architecture overview
 - CPU execution model
     - like "a child pointing his finger at each word as he reads"
     - EIP, or PC, is the CPU's finger
-    - instructions are stored in `.text` section in virtual address space
+    - words are instructions stored in section `.text` in virtual memory
         - machine instructions
         - assembly
 
@@ -667,8 +668,9 @@ Assembly
 - Format: AT&T and Intel
     - AT&T: `89 e5    mov %esp,%ebp`
     - Intel:`89 e5    mov ebp esp` 
-    - `gdb` demo: `set dis intel`
-    - `objdump` demo: `objdump -M intel -D a.out | grep -A20 main`
+- Examine assembly code: Demos
+    - in `gdb`: `set dis intel; disassemble main`
+    - `objdump -M intel -D a.out | grep -A20 main`
 
 Assembly in Gdb
 ---
@@ -680,9 +682,21 @@ Assembly in Gdb
     - `x/4i`
 - `nexti`: step per instruction
 
+<!--
+
 t is binary, u is unsigned, o is octal
 b is byte, h is halfword, w is word, g is giant
 i is instruction
+
+- gdb setup
+    - gdb -q
+    - `.gdbinit`
+
+0x260
+
+Point in Assembly
+---
+
 
 Function in Assembly
 ---
