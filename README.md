@@ -48,7 +48,7 @@ int main() //function (def.)
 }
 ```
 
-Life of a C symbol
+Life of a C construct
 ---
 
 | | variable | function 
@@ -440,6 +440,11 @@ Four variable "types" in C
 #include<stdlib.h>
 // global variable x
 int x = 1;
+void foo(){
+  static int t = 5;
+  printf("t in foo = %d\n", t);
+}
+
 int main(){
   // local variable y
   int y = 2;
@@ -447,21 +452,26 @@ int main(){
   int * pz = malloc(2*sizeof(int));
   // static local variable t
   static int t = 4;
+  foo();
+  printf("t in main = %d\n", t);
   printf("x at %p\ny at %p\npz to %p\nt at %p\n", &x, &y, pz, &t);
   return 0;
 }
 ```
 
-Location of different variables
+Variable type: scope and visibility
 ---
 
-| variable type | memory location |
-| ---- | --- |
-| global variable | `.rodata`/`.bss` |
-| static variable | `.rodata`/`.bss` |
-| local variable | `stack` |
-| dynamically-allocated var | `heap` |
+| variable type | scope | visbility | memory location |
+| ---- | --- | --- | --- |
+| global variable | global | global | `.rodata`/`.bss` |
+| static variable | global | nested local | `.rodata`/`.bss` |
+| local variable | local | nested local | `stack` |
+| dynamically-allocated var | dynamic | global | `heap` |
 
+- static local variable
+    - Possible to define multiple static local variables of the same name, defined in different functions. 
+    - They represent different memory locations. 
 - The case of the preceeding code.
 
 Virtual memory layout
@@ -785,23 +795,23 @@ Data type
 ---
 
 - signed, unsigned, long long, float, char
-- unsigned: 
-    - a 32-bit unsigned integer, value from 0 to $2^{32}-1$.
-- signed: 
-    - a 32-bit unsigned integer, value from -2^{31} to $2^{32}-1$.
-    - negative numbers are represented by two's complement, (which is suited for binary adders).
+    - unsigned: 
+        - a 32-bit unsigned integer, value from 0 to $2^{32}-1$.
+    - signed: 
+        - a 32-bit unsigned integer, value from $-2^{31}$ to $2^{32}-1$.
+        - negative numbers are represented by two's complement, (which is suited for binary adders).
 - C data type is memory allocation size
     - C is typed, but assembly/machine instructions are not
     - `sizeof()`
 
-| signed | unsigned | long | long long | float | char |
-| --- | --- | --- | --- | --- | --- |
-| 4 | 4 | 2 | 4 | 8 | 1 |
+| type | signed | unsigned | short | long long | float | char |
+| --- | --- | --- | --- | --- | --- | --- |
+| sizeof | 4 | 4 | 2 | 8 | 4 | 1 |
 
 Typecasting
 ---
 
-```
+```c
 #include<stdio.h>
 int main(){
   int i = 5;
@@ -811,66 +821,48 @@ int main(){
 }
 ```
 
-Variable type: scope and visibility
----
-
-
-| variable type | scope | visbility | memory location |
-| ---- | --- |
-| global variable | global | global | `.rodata`/`.bss` |
-| static variable | global | nested local | `.rodata`/`.bss` |
-| local variable | local | nested local | `stack` |
-| dynamically-allocated var | dynamic | global | `heap` |
-
-- static local
-    - Possible to define multiple static local variables of the same name, defined in different functions. 
-    - They represent different memory locations. 
-
-Demo
----
-
-```
-#include <stdio.h>
-int j = 42; // j is a global variable.
-void func3() {
-   int i = 11, j = 999; // Here, j is a local variable of func3(). 
-   printf("\t\t\t[in func3] i @ 0x%08x = %d\n", &i, i); 
-   printf("\t\t\t[in func3] j @ 0x%08x = %d\n", &j, j);
-}
-void func2() { 
-   int i = 7;
-   printf("\t\t[in func2] i @ 0x%08x = %d\n", &i, i);
-   printf("\t\t[in func2] j @ 0x%08x = %d\n", &j, j);
-   printf("\t\t[in func2] setting j = 1337\n");
-   j = 1337; // Writing to j
-   func3();
-   printf("\t\t[back in func2] i @ 0x%08x = %d\n", &i, i); 
-   printf("\t\t[back in func2] j @ 0x%08x = %d\n", &j, j);
-}
-void func1() { 
-  int i = 5;
-  printf("\t[in func1] i @ 0x%08x = %d\n", &i, i); 
-  printf("\t[in func1] j @ 0x%08x = %d\n", &j, j); 
-  func2();
-  printf("\t[back in func1] i @ 0x%08x = %d\n", &i, i); 
-  printf("\t[back in func1] j @ 0x%08x = %d\n", &j, j);
-}
-int main() { 
-  int i = 3;
-  printf("[in main] i @ 0x%08x = %d\n", &i, i);
-  printf("[in main] j @ 0x%08x = %d\n", &j, j); 
-  func1();
-  printf("[back in main] i @ 0x%08x = %d\n", &i, i); 
-  printf("[back in main] j @ 0x%08x = %d\n", &j, j);
-}
-```
-
 Pointer types
 ---
 
+- Array 
+    - A `C` array is a list of `n` elements of a specific data type, and allocated in `n` adjacent memory locations.
+    - A null byte in the end is a delimiter character 
 - Array and pointer
-    - A C array is a list of `n` elements of a specific data type, and allocated in `n` adjacent memory locations.
-    - null byte is delimiter character 
+    - `int a[];` vs `int *b = a;`
+
+```c
+#include<stdio.h>
+int main(){
+    int a[] = {2,1,0};
+    int *b = a;
+    unsigned long c = (unsigned long)a;//long
+    for (int i=0; i<3; i++){
+        printf("%d,%d,%d,%d,%d\n",a[i],*(b+i),*(a+i),b[i],*((int *)(c+i*sizeof(int))));
+    }
+}
+```
+
+
+<!--
+
+Exercise
+---
+
+Debug:
+
+
+```c
+#include<stdio.h>
+int main(){
+    int a[] = {2,1,0};
+    int *b = a;
+    unsigned int c = (unsigned int)a;
+    for (int i=0; i<3; i++){
+        printf("%d,%d,%d,%d,%d\n",a[i],*(b+i),*(a+i),b[i],*((int *)(c+i*sizeof(int))));
+    }
+}
+```
+-->
 
 ---
 
@@ -898,7 +890,7 @@ Entering function in Assembly
 ---
 
 - Calling convention, function prologue and `call` instruction.
-- The SFP is used to restore EBP to its previous value, and the return address is used to restore EIP 
+- The `SFP` is used to restore `RBP` to its previous value, and the return address is used to restore `RIP` 
 
 <!--Stack_example.c-->
 ```c
@@ -916,8 +908,12 @@ int main() {
 Exercise
 ---
 
+- Debug the following program.
+
 ```c
-#include <stdio.h> #include <stdlib.h> #include <string.h>
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <string.h>
 int check_authentication(char *password) { 
   int auth_flag = 0;
   char password_buffer[16];
