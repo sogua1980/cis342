@@ -800,6 +800,9 @@ Data type
     - how much space to allocate to store variable in memory
     - how to inteprete the bitstring stored in the memory
     - how to calculate "primitive" arithemtics on the variable
+
+---
+
 - signed, unsigned, long long, float, char
     - unsigned: 
         - a 32-bit unsigned integer, value from 0 to $2^{32}-1$.
@@ -818,7 +821,7 @@ Typecasting
 #include<stdio.h>
 int main(){
   int i = 5;
-  float f = (float) i
+  float f = (float) i;
   float d = f/3; // float d2 = i/3;
   printf("%f\n",d);
 }
@@ -936,7 +939,7 @@ Exercise
 ---
 
 - Debug the following program using `gdb`:
-    - in Ubuntu, compile the program by `gcc auth.c -fno-stack-protector`:
+    - in Ubuntu, compile the program by `gcc -g auth.c -fno-stack-protector`:
     - find a commandline argument that is not password but passes the authentication.
     - find the bug and describe what the bug is in BB.
     - `gdb --args a.out ARGS` launches `a.out` with `ARGS`.
@@ -949,8 +952,8 @@ int check_authentication(char *password) {
   int auth_flag = 0;
   char password_buffer[16];
   strcpy(password_buffer, password);
-  if(strcmp(password_buffer, "12345") == 0) auth_flag = 1;
-  if(strcmp(password_buffer, "54321") == 0) auth_flag = 1;
+  if(strcmp(password_buffer,"12345")==0)auth_flag=1;
+  if(strcmp(password_buffer,"54321")==0)auth_flag=1;
   return auth_flag; 
 }
 int main(int argc, char *argv[]) { 
