@@ -547,7 +547,7 @@ Examining Stack
 ---
 
 - stack: frames, local variables, argments, return
-    - `backtrace`/`bt`,`where`
+    - `backtrace`/`bt`/`bt full`,`where`
     - `up`,`down`,`frame #`
         - **context**
 
@@ -676,6 +676,10 @@ Assembly code: Where to find it
     - `objdump -M intel -D a.out | grep -A20 main`
     - in `gdb`: `set disassembly intel; disassemble main`
 
+<!--
+objdump -x86-asm-syntax=intel -D aprw2/a.out | grep -A20 main
+-->
+
 Assembly language
 ---
 
@@ -737,6 +741,169 @@ Function in Assembly
     - the reason why variable type needs to be declared
 
 -->
+
+C Varibales, Functions from Assembly's Perspective
+===
+
+References
+----
+
+- Hacking, the art of expoitation, 2nd edition, Jon Erickson, Chapter 0x260,270,280
+
+Data type
+---
+
+- signed, unsigned, long long, float, char
+- unsigned: 
+    - a 32-bit unsigned integer, value from 0 to $2^{32}-1$.
+- signed: 
+    - a 32-bit unsigned integer, value from -2^{31} to $2^{32}-1$.
+    - negative numbers are represented by two's complement, (which is suited for binary adders).
+- C data type is memory allocation size
+    - C is typed, but assembly/machine instructions are not
+    - `sizeof()`
+
+| signed | unsigned | long | long long | float | char |
+| --- | --- | --- | --- | --- | --- |
+| 4 | 4 | 2 | 4 | 8 | 1 |
+
+Typecasting
+---
+
+```
+#include<stdio.h>
+int main(){
+  int i = 5;
+  float f = (float) i
+  float d = f/3; // float d2 = i/3;
+  printf("%f\n",d);
+}
+```
+
+Variable type: scope and visibility
+---
+
+
+| variable type | scope | visbility | memory location |
+| ---- | --- |
+| global variable | global | global | `.rodata`/`.bss` |
+| static variable | global | nested local | `.rodata`/`.bss` |
+| local variable | local | nested local | `stack` |
+| dynamically-allocated var | dynamic | global | `heap` |
+
+- static local
+    - Possible to define multiple static local variables of the same name, defined in different functions. 
+    - They represent different memory locations. 
+
+Demo
+---
+
+```
+#include <stdio.h>
+int j = 42; // j is a global variable.
+void func3() {
+   int i = 11, j = 999; // Here, j is a local variable of func3(). 
+   printf("\t\t\t[in func3] i @ 0x%08x = %d\n", &i, i); 
+   printf("\t\t\t[in func3] j @ 0x%08x = %d\n", &j, j);
+}
+void func2() { 
+   int i = 7;
+   printf("\t\t[in func2] i @ 0x%08x = %d\n", &i, i);
+   printf("\t\t[in func2] j @ 0x%08x = %d\n", &j, j);
+   printf("\t\t[in func2] setting j = 1337\n");
+   j = 1337; // Writing to j
+   func3();
+   printf("\t\t[back in func2] i @ 0x%08x = %d\n", &i, i); 
+   printf("\t\t[back in func2] j @ 0x%08x = %d\n", &j, j);
+}
+void func1() { 
+  int i = 5;
+  printf("\t[in func1] i @ 0x%08x = %d\n", &i, i); 
+  printf("\t[in func1] j @ 0x%08x = %d\n", &j, j); 
+  func2();
+  printf("\t[back in func1] i @ 0x%08x = %d\n", &i, i); 
+  printf("\t[back in func1] j @ 0x%08x = %d\n", &j, j);
+}
+int main() { 
+  int i = 3;
+  printf("[in main] i @ 0x%08x = %d\n", &i, i);
+  printf("[in main] j @ 0x%08x = %d\n", &j, j); 
+  func1();
+  printf("[back in main] i @ 0x%08x = %d\n", &i, i); 
+  printf("[back in main] j @ 0x%08x = %d\n", &j, j);
+}
+```
+
+Pointer types
+---
+
+- Array and pointer
+    - A C array is a list of `n` elements of a specific data type, and allocated in `n` adjacent memory locations.
+    - null byte is delimiter character 
+
+---
+
+- Code-pointer: function pointer
+- Data-pointer: pointer to variable, array
+    - Pointer data type: `char *`, `int *`, 
+    - Pointer arithmetic: equiv. code
+        - `int * p = array; p += 1;`
+        - `int pp = array; pp += sizeof(int);`
+
+Function execution and stack
+===
+
+Stack
+---
+
+- Stack:
+    - store **context** information
+    - a stack of frames, with the top frame pushed (popped) by entering (leaving) a function
+- Stack pointer: `RSP`, pointing to the stack end
+- Frame pointer: `RBP`, pointing to the start of top frame.
+
+
+Entering function in Assembly
+---
+
+- Calling convention, function prologue and `call` instruction.
+- The SFP is used to restore EBP to its previous value, and the return address is used to restore EIP 
+
+<!--Stack_example.c-->
+```c
+void test_function(int a, int b, int c, int d) { 
+  int flag;
+  char buffer[10];
+  flag = 31337;
+  buffer[0] = 'A'; 
+}
+int main() {
+  test_function(1, 2, 3, 4);
+}
+```
+
+Exercise
+---
+
+```c
+#include <stdio.h> #include <stdlib.h> #include <string.h>
+int check_authentication(char *password) { 
+  int auth_flag = 0;
+  char password_buffer[16];
+  strcpy(password_buffer, password);
+  if(strcmp(password_buffer, "12345") == 0) auth_flag = 1;
+  if(strcmp(password_buffer, "54321") == 0) auth_flag = 1;
+  return auth_flag; 
+}
+int main(int argc, char *argv[]) { 
+  if(argc < 2) exit(0); 
+  if(check_authentication(argv[1])) { 
+    printf("\nAccess Granted.\n"); 
+  } else {
+    printf("\nAccess Denied.\n");
+  } 
+}
+```
 
 
 <!--
