@@ -783,7 +783,7 @@ Function in Assembly
 
 -->
 
-C Varibales, Functions from Assembly's Perspective
+C Varibales, Functions in Assembly (Apr.w3)
 ===
 
 References
@@ -795,19 +795,21 @@ References
 Data type
 ---
 
+- C language is typed, but assembly/machine instructions are not
+- C data type determines:
+    - how much space to allocate to store variable in memory
+    - how to inteprete the bitstring stored in the memory
+    - how to calculate "primitive" arithemtics on the variable
 - signed, unsigned, long long, float, char
     - unsigned: 
         - a 32-bit unsigned integer, value from 0 to $2^{32}-1$.
     - signed: 
         - a 32-bit unsigned integer, value from $-2^{31}$ to $2^{32}-1$.
         - negative numbers are represented by two's complement, (which is suited for binary adders).
-- C data type is memory allocation size
-    - C is typed, but assembly/machine instructions are not
-    - `sizeof()`
 
 | type | signed | unsigned | short | long long | float | char |
 | --- | --- | --- | --- | --- | --- | --- |
-| sizeof | 4 | 4 | 2 | 8 | 4 | 1 |
+| `sizeof()` | 4 | 4 | 2 | 8 | 4 | 1 |
 
 Typecasting
 ---
@@ -871,7 +873,7 @@ int main(){
         - `int * p = array; p += 1;`
         - `int pp = array; pp += sizeof(int);`
 
-Function execution and stack
+Function execution and stack (Apr.w3)
 ===
 
 Stack
