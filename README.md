@@ -790,6 +790,7 @@ References
 ----
 
 - Hacking, the art of expoitation, 2nd edition, Jon Erickson, Chapter 0x260,270,280
+- Smashing The Stack For Fun And Profit, [[link](http://insecure.org/stf/smashstack.html)]
 
 Data type
 ---
@@ -848,9 +849,6 @@ int main(){
 Exercise
 ---
 
-Debug:
-
-
 ```c
 #include<stdio.h>
 int main(){
@@ -908,7 +906,11 @@ int main() {
 Exercise
 ---
 
-- Debug the following program.
+- Debug the following program using `gdb`:
+    - in Ubuntu, compile the program by `gcc auth.c -fno-stack-protector`:
+    - find a commandline argument that is not password but passes the authentication.
+    - find the bug and describe what the bug is in BB.
+    - use `gdb --args a.out XXX` to launch `a.out` with argument.
 
 ```c
 #include <stdio.h> 
@@ -931,7 +933,6 @@ int main(int argc, char *argv[]) {
   } 
 }
 ```
-
 
 <!--
 

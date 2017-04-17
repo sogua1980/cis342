@@ -22,6 +22,7 @@ figures/*.sh
 *.sws
 *.swt
 *.swn
+*dSYM/*
 
 # Compiled source #
 ###################
