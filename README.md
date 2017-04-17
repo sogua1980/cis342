@@ -721,6 +721,37 @@ Assembly in Gdb
 
 
 <!--
+Exercises:
+- Run the following program. What is it supposed to do? What is the problem with it? How can you solve the problem?
+#include<stdio.h>
+#include<string.h>
+void main(){
+	char a[20];
+	int i;
+	strcpy(a,"hello world");
+	for (i=20; i>=0; i--)
+		printf("%c",a[i]);
+}
+- Compile the following program to assembly. Can you find where printf is implemented?
+#include<stdio.h>
+void main(){
+		printf("Hello world!");
+}
+- Use `objdump -S a.out` with the previous code. What do you observe?
+- What is the data size for int type? What value you can copy to an int variable to exceed that? What happens if you exceed the size? Write program and debug with gdb.
+- Compile and run this program. What is the problem with it? How can you extend the size of the string to accept arbitrary number of chars?
+#include<stdio.h>
+void main(){
+	char a[1];
+	int i;
+	for (i=0; i<1000; i++)
+		a[i]='a';
+	printf("%s",a);
+}
+- If you use a char* in the previous program, can you copy as many characters into it as you want? Why?
+- Use malloc to assign more memory to char *a; Can this solve the problem?
+
+
 
 - gdb setup
     - gdb -q
