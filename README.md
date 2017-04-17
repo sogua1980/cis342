@@ -883,12 +883,15 @@ Stack
 - Stack pointer: `RSP`, pointing to the stack end
 - Frame pointer: `RBP`, pointing to the start of top frame.
 
-
 Entering function in Assembly
 ---
 
 - Calling convention, function prologue and `call` instruction.
-- The `SFP` is used to restore `RBP` to its previous value, and the return address is used to restore `RIP` 
+- `SFP` is for restoring `RBP` to previous value, and the return address is used to restore `RIP` 
+
+---
+
+- in `gdb`, `b test_function`, `x/16xw $RSP`
 
 <!--Stack_example.c-->
 ```c
@@ -903,6 +906,30 @@ int main() {
 }
 ```
 
+```
+         +--------+
+         |test_() |
+callee   |prolugue|
+         | ...    |
+         | ...    |
+         +--------+
+         |main()  |
+         | ...    |
+caller   |call   t|
+         | ...    |
+         +--------+
+         | ...    |
+RSP ---> +--------+
+         |buffer  |
+         |flag    |
+         |SFP     |
+         |RET     |
+         |*test_()|
+RBP ---> +--------+
+         |main()  |
+         +--------+
+```
+
 Exercise
 ---
 
@@ -910,7 +937,7 @@ Exercise
     - in Ubuntu, compile the program by `gcc auth.c -fno-stack-protector`:
     - find a commandline argument that is not password but passes the authentication.
     - find the bug and describe what the bug is in BB.
-    - use `gdb --args a.out XXX` to launch `a.out` with argument.
+    - `gdb --args a.out ARGS` launches `a.out` with `ARGS`.
 
 ```c
 #include <stdio.h> 
