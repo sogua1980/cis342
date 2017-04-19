@@ -951,7 +951,8 @@ Exercise
 ---
 
 - Debug the following program using `gdb`:
-    - in Ubuntu, compile the program by `gcc -g auth.c -fno-stack-protector`:
+    - in Ubuntu, compile the program by `gcc -g auth.c -fno-stack-protector`
+    - `strcp`/`strcmp` copies/compares the two string arguments
     - find a commandline argument that is not password but passes the authentication.
     - find the bug and describe what the bug is in BB.
     - `gdb --args a.out ARGS` launches `a.out` with `ARGS`.
