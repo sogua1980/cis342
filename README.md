@@ -912,27 +912,39 @@ int main() {
 ```
 
 ```
-         +--------+
-         |test_() |
-callee   |prolugue|
-         | ...    |
-         | ...    |
-         +--------+
-         |main()  |
-         | ...    |
-caller   |call   t|
-         | ...    |
-         +--------+
-         | ...    |
-RSP ---> +--------+
-         |buffer  |
-         |flag    |
-         |SFP     |
-         |RET     |
-         |*test_()|
-RBP ---> +--------+
-         |main()  |
-         +--------+
+                +--------+
+callee test_()  |prolugue|
+                | ...    |
+                | ret    |
+                | ...    |
+caller main()   |call   t|
+                | ...    |
+                +--------+
+                | ...    |
+RSP -------->   +--------+
+                |buffer  |
+                |flag    |
+                |SFP     |
+                |RET     |
+                |*test_()|
+RBP -------->   +--------+
+                |main()  |
+                +--------+
+```
+
+Commandline argument
+---
+
+```c
+#include<stdio.h>
+int main(int argc, char *argv[]) { 
+  if(argc < 2) return 1;
+  printf("arg is %s\n", argv[1]); //%s for char array
+}
+```
+
+```bash
+./a.out helloworld
 ```
 
 Exercise
