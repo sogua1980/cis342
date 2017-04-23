@@ -1,10 +1,5 @@
-void test_function(int a, int b, int c, int d) { 
-  int flag;
-  char buffer[10];
-  flag = 31337;
-  buffer[0] = 'A'; 
-}
-
-int main() {
-  test_function(1, 2, 3, 4);
+#include<stdio.h>
+int main(int argc, char *argv[]) { 
+  if(argc < 2) return 1;
+  printf("arg is %s\n", argv[1]); //%s for char array
 }

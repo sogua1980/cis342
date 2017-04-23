@@ -1,9 +1,9 @@
-#include<stdio.h>
-int main(){
-    int a[] = {2,1,0};
-    int *b = a;
-    unsigned long c = (unsigned long)a;//long
-    for (int i=0; i<3; i++){
-        printf("%d,%d,%d,%d,%d\n",a[i],*(b+i),*(a+i),b[i],*((int *)(c+i*sizeof(int))));
-    }
+void test_function(int a, int b, int c, int d) { 
+  int flag;
+  char buffer[10];
+  flag = 31337;
+  buffer[0] = 'A'; 
+}
+int main() {
+  test_function(1, 2, 3, 4);
 }

@@ -7,4 +7,3 @@ int main(){
         printf("%d,%d,%d,%d,%d\n",a[i],*(b+i),*(a+i),b[i],*((int *)(c+i*sizeof(int))));
     }
 }
-

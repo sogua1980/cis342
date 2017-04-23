@@ -462,7 +462,7 @@ int main(){
 Variable type: scope and visibility
 ---
 
-| variable type | scope | visbility | memory location |
+| variable type | scope | visibility | memory location |
 | ---- | --- | --- | --- |
 | global variable | global | global | `.rodata`/`.bss` |
 | static variable | global | nested local | `.rodata`/`.bss` |
@@ -472,7 +472,7 @@ Variable type: scope and visibility
 - static local variable
     - Possible to define multiple static local variables of the same name, defined in different functions. 
     - They represent different memory locations. 
-- The case of the preceeding code.
+- The case of the preceding code.
 
 Virtual memory layout
 ---
@@ -556,7 +556,7 @@ nm -ma b.out
 Examining Stack 
 ---
 
-- stack: frames, local variables, argments, return
+- stack: frames, local variables, arguments, return
     - `backtrace`/`bt`/`bt full`,`where`
     - `up`,`down`,`frame #`
         - **context**
@@ -629,7 +629,7 @@ void main(){
         }
 }
 - In the previous question, what will happen if we assign 10000 values instead of 10 values to the pointer? Why?
-- Write code to declare a variable named "foo". Now declare a pointer named "bar". What do you do to make foo changed everytime we change bar?
+- Write code to declare a variable named "foo". Now declare a pointer named "bar". What do you do to make foo changed every time we change bar?
 - We can find out the size of a variable using sizeof(varname) and print it using printf("%d",sizeof(varname)). Print the size of variables "a", "i", "a[0]", and "a[1]" in the program in first question. Describe your observation.
 - The _________ , also known as the address operator, returns the memory address of a variable. a.asterisk (*) b. ampersand (&) c. percent sign (%) d. exclamation point (!)
 - With pointer variables, you can __________ manipulate data stored in other variables. a. never b. seldom c. indirectly d. All of these
@@ -643,7 +643,7 @@ Assembly language (Apr.w2)
 References
 ---
 
-- Hacking, the art of expoitation, 2nd edition, Jon Erickson, Chapter 0x250
+- Hacking, the art of exploitation, 2nd edition, Jon Erickson, Chapter 0x250
 
 Architecture overview
 ---
@@ -669,7 +669,7 @@ Architecture overview
 Assembly code: Where to find it
 ---
 
-- program life cyle
+- program life cycle
     - preprocessor: 
     - compiler: assembly code
     - assembler: machine instruction (PIC)
@@ -783,13 +783,13 @@ Function in Assembly
 
 -->
 
-C Varibales, Functions in Assembly (Apr.w3)
+C Variables, Functions in Assembly (Apr.w3)
 ===
 
 References
 ----
 
-- Hacking, the art of expoitation, 2nd edition, Jon Erickson, Chapter 0x260,270,280
+- Hacking, the art of exploitation, 2nd edition, Jon Erickson, Chapter 0x260,270,280
 - Smashing The Stack For Fun And Profit, [[link](http://insecure.org/stf/smashstack.html)]
 
 Data type
@@ -798,8 +798,8 @@ Data type
 - C language is typed, but assembly/machine instructions are not
 - C data type determines:
     - how much space to allocate to store variable in memory
-    - how to inteprete the bitstring stored in the memory
-    - how to calculate "primitive" arithemtics on the variable
+    - how to interpret the bit-string stored in the memory
+    - how to calculate "primitive" arithmetic on the variable
 
 ---
 
@@ -896,24 +896,24 @@ Entering function in Assembly
 
 ---
 
-- in `gdb`, `b test_function`, `x/16xw $RSP`
+- in `gdb`, `b test`, `x/16xw $RSP`
 
 <!--Stack_example.c-->
 ```c
-void test_function(int a, int b, int c, int d) { 
+void test(int a, int b, int c, int d) { 
   int flag;
   char buffer[10];
   flag = 31337;
   buffer[0] = 'A'; 
 }
 int main() {
-  test_function(1, 2, 3, 4);
+  test(1, 2, 3, 4);
 }
 ```
 
 ```
                 +--------+
-callee test_()  |prolugue|
+callee test()   |prologue|
                 | ...    |
                 | ret    |
                 | ...    |
