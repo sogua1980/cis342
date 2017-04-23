@@ -666,7 +666,7 @@ Architecture overview
         - machine instructions
         - assembly
 
-Assembly code: Where to find it
+Assembly programs: Where to find them
 ---
 
 - program life cycle
