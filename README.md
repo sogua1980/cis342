@@ -1134,7 +1134,9 @@ object
 | initialize | `int x=5;` | `cname * objname = new cname();` |
 | reference | `x=3;` | `objname->foo();` |
 | destroy | | `delete objname;` |
-         
+
+
+
 - during object reference, private members of a class are accessible only from within other members of the same class.
     - reference is between a pointer and pointee.
     - access policy (`public` or `private`) only permits that pointer and pointee are in the same class.
