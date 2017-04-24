@@ -1,5 +1,5 @@
 void print() {
-  char * message = "hello world";
+  char * message = "hello world\n";
   asm ( "mov $12, %%rdx\n\t"
       "mov %0, %%rcx\n\t"
       "mov $0, %%rbx\n\t"

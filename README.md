@@ -1177,6 +1177,9 @@ int main () {
 }
 ```
 
+```bash
+g++ demo2.cpp
+```
 System call (Apr.W4)
 ===
 
@@ -1204,7 +1207,7 @@ void print() {
       ::"r"(message):"rdx","rcx","rbx");
 }
 int main(){
-   printf("hello world\n");
+   print("hello world\n");
 }
 ```
 
