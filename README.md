@@ -1107,8 +1107,8 @@ class
 
 | | compound type | class |
 | --- | --- | --- | --- |
-| declare | `struct sname {member_var} iname;` | `class cname {member_func();}` |
-| define  | N/A  | `cname::member_func(){}` |
+| declare | `struct sname {mvar} iname;` | `class cname {mfunc();}` |
+| define  | N/A  | `cname::mfunc(){}` |
 
 - class is an expanded, compound data type, in that:
      1. "class holds both data and function", while compound data type holds data
