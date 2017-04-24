@@ -1127,9 +1127,24 @@ class
 object
 ---
 
+| | pointer | variable | function |
+| --- | --- | --- | --- |
+| declaration | `extern int * p` |`extern int x` | `void foo()` | 
+| definition | `int *p;` | `int x` | `void foo(){}` | 
+| initialization | `int *p=&a;` | `int x=6` | |
+| | `int*q=malloc(7)` | |
+| assignment | `p=&a` | `x=1` | |
+| reference | `*p=x;x=*p` | `y=x` | `foo()` |
+| destroy | `delete p` | | |
+
+
 | life span | var | object |
 | --- | --- | --- | 
-| declare |  | |
+| declare | `extern int x;` | `class cname {} objname;` |
+| define (pointer) | `int x;` | `cname * objname` |
+| initialization | `int x=5;` | `cname * objname = new cname();` |
+| reference | `x=3;` | `objname->foo();` |
+| destroy | | `delete objname;` |
          
 - during object reference, private members of a class are accessible only from within other members of the same class.
     - reference is between a pointer and pointee.
