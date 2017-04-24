@@ -1133,7 +1133,6 @@ object
 | define (pointer) | `int x;` | `cname * objname` |
 | initialize | `int x=5;` | `cname * objname = new cname();` |
 | reference | `x=3;` | `objname->foo();` |
-
 | destroy | | `delete objname;` |
          
 - during object reference, private members of a class are accessible only from within other members of the same class.
