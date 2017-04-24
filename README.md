@@ -1127,8 +1127,8 @@ class
 object
 ---
 
-| | life span | var | object |
-| --- | --- | --- | --- |
+| life span | var | object |
+| --- | --- | --- | 
 | declare | `extern int x;` |  `class cname {} objname;` | |
 | reference | `*p=x;x=*p` | `y=x` | `foo()` |
 | destroy | `delete p` | | |
