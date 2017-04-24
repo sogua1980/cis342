@@ -1127,19 +1127,8 @@ class
 object
 ---
 
-| | pointer | variable | function |
+| | life span | var | object |
 | --- | --- | --- | --- |
-| declaration | `extern int * p` |`extern int x` | `void foo()` | 
-| definition | `int *p;` | `int x` | `void foo(){}` | 
-| initialization | `int *p=&a;` | `int x=6` | |
-| | `int*q=malloc(7)` | |
-| assignment | `p=&a` | `x=1` | |
-| reference | `*p=x;x=*p` | `y=x` | `foo()` |
-| destroy | `delete p` | | |
-
-
-| life span | var | object |
-| --- | --- | --- | 
 | declare | `extern int x;` | `class cname {} objname;` |
 | define (pointer) | `int x;` | `cname * objname` |
 | initialization | `int x=5;` | `cname * objname = new cname();` |
