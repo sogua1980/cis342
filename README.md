@@ -1129,12 +1129,12 @@ object
 
 | | life span | var | object |
 | --- | --- | --- | --- |
-| declare | `p=&a` | `x=1` | |
+| declare | `extern int x;` | `x=1` | |
 | reference | `*p=x;x=*p` | `y=x` | `foo()` |
 | destroy | `delete p` | | |
 
 
-| declare | `extern int x;` | `class cname {} objname;` | |
+| declare | | | |
 | define (pointer) | `int x;` | `cname * objname` |
 | initialize | `int x=5;` | `cname * objname = new cname();` |
 | reference | `x=3;` | `objname->foo();` |
