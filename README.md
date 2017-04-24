@@ -1129,7 +1129,7 @@ object
 
 | life span | var | object |
 | --- | --- | --- | 
-| declare | `extern int x;` | `class cname {} objname;` |
+| declare |  | |
          
 - during object reference, private members of a class are accessible only from within other members of the same class.
     - reference is between a pointer and pointee.
