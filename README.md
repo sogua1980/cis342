@@ -1072,3 +1072,138 @@ int main()
     - Write a program to get an array with 10 integers from user and sort the array.
 
 -->
+
+C++: object-oriented programming (Apr.W4)
+===
+
+References
+---
+
+- The C++ Language Tutorial [[link](http://www.cplusplus.com/files/tutorial.pdf)], Chapter "Object oriented programming, Classes (I)"
+
+Compound data type: struct
+---
+
+- compound data type is custom data type
+    - interface to the type system
+
+```c
+struct movies_t {
+  char * title;
+  int year;
+};
+int main (){
+  string mystr;
+  movies_t amovie;
+  movies_t * pmovie;
+  pmovie = &amovie;
+  amovie.title = "the usual suspects";
+  pmovie->year = 1995;
+  return 0; 
+}
+```
+
+class
+---
+
+| | compound type | class |
+| --- | --- | --- | --- |
+| declare | `struct sname iname;` | `class cname` |
+| define  | N/A  | `class ` |
+
+- class is an expanded, compound data type, in that:
+     1. "class holds both data and function", while compound data type holds data
+     2. class defines access policy
+
+```c
+ class CRectangle {
+    int x, y;
+  public:
+    void set_values (int,int);
+    int area (void);
+} rect;
+```
+
+object
+---
+
+| life span | var | object |
+| --- | --- | --- |
+| declare | `extern int x;` | `class cname {} objname;` |
+| define (pointer) | `int x;` | `cname * objname` |
+| initialization | `int x=5;` | `cname * objname = new cname();` |
+| reference | `x=3;` | `objname->foo();` |
+| destroy | | `delete objname;` |
+         
+- during object reference, private members of a class are accessible only from within other members of the same class.
+    - reference is between a pointer and pointee.
+    - access policy (`public` or `private`) only permits that pointer and pointee are in the same class.
+
+Essence of "object" (Revisit)
+---
+
+- "A **class** is an expanded concept of a data **structure**: instead of holding only data, it can hold both data and functions."
+- "An **object** is an instantiation of a class. In terms of variables, a class would be the type, and an object would be the variable."
+
+demo
+---
+
+```c
+// classes example
+#include <stdio.h>
+class CRectangle {
+    int x, y;
+  public:
+    void set_values (int,int);
+    int area () {return (x*y);}
+};
+void CRectangle::set_values (int a, int b) { x = a;
+y = b; }
+int main () {
+  CRectangle rect;
+  rect.set_values (3,4);
+  printf("area: %d\n", rect.area());
+  return 0;
+}
+```
+
+System call
+===
+
+Revisit helloworld
+---
+
+```c
+#include<stdio.h>
+int main(){
+   printf("hello world\n");
+}
+```
+
+Homebrew `printf`
+---
+
+```c
+void print() {
+  char * message = "hello world";
+  asm ( "mov $12, %%rdx\n\t"
+      "mov %0, %%rcx\n\t"
+      "mov $0, %%rbx\n\t"
+      "mov $4, %%rax\n\t"
+      "int $0x80 \n\t"
+      ::"r"(message):"rdx","rcx","rbx");
+}
+int main(){
+   printf("hello world\n");
+}
+```
+
+Syscall
+---
+
+- `int` represents interrupt to CPU
+- Syscall is a kind of interrupt
+    - syscall interrupts CPU's normal execution and forces it to jump to a kernel routine and run it under kernel mode.
+    - CPU will save the context information to kernel-space memory.
+
+
