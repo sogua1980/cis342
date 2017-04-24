@@ -53,12 +53,11 @@ Life of a C construct
 
 | | variable | function 
 | --- | --- | --- |
-| declaration | `extern int x;` | `void foo();`
-| definition | `int x;` | `void foo(){}`
-| initialization | `int x = 6;`
-| assignment | `x = 1;`
-| reference | `y = x;` | `foo();` (invocation)
-| destroy
+| declare | `extern int x;` | `void foo();`
+| define | `int x;` | `void foo(){}`
+| initialize | `int x = 6;`
+| reference | `y = x;x=1;` | `foo();` (invocation)
+| destroy | | 
 
 Gcc: Flags
 ---
@@ -378,11 +377,10 @@ Life of a `C` pointer/symbol
 
 | | pointer | variable | function |
 | --- | --- | --- | --- |
-| declaration | `extern int * p` |`extern int x` | `void foo()` | 
-| definition | `int *p;` | `int x` | `void foo(){}` | 
-| initialization | `int *p=&a;` | `int x=6` | |
+| declare | `extern int * p` |`extern int x` | `void foo()` | 
+| define | `int *p;` | `int x` | `void foo(){}` | 
+| initialize | `int *p=&a;` | `int x=6` | |
 | | `int*q=malloc(7)` | |
-| assignment | `p=&a` | `x=1` | |
 | reference | `*p=x;x=*p` | `y=x` | `foo()` |
 | destroy | `delete p` | | |
 
@@ -1084,10 +1082,11 @@ References
 Compound data type: struct
 ---
 
-- compound data type is custom data type
-    - interface to the type system
+- `struct` is compound data type 
+- `struct` is custom data type
+    - define your own `struct`
 
-```c
+```cpp
 struct movies_t {
   char * title;
   int year;
@@ -1108,8 +1107,8 @@ class
 
 | | compound type | class |
 | --- | --- | --- | --- |
-| declare | `struct sname iname;` | `class cname` |
-| define  | N/A  | `class ` |
+| declare | `struct sname {member_var} iname;` | `class cname {member_func();}` |
+| define  | N/A  | `cname::member_func(){}` |
 
 - class is an expanded, compound data type, in that:
      1. "class holds both data and function", while compound data type holds data
@@ -1124,8 +1123,10 @@ class
 } rect;
 ```
 
-object
+Object
 ---
+
+- An object is an instance of class.
 
 | life span | var | object |
 | --- | --- | --- | 
@@ -1136,21 +1137,26 @@ object
 | destroy | | `delete objname;` |
 
 
+---
 
-- during object reference, private members of a class are accessible only from within other members of the same class.
+- Private members of a class are referenced only from within other members of the same class.
     - reference is between a pointer and pointee.
-    - access policy (`public` or `private`) only permits that pointer and pointee are in the same class.
+    - access policy (`public` or `private`) is about the permission of referencing pointee given the context of the pointer.
 
-Essence of "object" (Revisit)
+<!--
+
+Essence of an "object" (Revisit)
 ---
 
 - "A **class** is an expanded concept of a data **structure**: instead of holding only data, it can hold both data and functions."
 - "An **object** is an instantiation of a class. In terms of variables, a class would be the type, and an object would be the variable."
 
-demo
+-->
+
+Demo
 ---
 
-```c
+```cpp
 // classes example
 #include <stdio.h>
 class CRectangle {
@@ -1169,7 +1175,7 @@ int main () {
 }
 ```
 
-System call
+System call (Apr.W4)
 ===
 
 Revisit helloworld
@@ -1200,13 +1206,13 @@ int main(){
 }
 ```
 
-Syscall
+System call
 ---
 
 - `int` represents interrupt to CPU
-- Syscall is a kind of interrupt
+- Syscall is one kind of interrupt
     - syscall interrupts CPU's normal execution and forces it to jump to a kernel routine and run it under kernel mode.
-    - CPU will save the context information to kernel-space memory.
+    - CPU will save the context information to the kernel-space memory.
 
 
  
