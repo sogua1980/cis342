@@ -1128,7 +1128,7 @@ object
 ---
 
 | life span | var | object |
-| --- | --- | --- |
+| --- | --- | --- | --- | 
 | declare | `extern int x;` | `class cname {} objname;` |
 | define (pointer) | `int x;` | `cname * objname` |
 | initialization | `int x=5;` | `cname * objname = new cname();` |
