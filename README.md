@@ -812,6 +812,8 @@ Data type
 | --- | --- | --- | --- | --- | --- | --- |
 | `sizeof()` | 4 | 4 | 2 | 8 | 4 | 1 |
 
+
+
 Typecasting
 ---
 
@@ -1108,9 +1110,11 @@ class
 ---
 
 | | compound type | class |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | declare | `struct sname {mvar} iname;` | `class cname {mfunc();}` |
 | define  | N/A  | `cname::mfunc(){}` |
+
+
 
 - class is an expanded, compound data type, in that:
      1. "class holds both data and function", while compound data type holds data
