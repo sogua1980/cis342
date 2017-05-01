@@ -13,6 +13,7 @@ Basic bash commands
 	**Answer:** B. The `man` command is used to find out how to use a command.
 
 2. What permissions does the following command assigns to file "foo"? chmod 756 foo
+
 **Answer:** 756 translates to 111 101 110, meaning the full (read, write, and execute) permissions for user, read and execute permissions for group, and read and write permissions for all other people.
 
 3. Write a command to give `rw-rwx--x` permissions to file "foo".
