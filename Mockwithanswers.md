@@ -24,6 +24,7 @@ Script
 ---
 
 1. Write a bash script to get 2 integers as parameters and print "Ok" if the first parameter is larger that the second one.
+
 **Answer: **
 
 ```
