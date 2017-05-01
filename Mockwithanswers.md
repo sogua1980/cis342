@@ -10,21 +10,22 @@ Basic bash commands
     - C. `where`
     - D. `which` 
  
-	**Answer:** B. The `man` command is used to find out how to use a command.
+**Answer:** B. The `man` command is used to find out how to use a command.
 
 2. What permissions does the following command assigns to file "foo"? chmod 756 foo
 
 **Answer:** 756 translates to 111 101 110, meaning the full (read, write, and execute) permissions for user, read and execute permissions for group, and read and write permissions for all other people.
 
 3. Write a command to give `rw-rwx--x` permissions to file "foo".
+
 **Answer:** the given permissions translate to 671. This can be done using `chmod 671 foo`. 
 
 Script
 ---
 
 1. Write a bash script to get 2 integers as parameters and print "Ok" if the first parameter is larger that the second one.
-
 **Answer: **
+
 ```
 #!/bin/bash
 if [ $1 -lt $2 ]; then
