@@ -36,7 +36,7 @@ fi
 1. What should you do to have access to a variable in all consoles?
 **Answer:** Use `export` command to make it an environment variable.
 1. Write a bash script to get a path to a directory as parameter and copy all the files inside it to the user's home directory.
-**Answer: **
+**Answer**:
 ```
 #!/bin/bash
 cp -r $1 ~
