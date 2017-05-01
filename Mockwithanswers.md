@@ -25,7 +25,7 @@ Script
 
 1. Write a bash script to get 2 integers as parameters and print "Ok" if the first parameter is larger that the second one.
 
-**Answer: **
+**Answer**:
 
 ```
 #!/bin/bash
@@ -34,9 +34,13 @@ if [ $1 -lt $2 ]; then
 fi
 ```
 1. What should you do to have access to a variable in all consoles?
+
 **Answer:** Use `export` command to make it an environment variable.
+
 1. Write a bash script to get a path to a directory as parameter and copy all the files inside it to the user's home directory.
+
 **Answer**:
+
 ```
 #!/bin/bash
 cp -r $1 ~
@@ -53,7 +57,9 @@ Advanced bash commands
     - D. 777771827
     - **E.** 2871765
     - **F.** 119991
-	**Answer:** B, E, and F
+
+**Answer:** B, E, and F
+
 1. Write a command to find all lines of all files under user's home directory recursively that contain a single digit between 5-7 in their names. Ex: file51 matches but file12 does not.
 **Answer:** `find ~ -name "*[5-7]*"`
 1. You want to list all the files under the root directory but the output is too long and does not fit into your terminal. How do you handle this?
