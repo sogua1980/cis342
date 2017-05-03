@@ -55,6 +55,7 @@ Script
     #!/bin/bash
     cp -r $1 ~
     ```
+
 Advanced bash commands
 ---
 
@@ -95,6 +96,7 @@ Advanced bash commands
     - Hint: `wc -l foo` is counting the number of lines in a file foo
 
     Answer: ```ps aux | wc -l```
+
 GCC, Makefile and GDB
 ---
 
@@ -110,6 +112,7 @@ GCC, Makefile and GDB
 1. Write a makefile with two targets. One for compiling foo.c to binary foo.out linking a library file with name "libbar.a". Another target for removing the compiled binary files and cleaning up.
 
     Answer: `gcc -o foo.out foo.c -L. -lbar`
+
 C and Assembly
 ---
 
