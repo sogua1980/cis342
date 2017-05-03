@@ -13,3 +13,8 @@ Section 2, C/C++, Gcc, Makefile and Gdb
 
 - Version [[webpage](2_c.md)]
 - Version [[pdf](2_c.pdf)]
+
+Mock exam (with solutions)
+---
+
+- [[link](mock_exam/mock1-withanswers.md)]
