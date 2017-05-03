@@ -23,15 +23,17 @@ Basic bash commands
 Answer: B. The "man" command is used to find out how to use a command.
 
 2. What permissions does the following command assigns to file "foo"? `chmod 756 foo`
+
 Answer: 756 translates to 111 101 110, meaning the full (read, write, and execute) permissions for user, read and execute permissions for group, and read and write permissions for all other people.
+
 3. Write a command to give `rw-rwx--x` permissions to file "foo".
+
 Answer: the given permissions translate to 671. This can be done using `chmod 671 foo`. <p/>
 
 Script
 ---
 
 1. Write a bash script to get 2 integers as parameters and print "Ok" if the first parameter is larger that the second one.
-
 
 Answer: 
 
@@ -45,9 +47,11 @@ fi
 <p/>
 
 1. What should you do to have access to a variable in all consoles?
+
 Answer: Use `export` command to make it an environment variable.<p/>
 1. Write a bash script to get a path to a directory as parameter and copy all the files inside it to the user's home directory. 
     - Hint: Symbol `~` refers to home director.
+
 Answer: 
 
 ```
@@ -67,7 +71,8 @@ Advanced bash commands
     - E. 2871765
     - F. 119991
 1. Write a command to find all lines of all files under user's home directory recursively that contain a single digit between 5-7 in their names. Ex: file51 matches but file12 does not.
-Answer: `find ~ -name "*[5-7]*"`<p/>
+
+Answer: `find ~ -name "*[5-7]*"`
 1. You want to list all the files under the root directory but the output is too long and does not fit into your terminal. How do you handle this?
 Answer: 
 Use the `more` command. `ls / | more`
