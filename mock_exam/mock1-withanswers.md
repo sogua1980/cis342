@@ -72,7 +72,7 @@ Advanced bash commands
     - F. 119991
 1. Write a command to find all lines of all files under user's home directory recursively that contain a single digit between 5-7 in their names. Ex: file51 matches but file12 does not.
 
-Answer: `find ~ -name "*[5-7]*"`
+    Answer: ```find ~ -name "*[5-7]*"```
 1. You want to list all the files under the root directory but the output is too long and does not fit into your terminal. How do you handle this?
 Answer: 
 Use the `more` command. `ls / | more`
